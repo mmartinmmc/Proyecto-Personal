@@ -1,0 +1,73 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function mostrarCampoBusqueda() {
+            const tipoBusqueda = document.getElementById("tipo_busqueda").value;
+            const campoFormula = document.getElementById("campo_formula");
+            const campoNomenclatura = document.getElementById("campo_nomenclatura");
+
+            if (tipoBusqueda === "formula") {
+                campoFormula.style.display = "block";
+                campoNomenclatura.style.display = "none";
+            } else if (tipoBusqueda === "nomenclatura") {
+                campoFormula.style.display = "none";
+                campoNomenclatura.style.display = "block";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>{{ titulo }}</h1>
+    <form action="/buscar" method="POST">
+        <label for="tipo_busqueda">Buscar por:</label>
+        <select id="tipo_busqueda" name="tipo_busqueda" onchange="mostrarCampoBusqueda()" required>
+            <option value="formula">Fórmula</option>
+            <option value="nomenclatura">Nomenclatura</option>
+        </select>
+
+        <div id="campo_formula">
+            <input type="text" name="formula" placeholder="Ingresa una fórmula (ej. H2O)">
+            <label for="nomenclatura_devolver">Mostrar nomenclatura:</label>
+            <select name="nomenclatura_devolver">
+                <option value="todas">Todas</option>
+                <option value="sistematica">Sistemática</option>
+                <option value="stock">Stock</option>
+                <option value="tradicional">Tradicional</option>
+            </select>
+        </div>
+
+        <div id="campo_nomenclatura" style="display: none;">
+            <input type="text" name="nomenclatura" placeholder="Ingresa una nomenclatura (ej. Agua)">
+        </div>
+
+        <button type="submit">Buscar</button>
+    </form>
+
+    <!-- Nuevos desplegables -->
+    <div class="desplegable">
+        <h3>Teoría sobre la formulación</h3>
+        <p>Aquí puedes encontrar información teórica sobre la formulación química.</p>
+    </div>
+
+    <div class="desplegable">
+        <h3>Ejercicios de práctica</h3>
+        <p>Practica tus habilidades con ejercicios de formulación química.</p>
+    </div>
+
+    <div class="desplegable">
+        <h3>Proceso de creación</h3>
+        <p>Descubre cómo se crean y nombran los compuestos químicos.</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© 2023 Proyecto Personal - Mateo Martín</p>
+    </div>
+</body>
+</html>
