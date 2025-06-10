@@ -1,0 +1,388 @@
+Ion_pos,Oxid_pos,Ion_neg,Oxid_neg,Elemento2,Oxid_elem,Formula,Formula2,Tipo,Sistematica,Stock,Tradicional,Caracteristicas,Usos,,
+Ag,1,O,-2,,,Ag2O,Ag₂O,Óxidos,Monóxido de diplata,Óxido de plata (I),Óxido argéntico,"Sólido marrón, oxidante","Catalizador, antiséptico",1,1
+Ag,,,,,,Ag2S,Ag₂S,Sales Neutras,Monosulfuro de diplata,Sulfuro de plata (I),Sulfuro argéntico,"Sólido negro, insoluble en agua, se forma en la pátina de la plata, fotosensible","Emulsión fotográfica (haluros de plata), pátina en objetos de plata, semiconductores",1,1
+Ag,,,,,,AgCl,AgCl,Sales Neutras,Monocloruro de plata,Cloruro de plata (I),Cloruro argéntico,"Sólido blanco, insoluble","Fotografía, electrodos",1,1
+Al,,,,,,Al2(SO4)3,Al₂(SO₄)₃,Oxisales,Tris(tetraoxosulfato (VI)) de dialuminio,Sulfato de aluminio,Sulfato alumínico,"Sólido blanco, soluble en agua, coagulante, forma hidratos complejos","Tratamiento de aguas (clarificación), producción de papel (encolado), mordiente en tintorería, antiácido",3,1
+Al,3,O,-2,,,Al2O3,Al₂O₃,Óxidos,Trióxido de dialuminio,Óxido de aluminio,Alúmina,"Sólido blanco, refractario","Abrasivos, cerámica",3,1
+Al,,,,,,AlCl3,AlCl₃,Sales Neutras,Tricloruro de aluminio,Cloruro de aluminio,Cloruro alumínico,"Sólido blanco, higroscópico","Catalizador, tratamiento de aguas",3,1
+As,3,O,-2,,,As2O3,As₂O₃,Óxidos,Trióxido de diarsénico,Óxido de arsénico (III),Anhídrido arsenioso,"Sólido blanco, tóxico","Pesticidas, conservante de madera",3,1
+As,5,O,-2,,,As2O5,As₂O₅,Óxidos,Pentóxido de diarsénico,Óxido de arsénico (V),Anhídrido arsénico,"Sólido blanco, tóxico","Pesticidas, desecante",5,1
+Au,1,O,-2,,,Au2O,Au₂O,Óxidos,Monóxido de dioro,Óxido de oro (I),Óxido auroso,"Sólido púrpura, inestable","Pigmentos, catalizador",1,1
+Au,3,O,-2,,,Au2O3,Au₂O₃,Óxidos,Trióxido de dioro,Óxido de oro (III),Óxido áurico,"Sólido marrón, oxidante","Pigmentos, catalizador",3,1
+Au,,,,,,AuCl,AuCl,Sales Neutras,Cloruro de oro,Cloruro de oro (I),Cloruro auroso,"Sólido amarillo, inestable","Catalizador, síntesis orgánica",1,1
+Au,,,,,,AuCl3,AuCl₃,Sales Neutras,Tricloruro de oro,Cloruro de oro (III),Cloruro áurico,"Sólido rojo, higroscópico","Galvanoplastia, fotografía",3,1
+B,3,O,-2,,,B2O3,B₂O₃,Óxidos,Trióxido de diboro,Óxido de boro,Anhídrido bórico,"Sólido blanco, higroscópico","Vidrio de borosilicato, cerámica",3,1
+Ba,+2,Cl,-2,,,BaCl2,BaCl₂,Sales Neutras,Dicloruro de bario,Cloruro de bario (II),Cloruro bárico,"Sólido blanco, tóxico","Pirotecnia (color verde), pesticida",2,1
+Ba,+2,F,-1,,,BaF2,BaF₂,Sales Neutras,Difluoruro de bario,Fluoruro de bario,Fluoruro bárico,"Sólido blanco, insoluble","Óptica, láseres",2,1
+Ba,+2,H,-1,,,BaH2,BaH₂,Hidruros,Dihidruro de bario,Hidruro de bario,Hidruro bárico,"Sólido blanco, iónico",Agente reductor,2,1
+Ba,+2,O,-2,,,BaO,BaO,Óxidos,Monóxido de bario,Óxido de bario,Óxido bárico,"Sólido blanco, producción de otros compuestos de bario","Producción de bario, pirotecnia",,1
+Ba,,,,,,BaSO4,BaSO₄,Oxisales,Tetraoxosulfato (IV) de bario,Sulfato de bario,Sulfato bárico (barita),"Sólido blanco, insoluble","Radiología, pigmentos",2,1
+B,,,,,,BCl3,BCl₃,Sales Neutras,Tricloruro de boro,Cloruro de boro,Cloruro bórico,"Líquido incoloro, humeante","Catalizador, síntesis orgánica",3,1
+Be,+2,O,,,,BeCl2,BeCl₂,Sales Neutras,Dicloruro de berilio,Cloruro de berilio,Cloruro berílico,"Sólido blanco, higroscópico","Catalizador, aleaciones",2,1
+Be,,,,,,BeF2,BeF₂,Sales Neutras,Difluoruro de berilio,Fluoruro de berilio,Fluoruro berílico,"Sólido blanco, higroscópico","Aleaciones, reactores nucleares",2,1
+Be,+2,H,-1,,,BeH2,BeH₂,Hidruros,Dihidruro de berilio,Hidruro de berilio,Hidruro berílico,"Polimérico, covalente",Agente reductor,2,1
+Be,+2,O,-2,,,BeO,BeO,Óxidos,Monóxido de berilio,Óxido de berilio,Óxido berílico,"Sólido blanco, refractario, usado en cerámica y electrónica","Cerámica, electrónica, reactores nucleares",,1
+Be,,,,,,BeSO4,BeSO₄,Oxisales,Tetraoxosulfato (IV) de berilio,Sulfato de berilio,Sulfato berílico,"Sólido blanco, soluble","Investigación, aleaciones",2,1
+Bh,7,O,-2,,,Bh2O7,Bh₂O₇ (teórico),Óxidos,Heptaóxido de dibohrio,Óxido de bohrio (VII),Anhídrido perbórico,"Inestable, altamente radiactivo",Investigación científica,7,1
+Bh,,,,,,BhCl5,BhCl₅ (teórico),Sales Neutras,Pentacloruro de bohrio,Cloruro de bohrio (V),Cloruro bórico,"Inestable, altamente radiactivo",Investigación científica,5,1
+Bh,,,,,,BhCl7,BhCl7 (teórico),Sales Neutras,Heptacloruro de bohrio,Cloruro de bohrio (VII),Cloruro perbórico,"Inestable, altamente radiactivo",Investigación científica,7,1
+Bi,3,O,-2,,,Bi2O3,Bi₂O₃,Óxidos,Trióxido de dibismuto,Óxido de bismuto (III),Óxido bismútico,"Sólido amarillo, semiconductor","Cerámica, pigmentos",3,1
+S,,,,,,Bi2S3,Bi₂S₃,Sales Neutras,Sulfuro de bismuto(III),Sulfuro de bismuto(III),Sulfuro bismútico,"Sólido negro, insoluble en agua, semiconductor tipo p, mineral bismutinita","Pigmento (marrón de bismuto), cerámica, semiconductores, lubricante sólido",,1
+Bi,,,,,,BiCl3,BiCl₃,Sales Neutras,Tricloruro de bismuto,Cloruro de bismuto (III),Cloruro bismútico,"Sólido blanco, higroscópico","Catalizador, pigmentos",3,1
+Br,,,,,,Br2,Br₂,,Dibromo,Bromo,Bromo,"Líquido rojo oscuro, corrosivo","Retardante de fuego, fotografía","-1, +1, +3, +5, +7",1
+Ca,+2,Cl,-1,,,CaCl2,CaCl₂,Sales Neutras,Dicloruro de calcio,Cloruro de calcio (II),Cloruro cálcico,"Sólido blanco, higroscópico","Desecante, anticongelante",2,1
+Ca,,,,,,CaF2,CaF₂,Sales Neutras,Difluoruro de calcio,Fluoruro de calcio,Fluoruro cálcico (fluorita),"Sólido incoloro, insoluble","Fundente, óptica",2,1
+Ca,+2,H,-1,,,CaH2,CaH₂,Hidruros,Dihidruro de calcio,Hidruro de calcio,Hidruro cálcico,"Sólido blanco, iónico","Agente reductor, desecante",2,1
+Ca,+2,O,-2,,,CaO,CaO,Óxidos,Monóxido de calcio,Óxido de calcio,"Cal viva, Óxido cálcico","Sólido blanco, corrosivo","Cemento, agricultura, tratamiento de aguas",,1
+Ca,,,,,,CaSO3,CaSO₃,Sales terniarias,trioxosulfato (IV) de calcio,Sulfito de calcio,Sulfito cálcico,"Sólido blanco, poco soluble en agua, libera SO₂ con ácidos, agente reductor","Producción de papel (proceso de sulfito), conservante de alimentos (frutas y verduras)",,1
+Ca,,,,,,CaSO4,CaSO₄,Oxisales,Tetraoxosulfato de calcio,Sulfato de calcio,Sulfato cálcico (yeso),"Sólido blanco, poco soluble en agua, forma dihidrato (yeso) y hemihidrato (yeso de París), mineral común","Yeso (construcción, moldes), fertilizantes, desecante, aditivo alimentario (E516)",2,1
+Cd,,,,,,CdCl2,CdCl₂,Sales Neutras,Dicloruro de cadmio,Cloruro de cadmio,Cloruro de cadmio,"Sólido blanco, higroscópico","Galvanoplastia, pigmentos",2,1
+Cd,2,O,-2,,,CdO,CdO,Óxidos,Monóxido de cadmio,Óxido de cadmio,Óxido de cadmio,"Sólido marrón, semiconductor","Baterías, pigmentos",2,1
+Cd,,,,,,CdS,CdS,Sales Neutras,Sulfuro de cadmio,Sulfuro de cadmio,Sulfuro de cadmio,"Sólido amarillo, insoluble en agua, tóxico, semiconductor tipo n","Pigmento (amarillo de cadmio), semiconductores (fotocélulas), láseres",2,1
+C,,,,,,CH4,CH₄,Hidruros,Tetrahidruro de carbono,Hidruro de Carbono (iV),Metano,"Gas incoloro, combustible","Combustible, gas natural",4,1
+Cl,,,,,,Cl2,Cl₂,,Dicloro,Cloro,Cloro,"Gas amarillo verdoso, tóxico","Desinfección de agua, blanqueador","-1, +1, +3, +5, +7",1
+Cn,,,,,,CnCl2,CnCl₂ (teórico),Sales Neutras,Dicloruro de copernicio,Cloruro de copernicio (II),Cloruro coperniciano,"Inestable, altamente radiactivo",Investigación científica,2,1
+Cn,2,O,-2,,,CnO,CnO (teórico),Óxidos,Monóxido de copernicio,Óxido de copernicio (II),Óxido coperniciano,"Inestable, altamente radiactivo",Investigación científica,2,1
+C,2,O,-2,,,CO,CO,Óxidos,Monóxido de carbono,Monóxido de carbono,Monóxido de carbono,"Gas incoloro, tóxico","Combustible, reductor",2,1
+C,4,O,-2,,,CO2,CO₂,Óxidos,Dióxido de carbono,Dióxido de carbono,Anhídrido carbónico,"Gas incoloro, invernadero","Bebidas carbonatadas, extintores",4,1
+Co,3,O,-2,,,Co2O3,Co₂O₃,Óxidos,Trióxido de dicobalto,Óxido de cobalto (III),Óxido cobáltico,"Sólido negro, oxidante","Pigmentos, catalizador",3,1
+Co,,,,,,CoCl2,CoCl₂,Sales Neutras,Dicloruro de cobalto,Cloruro de cobalto (II),Cloruro cobaltoso,"Sólido rosa, higroscópico","Indicador de humedad, pigmentos",2,1
+Co,2,O,-2,,,CoO,CoO,Óxidos,Monóxido de cobalto,Óxido de cobalto (II),Óxido cobaltoso,"Sólido verde, insoluble","Pigmentos, cerámica",2,1
+Co,,,,,,CoS,CoS,Sales Neutras,Sulfuro de cobalto,Sulfuro de cobalto (II),Sulfuro cobaltoso,"Sólido negro, insoluble","Pigmentos, producción de cobalto",2,1
+Co,,,,,,CoSO4,CoSO₄,Sales terniarias,,Sulfato de cobalto(II),Sulfato cobaltoso,"Sólido rojo, soluble en agua, indicador de humedad (cloruro de cobalto), precursor de otros compuestos de cobalto","Pigmento (azul cobalto), producción de vitaminas (B12), galvanoplastia (cobalto)",6,1
+Cr,3,O,-2,,,Cr2O3,Cr₂O₃,Óxidos,Trióxido de dicromo,Óxido de cromo (III),Óxido crómico,"Sólido verde, pigmento","Pigmentos, cerámica",3,1
+Cr,,,,,,CrCl3,CrCl₃,Sales Neutras,Tricloruro de cromo,Cloruro de cromo (III),Cloruro crómico,"Sólido violeta, higroscópico","Catalizador, pigmentos",3,1
+Cr,6,O,-2,,,CrO3,CrO₃,Óxidos,Trióxido de cromo,Óxido de cromo (VI),Anhídrido crómico,"Sólido rojo, oxidante","Galvanoplastia, pigmentos",6,1
+Cs,,,,,,Cs2CO3,Cs₂CO₃,Oxisales,Trioxocarbonato de dicesio,Carbonato de cesio,Carbonato cesico,"Sólido blanco, soluble","Investigación, catalizador",1,1
+Cs,+1,O,-2,,,Cs2O,Cs₂O,Óxidos,Monóxido de dicesio,Óxido de cesio,Óxido cesico,"Sólido naranja, muy reactivo con agua y aire","Células fotoeléctricas, catalizadores",,1
+Cs,,,,,,Cs2SO4,Cs₂SO₄,Oxisales,Tetraoxosulfato de dicesio,Sulfato de cesio,Sulfato cesico,"Sólido blanco, soluble","Investigación, catalizador",1,1
+Cs,+1,Br,-1,,,CsBr,CsBr,Sales Neutras,Monobromuro de cesio,Bromuro de cesio,Bromuro cesico,"Sólido blanco, higroscópico","Medicina, fotografía",1,1
+Cs,+1,Cl,-1,,,CsCl,CsCl,Sales Neutras,Monocloruro de cesio,Cloruro de cesio,Cloruro cesico,"Sólido blanco, iónico","Investigación, componentes electrónicos",1,1
+Cs,,,,,,CsF,CsF,Sales Neutras,Fluoruro de cesio,Fluoruro de cesio,Fluoruro cesico,"Sólido blanco, iónico","Óptica, catalizador",1,1
+Cs,+1,H,-1,,,CsH,CsH,Hidruros,Monohidruro de cesio,Hidruro de cesio,Hidruro cesico,"Sólido gris, reductor fuerte","Agente reductor, síntesis orgánica","Agente reductor, síntesis orgánica",1
+Cs,,,,,,CsI,CsI,Sales Neutras,Yoduro de cesio,Yoduro de cesio,Yoduro cesico,"Sólido blanco, higroscópico","Medicina, investigación",1,1
+Cs,,,,,,CsNO3,CsNO₃,Oxisales,Trioxonitrato de cesio,Nitrato de cesio,Nitrato cesico,"Sólido blanco, higroscópico","Pirotecnia, investigación",1,1
+Cs,1,O,-2,,,CsOH,CsOH,Óxidos,Hidróxido de cesio,Hidróxido de cesio,Hidróxido cesico,"Sólido blanco, corrosivo","Baterías, investigación",1,1
+Cu,1,O,-2,,,Cu2O,Cu₂O,Óxidos,Monóxido de dicobre,Óxido de cobre (I),Óxido cuproso,"Sólido rojo, semiconductor","Pigmentos, fungicida",1,1
+Cu,,,,,,Cu2S,Cu₂S,Sales Neutras,Sulfuro de dicobre,Sulfuro de cobre (I),Sulfuro cuproso,"Sólido negro, semiconductor","Producción de cobre, semiconductor",1,1
+Cu,,,,,,CuCl,CuCl,Sales Neutras,Monocloruro de cobre,Cloruro de cobre (I),Cloruro cuproso,"Sólido blanco, insoluble","Catalizador, síntesis orgánica",1,1
+Cu,,,,,,CuCl2,CuCl₂,Sales Neutras,Dicloruro de cobre,Cloruro de cobre (II),Cloruro cúprico,"Sólido verde, higroscópico","Pigmentos, galvanoplastia",2,1
+Cu,2,O,-2,,,CuO,CuO,Óxidos,Monóxido de cobre,Óxido de cobre (II),Óxido cúprico,"Sólido negro, catalizador","Pigmentos, catalizador",2,1
+Cu,,,,,,CuS,CuS,Sales Neutras,Sulfuro de cobre(II),Sulfuro de cobre(II),Sulfuro cúprico,"Sólido negro, insoluble en agua, precipitado oscuro en análisis cualitativo, semiconductor tipo p","Pigmento (negro de cobre), fungicida, electrodos, síntesis de otros compuestos de cobre",-2,1
+S,,,,,,CuSO4,CuSO₄,Oxisales,Sulfato de cobre(II),Sulfato de cobre(II),Sulfato cúprico,"Sólido azul, soluble en agua, forma pentahidrato (vitriolo azul), fungicida y algicida","Fungicida (caldo bordelés), algicida (piscinas), galvanoplastia, suplemento de cobre para animales",6,1
+Db,5,O,-2,,,Db2O5,Db₂O₅ (teórico),Óxidos,Pentóxido de didubnio,Óxido de dubnio (V),Óxido dúbnico,"Inestable, altamente radiactivo",Investigación científica,5,1
+Db,,,,,,DbC,DbC (teórico),Sales Neutras,Carburo de dubnio,Carburo de dubnio,Carburo dúbnico,"Inestable, altamente radiactivo",Investigación científica,4,1
+Db,,,,,,DbCl5,DbCl₅ (teórico),Sales Neutras,Pentacloruro de dubnio,Cloruro de dubnio (V),Cloruro dúbnico,"Inestable, altamente radiactivo",Investigación científica,5,1
+Db,,,,,,DbH,DbH (teórico),Hidruros,Monohidruro de dubnio,Hidruro de dubnio,Hidruro dúbnico,"Inestable, altamente radiactivo",Investigación científica,1,1
+Db,4,O,-2,,,DbO2,DbO₂ (teórico),Óxidos,Dióxido de dubnio,Óxido de dubnio (IV),Óxido dúbnico,"Inestable, altamente radiactivo",Investigación científica,4,1
+Ds,,,,,,DsCl4,DsCl₄ (teórico),Sales Neutras,Tetracloruro de darmstadio,Cloruro de darmstadio (IV),Cloruro darmstádico,"Inestable, altamente radiactivo",Investigación científica,4,1
+Ds,,,,,,DsCl6,DsCl₆ (teórico),Sales Neutras,Hexacloruro de darmstadio,Cloruro de darmstadio (VI),Cloruro darmstádico,"Inestable, altamente radiactivo",Investigación científica,6,1
+Ds,4,O,-2,,,DsO2,DsO₂ (teórico),Óxidos,Dióxido de darmstadio,Óxido de darmstadio (IV),Óxido darmstádico,"Inestable, altamente radiactivo",Investigación científica,4,1
+F,,,,,,F2,F₂,,Diflúor,Flúor,Flúor,"Gas amarillo pálido, muy reactivo","Producción de teflón, fluoración dental",-1,1
+Fe,3,O,-2,,,Fe2O3,Fe₂O₃,Óxidos,Trióxido de dihierro,Óxido de hierro (III),Óxido férrico,"Sólido rojo-marrón, pigmento","Pigmentos, abrasivos",3,1
+Fe,,,,,,FeCl2,FeCl₂,Sales Neutras,Dicloruro de hierro,Cloruro de hierro (II),Cloruro ferroso,"Sólido amarillo-verde, higroscópico","Reductor, tratamiento de aguas",2,1
+Fe,,,,,,FeCl3,FeCl₃,Sales Neutras,Tricloruro de hierro,Cloruro de hierro (III),Cloruro férrico,"Sólido marrón, higroscópico","Catalizador, coagulante",3,1
+Fe,2,O,-2,,,FeO,FeO,Óxidos,Monóxido de hierro,Óxido de hierro (II),Óxido ferroso,"Sólido negro, inestable","Pigmentos, catalizador",2,1
+Fe,,,,,,FeS,FeS,Sales Neutras,Sulfuro de hierro(II),Sulfuro de hierro(II),Sulfuro ferroso,"Sólido negro, insoluble en agua, reacciona con ácidos liberando H₂S, paramagnético","Pigmento (negro de hierro), producción de ácido sulfúrico (proceso de tostación), fuente de hierro en metalurgia",2,1
+S,,,,,,FeSO4,FeSO₄,Sales Neutras,Sulfato de hierro(II),Sulfuro de hierro(II),Sulfato ferroso,"Sólido verde, soluble en agua, agente reductor, forma heptahidrato (caparrosa verde)","Tratamiento de aguas residuales (reducción de cromo hexavalente), pigmento (verde de hierro), suplemento de hierro",,1
+Fl,,,,,,FlCl2,FlCl₂ (teórico),Sales Neutras,Dicloruro de flerovio,Cloruro de flerovio (II),Cloruro flerovioso,"Inestable, altamente radiactivo",Investigación científica,2,1
+Fl,,,,,,FlCl4,FlCl₄ (teórico),Sales Neutras,Tetracloruro de flerovio,Cloruro de flerovio (IV),Cloruro flerovico,"Inestable, altamente radiactivo",Investigación científica,4,1
+Fl,2,O,-2,,,FlO,FlO (teórico),Óxidos,Monóxido de flerovio,Óxido de flerovio (II),Óxido flerovioso,"Inestable, altamente radiactivo",Investigación científica,2,1
+Fl,4,O,-2,,,FlO2,FlO₂ (teórico),Óxidos,Dióxido de flerovio,Óxido de flerovio (IV),Óxido flerovico,"Inestable, altamente radiactivo",Investigación científica,4,1
+Fr,,,,,,Fr2CO3,Fr₂CO₃ (teórico),Sales Neutras,Trioxocarbonato de difrancio,Carbonato de francio,Carbonato francico,"Inestable, altamente radiactivo",Investigación científica,1,1
+Fr,1,O,-2,,,Fr2O,Fr₂O (teórico),Óxidos,Monóxido de difrancio,Óxido de francio,Óxido francico,"Inestable, altamente radiactivo",Investigación científica,1,1
+Fr,,,,,,Fr2SO4,Fr₂SO₄ (teórico),Sales Neutras,Tetraoxosulfato de difrancio,Sulfato de francio,Sulfato francico,"Inestable, altamente radiactivo",Investigación científica,1,1
+Fr,+1,Br,-1,,,FrBr,FrBr (teórico),Sales Neutras,Monobromuro de francio,Bromuro de francio,Bromuro francico,"Inestable, altamente radiactivo",Investigación científica,1,1
+Fr,+1,Cl,-1,,,FrCl,FrCl (teórico),Sales Neutras,Monocloruro de francio,Cloruro de francio,Cloruro fráncico,"Inestable, altamente radiactivo",Investigación científica,1,1
+Fr,,,,,,FrF,FrF (teórico),Sales Neutras,Fluoruro de francio,Fluoruro de francio,Fluoruro francico,"Inestable, altamente radiactivo",Investigación científica,1,1
+Fr,,,,,,FrH,FrH (teórico),Hidruros,Hidruro de francio,Hidruro de francio,Hidruro francico,"Inestable, altamente radiactivo",Investigación científica,1,1
+Fr,,,,,,FrI,FrI (teórico),Sales Neutras,Yoduro de francio,Yoduro de francio,Yoduro francico,"Inestable, altamente radiactivo",Investigación científica,1,1
+Fr,,,,,,FrNO3,FrNO₃ (teórico),Sales Neutras,Trioxonitrato de francio,Nitrato de francio,Nitrato francico,"Inestable, altamente radiactivo",Investigación científica,1,1
+Fr,+1,O,-2,,,FrO,FrO,Óxidos,Monóxido de difrancio,Óxido de francio,Óxido fráncico,"Inestable, altamente radiactivo",Investigación científica,,1
+Fr,1,O,-2,,,FrOH,FrOH (teórico),Óxidos,Hidróxido de francio,Hidróxido de francio,Hidróxido francico,"Inestable, altamente radiactivo",Investigación científica,1,1
+Ga,3,O,-2,,,Ga2O3,Ga₂O₃,Óxidos,Trióxido de digalio,Óxido de galio (III),Óxido gálico,"Sólido blanco, semiconductor","Semiconductores, LED",3,1
+Ga,,,,,,GaCl3,GaCl₃,Sales Neutras,Tricloruro de galio,Cloruro de galio (III),Cloruro gálico,"Sólido blanco, higroscópico","Catalizador, síntesis orgánica",3,1
+Ge,,,,,,GeCl4,GeCl₄,Sales Neutras,Tetracloruro de germanio,Cloruro de germanio (IV),Cloruro germánico,"Líquido incoloro, humeante","Semiconductores, fibra óptica",4,1
+Ge,4,O,-2,,,GeO2,GeO₂,Óxidos,Dióxido de germanio,Dióxido de germanio,Dióxido de germanio,"Sólido blanco, semiconductor","Semiconductores, óptica",4,1
+H,+1,H,-1,,,H2,H₂,Hidruros,Dihidruro,Hidruro de hidrógeno,Hidrógeno molecular,"Gas incoloro, inflamable","Combustible, síntesis de amoníaco",0,1
+H,+1,,,Cl,4,H2CO3,H₂CO₃,Ácidos oxácidos,Trioxocarbonato(IV) de hidrógeno,Ácido trioxocarbónico(IV),Ácido carbónico,"Ácido débil, inestable","Bebidas carbonatadas, equilibrio del pH",4,1
+H,+1,,,Cr,6,H2Cr2O7,H₂Cr₂O₇,Ácidos oxácidos,Heptaoxodicromato(VI) de hidrógeno,Ácido heptaoxodicrómico(VI),Ácido dicrómico,"Ácido fuerte, oxidante","Limpieza de material de vidrio, agente oxidante.",6,1
+H,+1,,,Cr,6,H2CrO4,H₂CrO₄,Ácidos oxácidos,Tetraoxocromato(VI) de hidrógeno,Ácido tetraoxocrómico(VI),Ácido crómico,"Ácido fuerte, oxidante","Cromadura, pigmentos, agente oxidante.",6,1
+H,+1,O,-2,,,H2O,H₂O,Óxidos,Monóxido de dihidrógeno,Óxido de hidrógeno,Agua,"Líquido esencial para la vida, disolvente universal","Bebidas, disolvente, agricultura",,1
+H,-1,O,-2,,,H2O2,H₂O₂,Óxidos,Dióxido de dihidrógeno,Peróxido de hidrógeno,Agua oxigenada,"Líquido incoloro, oxidante","Desinfectante, blanqueador",-1,1
+H,+1,,,S,-2,H2S,H₂S,Ácidos oxácidos,Sulfuro de dihidrógeno,Ácido sulfhídrico,Ácido sulfhídrico,"Gas incoloro, tóxico, olor a huevos podridos","Producción de azufre, análisis químico",-2,1
+H,+1,,,S,2,H2S2O3,H₂S₂O₃,Ácidos oxácidos,Trioxodisulfato(II) de hidrógeno,Ácido trioxodisulfúrico(II),Ácido tiosulfúrico,"Inestable, se descompone en azufre y ácido sulfuroso",Reactivo en análisis químico,2,1
+H,+1,,,S,3,H2S2O4,H₂S₂O₄,Ácidos oxácidos,Tetraoxodisulfato(III) de hidrógeno,Ácido tetraoxodisulfúrico(III),Ácido ditionoso,"Inestable, forma sales ditionitas",Agente reductor,3,1
+H,+1,,,S,5,H2S2O6,H₂S₂O₆,Ácidos oxácidos,Hexaoxodisulfato(V) de hidrógeno,Ácido hexaoxodisulfúrico(V),Ácido ditionico,"Estable, forma sales ditionatos",Agente oxidante,5,1
+H,+1,,,S,6,H2S2O7,H₂S₂O₇,Ácidos oxácidos,Heptaoxodisulfato(VI) de hidrógeno,Ácido heptaoxodisulfúrico(VI),Ácido disulfúrico (pirosulfúrico),"Ácido fuerte, corrosivo, deshidratante",Producción de ácido sulfúrico fumante,6,1
+H,+1,,,S,7,H2S2O8,H₂S₂O₈,Ácidos oxácidos,Octaoxodisulfato(VII) de hidrógeno,Ácido octaoxodisulfúrico(VII),Ácido peroxodisulfúrico,"Oxidante muy fuerte, estable","Blanqueador, iniciador de polimerización",7,1
+H,+1,,,Se,4,H2SeO3,H₂SeO₃,Ácidos oxácidos,Trioxoseleniato(IV) de hidrógeno,Ácido trioxoselénico(IV),Ácido selenioso,"Ácido débil, reductor","Síntesis orgánica, antioxidante",4,1
+H,+1,(SeO₄),,Se,6,H2SeO4,H₂SeO₄,Ácidos oxácidos,Tetraoxoseleniato (VI) de hidrógeno,ácido tetraoxoselénico (VI),Ácido selénico,"Líquido incoloro, corrosivo","Antioxidante, selenización",6,1
+H,+1,,,Si,4,H2SiO3,H₂SiO₃,Ácidos oxácidos,Trioxosilicato(IV) de hidrógeno,Ácido trioxosilícico(IV),Ácido silícico,"Ácido débil, polimeriza","Producción de sílice gel, cemento",4,1
+H,+1,,,S,2,H2SO2,H₂SO₂,Ácidos oxácidos,Dioxosulfato(II) de hidrógeno,Ácido dioxosulfúrico(II),Ácido hiposulfuroso,"Inestable, poco común",Intermediario en reacciones,2,1
+H,+1,,,S,4,H2SO3,H₂SO₃,Ácidos oxácidos,Trioxosulfato(IV) de hidrógeno,Ácido trioxosulfúrico(IV),Ácido sulfuroso,"Ácido débil, inestable","Conservante de alimentos, producción de papel",4,1
+H,+1,,,S,6,H2SO4,H₂SO₄,Ácidos oxácidos,Ácido tetraoxosulfúrico,Ácido sulfúrico,Ácido sulfúrico,"Líquido viscoso, corrosivo","Ácido fuerte, corrosivo, deshidratante","Fertilizantes, baterías, industria química",1
+H,+1,,,S,6,H2SO5,H₂SO₅,Ácidos oxácidos,Pentaoxosulfato(VI) de hidrógeno,Ácido pentaoxosulfúrico(VI),Ácido peroximonosulfúrico (ácido de Caro),"Oxidante fuerte, inestable","Blanqueador, desinfectante",6,1
+H,+1,,,Te,4,H2TeO3,H₂TeO₃,Ácidos oxácidos,Trioxotelurato(IV) de hidrógeno,Ácido trioxotelúrico(IV),Ácido teluroso,"Ácido débil, reductor","Síntesis orgánica, semiconductor",4,1
+H,+1,,,Te,6,H2TeO4,H₂TeO₄,Ácidos oxácidos,Tetraoxotelurato(VI) de hidrógeno,Ácido tetraoxotelúrico(VI),Ácido telúrico,"Ácido débil, oxidante","Catalizador, teluración",6,1
+H,+1,,,As,3,H3AsO3,H₃AsO₃,Ácidos oxácidos,Trioxoarsenato(III) de hidrógeno,Ácido trioxoarsénico(III),Ácido arsenioso,"Ácido débil, tóxico","Pesticidas, conservante de madera",3,1
+H,+1,,,As,5,H3AsO4,H₃AsO₄,Ácidos oxácidos,Tetraoxoarsenato(V) de hidrógeno,Ácido tetraoxoarsénico(V),Ácido arsénico,"Ácido débil, tóxico","Pesticidas, desecante",5,1
+H,+1,,,B,3,H3BO3,H₃BO₃,Ácidos oxácidos,Trioxoborato(III) de hidrógeno,Ácido trioxobórico(III),Ácido bórico,Ácido muy débil,"Antiséptico, retardante de fuego, insecticida",3,1
+H,+1,,,P,3,H3PO3,H₃PO₃,Ácidos oxácidos,Trioxofosfato(III) de hidrógeno,Ácido trioxofosfórico(III),Ácido fosforoso,Ácido moderadamente fuerte,Agente reductor,3,1
+H,+1,,,P,5,H3PO4,H₃PO₄,Ácidos oxácidos,Tetraoxofosfato(V) de hidrógeno,Ácido tetraoxofosfórico(V),Ácido fosfórico,Ácido moderadamente fuerte,"Fertilizantes, detergentes, aditivos alimentarios",5,1
+H,,,,,,HAt,HAt (teórico),Hidrácidos,Astaturo de hidrógeno,Astaturo de hidrógeno,Ácido astatohídrico,"Gas incoloro, inestable",Investigación científica,-1,1
+H,,,,,,HBr,HBr,Hidrácidos,Bromuro de hidrógeno,Bromuro de hidrógeno,Ácido bromhídrico,"Gas incoloro, corrosivo","Producción de bromuros, síntesis orgánica",-1,1
+H,+1,Cl,-1,,,HCl,HCl,Hidrácidos,Cloruro de hidrógeno,Cloruro de hidrógeno,Ácido clorhídrico,"Gas incoloro, corrosivo","Síntesis de compuestos, limpieza",0,1
+H,+1,,,Cl,1,HClO,HClO,Ácidos oxácidos,Oxoclorato(I) de hidrógeno,Ácido oxoclórico(I),Ácido hipocloroso,"Oxidante débil, inestable","Desinfectante, blanqueador",1,1
+H,+1,,,Cl,3,HClO2,HClO₂,Ácidos oxácidos,Dioxoclorato(III) de hidrógeno,Ácido dioxoclórico(III),Ácido cloroso,"Oxidante fuerte, inestable",Producción de dióxido de cloro,3,1
+H,+1,,,Cl,5,HClO3,HClO₃,Ácidos oxácidos,Trioxoclorato(V) de hidrógeno,Ácido trioxoclórico(V),Ácido clórico,"Oxidante fuerte, peligroso",Producción de cloratos,5,1
+H,+1,,,Cl,7,HClO4,HClO₄,Ácidos oxácidos,Tetraoxoclorato(VII) de hidrógeno,Ácido tetraoxoclórico(VII),Ácido perclórico,"Oxidante muy fuerte, explosivo",Producción de percloratos,7,1
+H,,,,,,HF,HF,Hidrácidos,Fluoruro de hidrógeno,Fluoruro de hidrógeno,Ácido fluorhídrico,"Líquido incoloro, corrosivo","Grabado de vidrio, producción de fluoruros",-1,1
+Hf,,,,,,HfC,HfC,Sales Neutras,Monocarburo de Hafnio,Carburo de hafnio (IV),Carburo háfnico,Sólido extremadamente duro,"Recubrimientos, herramientas de corte",4,1
+Hf,,,,,,HfCl4,HfCl₄,Sales Neutras,Tetracloruro de hafnio,Cloruro de hafnio (IV),Cloruro háfnico,"Sólido blanco, higroscópico","Catalizador, producción de HfO₂",4,1
+Hf,4,O,-2,,,HfO2,HfO₂,Óxidos,Dióxido de hafnio,Óxido de hafnio (IV),Óxido háfnico,"Sólido blanco, refractario","Reactores nucleares, cerámica",4,1
+Hg,,,,,,Hg2Cl2,Hg₂Cl₂,Sales Neutras,Dicloruro de dimercurio,Cloruro de mercurio (I),Cloruro mercurioso (calomelanos),"Sólido blanco, insoluble","Electrodo de referencia, medicina (en desuso)",1,1
+Hg,1,O,-2,,,Hg2O,Hg₂O,Óxidos,Monóxido de dimercurio,Óxido de mercurio (I),Óxido mercurioso,"Sólido negro, inestable","Antiséptico, pigmentos",1,1
+Hg,,,,,,HgCl2,HgCl₂,Sales Neutras,Dicloruro de mercurio,Cloruro de mercurio (II),Cloruro mercúrico (sublimado corrosivo),"Sólido blanco, tóxico","Antiséptico (en desuso), catalizador",2,1
+Hg,2,O,-2,,,HgO,HgO,Óxidos,Monóxido de mercurio,Óxido de mercurio (II),Óxido mercúrico,"Sólido rojo, tóxico","Baterías, pigmentos",2,1
+Hg,,,,,,HgS,HgS,Sales Neutras,Monosulfuro de mercurio,Sulfuro de mercurio (II),Sulfuro mercúrico (bermellón),"Sólido rojo o negro, insoluble en agua, tóxico, mineral cinabrio","Cinabrio (mineral de mercurio), pigmento (bermellón), medicina tradicional china",2,1
+I,,,,,,HI,HI,Sales Neutras,Monoyoduro de hidrógeno,Yoduro de hidrógeno,Ácido yodhídrico,"Gas incoloro, corrosivo","Producción de yoduros, síntesis orgánica",-1,1
+H,+1,,,I,5,HIO3,HIO₃,Ácidos oxácidos,Trioxoyodato(V) de hidrógeno,Ácido trioxoyódico(V),Ácido yódico,"Oxidante fuerte, sólido blanco","Producción de yodatos, análisis químico",5,1
+H,+1,,,I,7,HIO4,HIO₄,Ácidos oxácidos,Tetraoxoyodato(VII) de hidrógeno,Ácido tetraoxoyódico(VII),Ácido peryódico,"Oxidante muy fuerte, sólido blanco","Producción de peryodatos, análisis químico",7,1
+H,+1,,,Mn,7,HMnO4,HMnO₄,Ácidos oxácidos,Tetraoxomanganato(VII) de hidrógeno,Ácido tetraoxomangánico(VII),Ácido permangánico,"Ácido muy fuerte, oxidante",Oxidante en química orgánica.,7,1
+HN,,,,,,HN3,HN₃,Hidruros,Trihidruro de nitrógeno,Hidruro de nitrógeno,Ácido hidrazoico,"Líquido incoloro, explosivo","Síntesis de azidas, propelente",-1,1
+H,+1,,,N,3,HNO2,HNO₂,Ácidos oxácidos,Dioxonitrato(III) de hidrógeno,Ácido dioxonítrico(III),Ácido nitroso,"Ácido débil, inestable","Producción de colorantes, conservante",3,1
+H,+1,,,N,5,HNO3,HNO₃,Ácidos oxácidos,Ácido trioxonítrico,Ácido nítrico,Ácido nítrico,"Líquido incoloro, corrosivo","Fertilizantes, explosivos, industria química",5,1
+Hs,,,,,,HsCl4,HsCl₄ (teórico),Sales Neutras,Tetracloruro de hassio,Cloruro de hassio (IV),Cloruro hassico,"Inestable, altamente radiactivo",Investigación científica,4,1
+Hs,,,,,,HsCl6,HsCl₆ (teórico),Sales Neutras,Hexacloruro de hassio,Cloruro de hassio (VI),Cloruro hassico,"Inestable, altamente radiactivo",Investigación científica,6,1
+Hs,8,O,-2,,,HsO4,HsO₄ (teórico),Óxidos,Tetraóxido de hassio,Óxido de hassio (VIII),Anhídrido hassico,"Inestable, altamente radiactivo",Investigación científica,8,1
+HT,,,,,,HTs,HTs (teórico),Sales Neutras,Tenesuro de hidrógeno,Tenesuro de hidrógeno,Ácido tenesuhídrico,"Inestable, altamente radiactivo",Investigación científica,-1 (predicha),1
+I₂,,,,,,I2,I₂,,Diyodo,Yodo,Yodo,"Sólido negro violáceo, sublima","Antiséptico, fotografía","-1, +1, +3, +5, +7",1
+In,3,O,-2,,,In2O3,In₂O₃,Óxidos,Trióxido de diindio,Óxido de indio (III),Óxido índico,"Sólido amarillo, semiconductor","Pantallas táctiles, recubrimientos",3,1
+In,,,,,,InCl3,InCl₃,Sales Neutras,Tricloruro de indio,Cloruro de indio (III),Cloruro índico,"Sólido blanco, higroscópico","Catalizador, síntesis orgánica",3,1
+Ir,,,,,,IrCl3,IrCl₃,Sales Neutras,Tricloruro de iridio,Cloruro de iridio (III),Cloruro irídico,"Sólido marrón, higroscópico","Catalizador, recubrimientos",3,1
+Ir,,,,,,IrF6,IrF₆,Sales Neutras,Hexafluoruro de iridio,Hexafluoruro de iridio,Hexafluoruro irídico,"Sólido amarillo, oxidante","Fluoración, investigación",6,1
+Ir,4,O,-2,,,IrO2,IrO₂,Óxidos,Dióxido de iridio,Óxido de iridio (IV),Óxido irídico,"Sólido negro, catalizador","Catalizador, contactos eléctricos",4,1
+K,,,,,,K2CO3,K₂CO₃,Oxisales,Trioxocarbonato de dipotasio,Carbonato de potasio,Carbonato potásico (potasa),"Sólido blanco, soluble","Fabricación de jabón, vidrio, fertilizantes",1,1
+K₂,,,,,,K2Cr2O7,K₂Cr₂O₇,Oxisales,Heptaoxodicromato (VI) de potasio,Dicromato de potasio,Dicromato potásico,"Sólido naranja, oxidante","Agente oxidante, limpieza de material de vidrio",6,1
+K₂,,,,,,K2CrO4,K₂CrO₄,Oxisales,Tetraoxocromato (VI) de potasio,Cromato de potasio,Cromato potásico,"Sólido amarillo, soluble","Pigmentos, inhibidor de corrosión",6,1
+K,1,O,-2,,,K2O,K₂O,Óxidos,Monóxido de dipotasio,Óxido de potasio,Óxido potásico,"Sólido blanco, higroscópico","Fertilizantes, fabricación de vidrio",1,1
+K,1,O,-2,,,K2O2,K₂O₂,Óxidos,Peróxido de dipotasio,Peróxido de potasio,Peróxido potásico,"Sólido amarillo, oxidante fuerte","Blanqueador, purificador de aire",1,1
+S,,,,,,K2S2O7,K₂S₂O₇,Oxisales,Disulfato de potasio,Disulfato de potasio,Disulfato potásico,"Sólido blanco, higroscópico, libera SO₃ al calentarse, fundente","Fundente en análisis de minerales, producción de catalizadores, agente deshidratante",6,1
+K,,,,,,K2SO4,K₂SO₄,Oxisales,Tetraoxosulfato de dipotasio,Sulfato de potasio,Sulfato potásico,"Sólido blanco, soluble en agua, esencial para el crecimiento de las plantas, fertilizante","Fertilizantes (fuente de potasio y azufre), producción de vidrio, aditivo alimentario (E515)",1,1
+K,+1,Br,-1,,,KBr,KBr,Sales Neutras,Monobromuro de potasio,Bromuro de potasio,Bromuro potásico,"Sólido blanco, higroscópico","Sedante, fotografía, productos químicos",1,1
+K,+1,Cl,-1,,,KCl,KCl,Sales Neutras,Monocloruro de potasio,Cloruro de potasio,Cloruro potásico,"Sólido blanco, iónico","Sustituto de la sal, fertilizantes",1,1
+K,,,,,,KF,KF,Sales Neutras,Fluoruro de potasio,Fluoruro de potasio,Fluoruro potásico,"Sólido blanco, iónico","Fundente de soldadura, grabado de vidrio",1,1
+K,+1,H,-1,,,KH,KH,Hidruros,Monohidruro de potasio,Hidruro de potasio,Hidruro potásico,"Sólido blanco, iónico","Agente reductor, desecante",1,1
+K,,,,,,KI,KI,Sales Neutras,Yoduro de potasio,Yoduro de potasio,Yoduro potásico,"Sólido blanco, higroscópico","Suplemento de yodo, medicina, fotografía",1,1
+K,,,,,,KMnO4,KMnO₄,Oxisales,Tetraoxomanganato (VII) de potasio,Permanganato de potasio,Permanganato potásico,"Sólido púrpura, oxidante fuerte","Desinfectante, oxidante, análisis químico",1,1
+K,,,,,,KNO3,KNO₃,Oxisales,Trioxonitrato de potasio,Nitrato de potasio,Nitrato potásico (salitre),"Sólido blanco, higroscópico","Fertilizantes, pólvora, conservación de alimentos",1,1
+K,1,O,-2,,,KO2,KO₂,Óxidos,Dióxido de potasio,Superóxido de potasio,Superóxido potásico,"Sólido amarillo, oxidante fuerte","Purificador de aire (submarinos, naves espaciales)",1,1
+K,1,O,-2,,,KOH,KOH,Óxidos,Hidróxido de potasio,Hidróxido de potasio,Hidróxido potásico (potasa cáustica),"Sólido blanco, corrosivo","Fabricación de jabón, baterías, electrolito",1,1
+KR,,,,,,KReO4,KReO₄,Oxisales,Tetraoxorrenato (VII) de potasio,Perrhenato de potasio,Perrhenato potásico,"Sólido incoloro, soluble","Catalizador, investigación",7,1
+KT,,,,,,KTcO4,KTcO₄,Oxisales,Tetraoxotecnetato (VII) de potasio,Tecnetato de potasio,Tecnetato potásico,"Sólido incoloro, soluble","Medicina nuclear, investigación",7,1
+Li,,,,,,Li2CO3,Li₂CO₃,Oxisales,Trioxocarbonato de dilitio,Carbonato de litio,Carbonato lítico,"Sólido blanco, soluble","Tratamiento bipolar, cerámica, fabricación de vidrios",1,1
+Li,+1,O,-2,,,Li2O,Li₂O,Óxidos,Monóxido de dilitio,Óxido de litio,Óxido lítico,"Sólido blanco, reacciona con agua para formar LiOH","Cerámica, baterías",,1
+Li,,,,,,Li2SO4,Li₂SO₄,Oxisales,Tetraoxosulfato de dilitio,Sulfato de litio,Sulfato lítico,"Sólido blanco, soluble","Tratamiento bipolar, fabricación de vidrios",1,1
+Li,+1,Br,-1,,,LiBr,LiBr,Sales Neutras,Monobromuro de litio,Bromuro de litio,Bromuro lítico,"Sólido blanco, higroscópico","Refrigerante, desecante, sedante",1,1
+Li,+1,Cl,-1,,,LiCl,LiCl,Sales Neutras,Monocloruro de litio,Cloruro de litio,Cloruro lítico,"Sólido blanco, higroscópico","Soldadura, desecante",1,1
+Li,,,,,,LiF,LiF,Sales Neutras,Fluoruro de litio,Fluoruro de litio,Fluoruro lítico,"Sólido blanco, insoluble","Fundente de soldadura, cerámica, detectores de radiación",1,1
+Li,+1,H,-1,,,LiH,LiH,Hidruros,Monohidruro de litio,Hidruro de litio,Hidruro lítico,"Sólido blanco, iónico","Agente reductor, baterías",1,1
+Li,,,,,,LiI,LiI,Sales Neutras,Yoduro de litio,Yoduro de litio,Yoduro lítico,"Sólido blanco, higroscópico","Electrolito en baterías, medicina",1,1
+Li,,,,,,LiNO3,LiNO₃,Oxisales,Trioxonitrato de litio,Nitrato de litio,Nitrato lítico,"Sólido blanco, higroscópico","Pirotecnia (color rojo), refrigerantes",1,1
+Li,1,O,-2,,,LiOH,LiOH,Óxidos,Hidróxido de litio,Hidróxido de litio,Hidróxido lítico,"Sólido blanco, corrosivo","Baterías, purificación de aire (naves espaciales)",1,1
+Lr,,,,,,Lr(NO3)3,Lr(NO₃)₃ (teórico),Oxisales,Tris(trioxonitrato) de lawrencio,Nitrato de lawrencio,Nitrato lawréncico,"Inestable, altamente radiactivo",Investigación científica,3,1
+Lr,,,,,,Lr2(SO4)3,Lr₂(SO₄)₃ (teórico),Oxisales,Tris(tetraoxosulfato) de dilawrencio,Sulfato de lawrencio,Sulfato lawréncico,"Inestable, altamente radiactivo",Investigación científica,3,1
+Lr,3,O,-2,,,Lr2O3,Lr₂O₃ (teórico),Óxidos,Trióxido de dilawrencio,Óxido de lawrencio,Óxido lawréncico,"Inestable, altamente radiactivo",Investigación científica,3,1
+Lr,,,,,,LrCl3,LrCl₃ (teórico),Sales Neutras,Tricloruro de lawrencio,Cloruro de lawrencio,Cloruro lawréncico,"Inestable, altamente radiactivo",Investigación científica,3,1
+Lr,,,,,,LrF3,LrF₃ (teórico),Sales Neutras,Trifluoruro de lawrencio,Fluoruro de lawrencio,Fluoruro lawréncico,"Inestable, altamente radiactivo",Investigación científica,3,1
+Lu,,,,,,Lu(NO3)3,Lu(NO₃)₃,Oxisales,Tris(trioxonitrato) de lutecio,Nitrato de lutecio,Nitrato lutécico,"Sólido blanco, higroscópico",Síntesis de otros compuestos,3,1
+Lu,,,,,,Lu2(SO4)3,Lu₂(SO₄)₃,Oxisales,Tris(tetraoxosulfato) de dilutecio,Sulfato de lutecio,Sulfato lutécico,"Sólido blanco, soluble","Investigación, catalizadores",3,1
+Lu,3,O,-2,,,Lu2O3,Lu₂O₃,Óxidos,Trióxido de dilutecio,Óxido de lutecio,Óxido lutécico,"Sólido blanco, usado en catalizadores","Catalizadores, imanes",3,1
+Lu,,,,,,LuCl3,LuCl₃,Sales Neutras,Tricloruro de lutecio,Cloruro de lutecio,Cloruro lutécico,"Sólido blanco, higroscópico","Catalizador, investigación",3,1
+Lu,,,,,,LuF3,LuF₃,Sales Neutras,Trifluoruro de lutecio,Fluoruro de lutecio,Fluoruro lutécico,"Sólido blanco, insoluble","Óptica, recubrimientos",3,1
+Lv,2,O,-2,,,LvO,LvO (teórico),Óxidos,Monóxido de livermorio,Óxido de livermorio (II),Óxido livermorioso,"Inestable, altamente radiactivo",Investigación científica,2,1
+Lv,4,O,-2,,,LvO2,LvO₂ (teórico),Óxidos,Dióxido de livermorio,Óxido de livermorio (IV),Óxido livermórico,"Inestable, altamente radiactivo",Investigación científica,4,1
+Mc,3,O,-2,,,Mc2O3,Mc₂O₃ (teórico),Óxidos,Trióxido de dimoscovio,Óxido de moscovio (III),Óxido moscovico,"Inestable, altamente radiactivo",Investigación científica,3,1
+Mc,,,,,,McCl3,McCl₃ (teórico),Sales Neutras,Tricloruro de moscovio,Cloruro de moscovio (III),Cloruro moscovico,"Inestable, altamente radiactivo",Investigación científica,3,1
+Mg,,,,,,Mg(NO3)2,Mg(NO₃)₂,Oxisales,Bis(trioxonitrato) de magnesio,Nitrato de magnesio,Nitrato magnésico,"Sólido blanco, higroscópico","Fertilizantes, pirotecnia",2,1
+Mg,2,O,-2,,,Mg(OH)2,Mg(OH)₂,Óxidos,Dihidróxido de magnesio,Hidróxido de magnesio,Hidróxido magnésico (leche de magnesia),"Sólido blanco, insoluble","Antiácido, laxante",2,1
+Mg,,,,,,MgBr2,MgBr₂,Sales Neutras,Dibromuro de magnesio,Bromuro de magnesio,Bromuro magnésico,"Sólido blanco, higroscópico","Sedante, retardante de fuego",2,1
+Mg,+2,Cl,-9,,,MgCl2,MgCl₂,Sales Neutras,Dicloruro de magnesio,Cloruro de magnesio (II),Cloruro magnésico,"Sólido blanco, higroscópico","Sales de baño, retardante de fuego",2,1
+Mg,,,,,,MgCO3,MgCO₃,Oxisales,Trioxocarbonato de magnesio,Carbonato de magnesio,Carbonato magnésico (magnesita),"Sólido blanco, insoluble","Antiácido, refractarios",2,1
+Mg,,,,,,MgF2,MgF₂,Sales Neutras,Difluoruro de magnesio,Fluoruro de magnesio,Fluoruro magnésico,"Sólido blanco, insoluble","Óptica, cerámica",2,1
+Mg,+2,H,-1,,,MgH2,MgH₂,Hidruros,Dihidruro de magnesio,Hidruro de magnesio,Hidruro magnésico,"Sólido blanco, iónico",Almacenamiento de hidrógeno,2,1
+Mg,,,,,,MgI2,MgI₂,Sales Neutras,Diyoduro de magnesio,Yoduro de magnesio,Yoduro magnésico,"Sólido blanco, higroscópico","Medicina, fotografía",2,1
+Mg,+2,O,-2,,,MgO,MgO,Óxidos,Monóxido de magnesio,Óxido de magnesio,Óxido magnésico,"Sólido blanco, antiácido, refractario","Antiácido, refractarios, aislamiento",,1
+Mg,,,,,,MgSO4,MgSO₄,Sales terciarias,Tetraoxosulfato de magnesio,Sulfato de magnesio,Sulfato magnésico (sal de Epsom),"Sólido blanco, soluble","Sales de baño, laxante, fertilizantes",2,1
+Mn,7,O,-2,,,Mn2O7,Mn₂O₇,Óxidos,Heptaóxido de dimanganeso,Óxido de manganeso (VII),Anhídrido permangánico,"Líquido aceitoso, explosivo",Agente oxidante,7,1
+Mn,,,,,,MnCl2,MnCl₂,Sales Neutras,Dicloruro de manganeso,Cloruro de manganeso (II),Cloruro manganoso,"Sólido rosa, soluble","Fertilizantes, aditivo alimentario",2,1
+Mn,2,O,-2,,,MnO,MnO,Óxidos,Monóxido de manganeso,Óxido de manganeso (II),Óxido manganoso,"Sólido verde, insoluble","Fertilizantes, pigmentos",2,1
+Mn,4,O,-2,,,MnO2,MnO₂,Óxidos,Dióxido de manganeso,Óxido de manganeso (IV),Óxido mangánico,"Sólido negro, oxidante","Pilas secas, decolorante",4,1
+Mn,,,,,,MnSO4,MnSO₄,Oxisales,,Sulfato de manganeso(II),Sulfato manganoso,"Sólido rosa pálido, soluble en agua, esencial para el crecimiento de las plantas, precursor de otros compuestos de manganeso","Fertilizante (microelemento), suplemento dietético (manganeso), pigmento",,1
+Mo,,,,,,MoCl5,MoCl₅,Sales Neutras,Pentacloruro de molibdeno,Cloruro de molibdeno (V),Cloruro molíbdico,"Sólido negro, higroscópico","Catalizador, síntesis orgánica",5,1
+Mo,6,O,-2,,,MoO3,MoO₃,Óxidos,Trióxido de molibdeno,Óxido de molibdeno (VI),Anhídrido molíbdico,"Sólido blanco, catalizador","Catalizadores, aceros especiales",6,1
+Mo,,,,,,MoS2,MoS₂,Sales Neutras,Disulfuro de molibdeno,Disulfuro de molibdeno,Disulfuro molíbdico,"Sólido negro, lubricante","Lubricante, catalizador",4,1
+Mt,3,O,-2,,,Mt2O3,Mt₂O₃ (teórico),Óxidos,Trióxido de dimeitnerio,Óxido de meitnerio (III),Óxido meitnérico,"Inestable, altamente radiactivo",Investigación científica,3,1
+Mt,,,,,,MtCl3,MtCl₃ (teórico),Sales Neutras,Tricloruro de meitnerio,Cloruro de meitnerio (III),Cloruro meitnérico,"Inestable, altamente radiactivo",Investigación científica,3,1
+Mt,,,,,,MtCl5,MtCl₅ (teórico),Sales Neutras,Pentacloruro de meitnerio,Cloruro de meitnerio (V),Cloruro meitnérico,"Inestable, altamente radiactivo",Investigación científica,5,1
+N₂,,,,,,N2,N₂,,Dinitrógeno,Nitrógeno,Nitrógeno,"Gas incoloro, inerte","Atmósfera, producción de amoníaco",0,1
+N₂,,,,,,N2H4,N₂H₄,Hidruros,Tetrahidruro de dinitrógeno,Hidracina,Hidracina,"Líquido incoloro, tóxico","Combustible de cohetes, antioxidante",-2,1
+N,1,O,-2,,,N2O,N₂O,Óxidos,Monóxido de dinitrógeno,Óxido de nitrógeno (I),Óxido nitroso,"Gas incoloro, anestésico","Anestésico, propelente",1,1
+N₂,3,O,-2,,,N2O3,N₂O₃,Óxidos,Trióxido de dinitrógeno,Óxido de nitrógeno (III),Anhídrido nitroso,"Líquido azul, inestable",Intermediario en síntesis,3,1
+N₂,5,O,-2,,,N2O5,N₂O₅,Óxidos,Pentóxido de dinitrógeno,Óxido de nitrógeno (V),Anhídrido nítrico,"Sólido blanco, oxidante","Agente nitrante, síntesis orgánica",5,1
+Na,,,,,,Na2CO3,Na₂CO₃,Oxisales,Trioxocarbonato de disodio,Carbonato de sodio,Carbonato sódico,"Sólido blanco, soluble","Fabricación de vidrio, detergentes, tratamiento de agua",1,1
+Na,,,,,,Na2MoO4,Na₂MoO₄,Oxisales,Tetraoxomolibdato (VI) de sodio,Molibdato de sodio,Molibdato sódico,"Sólido blanco, soluble","Fertilizante, inhibidor de corrosión",6,1
+Na,1,O,-2,,,Na2O,Na₂O,Óxidos,Monóxido de disodio,Óxido de sodio,Óxido sódico,"Sólido blanco, higroscópico","Cerámica, fabricación de vidrio",1,1
+Na,1,O,-2,,,Na2O2,Na₂O₂,Óxidos,Peróxido de disodio,Peróxido de sodio,Peróxido sódico,"Sólido amarillo, oxidante fuerte","Blanqueador, purificador de aire",1,1
+S,,,,,,Na2S,Na₂S,Sales Neutras,Sulfuro de sodio,Sulfuro de sodio,Sulfuro sódico,"Sólido amarillo, higroscópico, olor a huevos podridos en solución alcalina, corrosivo","Producción de papel (proceso Kraft), curtido de pieles, tratamiento de aguas residuales (reducción de metales pesados), fabricación de tintes de azufre",,1
+S,,,,,,Na2S2O3,Na₂S₂O₃,Oxisales,Tiosulfato de sodio,Tiosulfato de sodio,Tiosulfato sódico,"Sólido blanco, soluble en agua, agente reductor, reacciona con yodo (yodometría), antídoto para envenenamiento por cianuro","Fijador fotográfico, tratamiento de aguas (eliminación de cloro), agente reductor en análisis químico",2,1
+S,,,,,,Na2SO3,Na₂SO₃,Oxisales,Sulfito de sodio,Sulfito de sodio,Sulfito sódico,"Sólido blanco, soluble en agua, agente reductor, libera SO₂ con ácidos, antioxidante","Conservante de alimentos (frutas secas, vinos), tratamiento de aguas (eliminación de cloro), agente reductor en fotografía",4,1
+Na,+1,,,,,Na2SO4,Na₂SO₄,Oxisales,Tetraoxosulfato de disodio,Sulfato de sodio,Sulfato sódico,"Sólido blanco, soluble en agua, forma decahidrato (sal de Glauber), neutro en solución","Producción de papel (proceso Kraft), detergentes, vidrio, textil, desecante",1,1
+Na,,,,,,Na2WO4,Na₂WO₄,Oxisales,Tetraoxotungstato (VI) de sodio,Tungstato de sodio,Tungstato sódico,"Sólido blanco, soluble","Retardante de fuego, catalizador",6,1
+Na,+1,Br,-1,,,NaBr,NaBr,Sales Neutras,Monobromuro de sodio,Bromuro de sodio,Bromuro sódico,"Sólido blanco, higroscópico","Sedante, fotografía, productos químicos",1,1
+Na,+1,Cl,-1,,,NaCl,NaCl,Sales Neutras,Monocloruro de sodio,Cloruro de sodio,Cloruro sódico,"Sólido blanco, iónico","Sal de mesa, conservación de alimentos",1,1
+Na,,,,,,NaClO,NaClO,Oxisales,Oxoclorato (I) de sodio,Hipoclorito de sodio,Hipoclorito sódico (lejía),"Solución acuosa, oxidante","Blanqueador, desinfectante, tratamiento de agua",1,1
+Na,,,,,,NaCN,NaCN,Sales Neutras,Cianuro de sodio,Cianuro de sodio,Cianuro sódico,"Sólido blanco, altamente tóxico","Minería de oro, galvanoplastia, productos químicos",1,1
+Na,,,,,,NaF,NaF,Sales Neutras,Fluoruro de sodio,Fluoruro de sodio,Fluoruro sódico,"Sólido blanco, iónico","Aditivo en pasta de dientes, fluoración del agua",1,1
+Na,+1,H,-1,,,NaH,NaH,Hidruros,Monohidruro de sodio,Hidruro de sodio,Hidruro sódico,"Sólido blanco, iónico","Agente reductor, síntesis orgánica",1,1
+Na,,,,,,NaI,NaI,Sales Neutras,Yoduro de sodio,Yoduro de sodio,Yoduro sódico,"Sólido blanco, higroscópico","Suplemento de yodo, medicina, fotografía",1,1
+Na,,,,,,NaNO2,NaNO₂,Oxisales,Dioxonitrato de sodio,Nitrito de sodio,Nitrito sódico,"Sólido blanco, soluble","Conservante de alimentos, agente reductor",3,1
+Na,,,,,,NaNO3,NaNO₃,Oxisales,Trioxonitrato de sodio,Nitrato de sodio,Nitrato sódico (salitre de Chile),"Sólido blanco, higroscópico","Fertilizante, explosivos, conservación de alimentos",1,1
+Na,1,O,-2,,,NaOH,NaOH,Óxidos,Hidróxido de sodio,Hidróxido de sodio,Hidróxido sódico (soda cáustica),"Sólido blanco, corrosivo","Fabricación de jabón, papel, tratamiento de agua",1,1
+Nb,5,O,-2,,,Nb2O5,Nb₂O₅,Óxidos,Pentóxido de diniobio,Óxido de niobio (V),Óxido nióbico,"Sólido blanco, superconductores","Superconductores, capacitores",5,1
+Nb,,,,,,NbC,NbC,Sales Neutras,Carburo de niobio,Carburo de niobio,Carburo nióbico,"Sólido muy duro, refractario","Herramientas de corte, recubrimientos",4,1
+Nb,,,,,,NbCl5,NbCl₅,Sales Neutras,Pentacloruro de niobio,Cloruro de niobio (V),Cloruro nióbico,"Sólido amarillo, higroscópico","Catalizador, producción de Nb₂O₅",5,1
+Nb,,,,,,NbN,NbN,Sales Neutras,Nitruro de niobio,Nitruro de niobio,Nitruro nióbico,Sólido superconductor,Recubrimientos superconductores,3,1
+Nb,2,O,-2,,,NbO,NbO,Óxidos,Monóxido de niobio,Óxido de niobio (II),Óxido niobioso,Sólido gris,Materiales superconductores,2,1
+Nb,4,O,-2,,,NbO2,NbO₂,Óxidos,Dióxido de niobio,Óxido de niobio (IV),Óxido nióbico,Sólido azul,"Catalizadores, electrónica",4,1
+Nh,1,O,-2,,,Nh2O,Nh₂O (teórico),Óxidos,Monóxido de dinihonio,Óxido de nihonio (I),Óxido nihonioso,"Inestable, altamente radiactivo",Investigación científica,1,1
+Nh,3,O,-2,,,Nh2O3,Nh₂O₃ (teórico),Óxidos,Trióxido de dinihonio,Óxido de nihonio (III),Óxido nihónico,"Inestable, altamente radiactivo",Investigación científica,3,1
+NH,,,,,,NH3,NH₃,Hidruros,Trihidruro de nitrógeno,Amoníaco,Amoníaco,"Gas incoloro, irritante","Fertilizantes, refrigerante",-3,1
+Nh,,,,,,NhCl,NhCl (teórico),Sales Neutras,Monocloruro de nihonio,Cloruro de nihonio (I),Cloruro nihonioso,"Inestable, altamente radiactivo",Investigación científica,1,1
+Nh,,,,,,NhCl3,NhCl₃ (teórico),Sales Neutras,Tricloruro de nihonio,Cloruro de nihonio (III),Cloruro nihónico,"Inestable, altamente radiactivo",Investigación científica,3,1
+Ni,,,,,,NiCl2,NiCl₂,Sales Neutras,Dicloruro de níquel,Cloruro de níquel (II),Cloruro niqueloso,"Sólido amarillo, higroscópico","Galvanoplastia, catalizador",2,1
+Ni,2,O,-2,,,NiO,NiO,Óxidos,Monóxido de níquel,Óxido de níquel (II),Óxido niqueloso,"Sólido verde, insoluble","Pigmentos, cerámica",2,1
+Ni,,,,,,NiS,NiS,Sales Neutras,Sulfuro de níquel,Sulfuro de níquel (II),Sulfuro niqueloso,"Sólido negro, insoluble","Pigmentos, producción de níquel",2,1
+S,,,,,,NiSO4,NiSO₄,Sales Neutras,Sulfato de níquel(II),Sulfato de níquel(II),Sulfato niqueloso,"Sólido verde, soluble en agua, tóxico, precursor de otros compuestos de níquel","Galvanoplastia (níquel), producción de catalizadores, pigmento",,1
+NO,2,O,-2,,,NO,NO,Óxidos,Monóxido de nitrógeno,Óxido de nitrógeno (II),Óxido nítrico,"Gas incoloro, radical libre","Señalización biológica, intermediario",2,1
+NO,4,O,-2,,,NO2,NO₂,Óxidos,Dióxido de nitrógeno,Óxido de nitrógeno (IV),Dióxido de nitrógeno,"Gas marrón, tóxico","Intermediario, contaminante",4,1
+NO,,,,,,NOCl,NOCl,Oxisales,Cloruro de nitrosilo,Cloruro de nitrosilo,Cloruro de nitrosilo,"Gas amarillo, corrosivo","Agente nitrante, disolvente",1,1
+O₂,,,,,,O2,O₂,,Dioxígeno,Oxígeno,Oxígeno,"Gas incoloro, comburente","Respiración, combustión",-2,1
+O₃,,,,,,O3,O₃,Óxidos,Trioxígeno,Ozono,Ozono,"Gas azul, oxidante","Desinfección, protección UV",-2,1
+Os,,,,,,OsCl3,OsCl₃,Sales Neutras,Tricloruro de osmio,Cloruro de osmio (III),Cloruro ósmico,"Sólido azul-negro, higroscópico","Catalizador, investigación",3,1
+Os,4,O,-2,,,OsO2,OsO₂,Óxidos,Dióxido de osmio,Óxido de osmio (IV),Óxido ósmico,"Sólido negro, catalizador","Catalizador, contactos eléctricos",4,1
+Os,8,O,-2,,,OsO4,OsO₄,Óxidos,Tetraóxido de osmio,Óxido de osmio (VIII),Anhídrido ósmico,"Sólido amarillo, altamente tóxico","Microscopía electrónica, catalizador",8,1
+P₄,5,O,-2,,,P4O10,P₄O₁₀,Óxidos,Decaóxido de tetrafósforo,Óxido de fósforo (V),Anhídrido fosfórico,"Sólido blanco, higroscópico","Desecante, síntesis de ácido fosfórico",5,1
+P₄,3,O,-2,,,P4O6,P₄O₆,Óxidos,Hexaóxido de tetrafósforo,Óxido de fósforo (III),Anhídrido fosforoso,"Sólido blanco, tóxico","Agente reductor, síntesis orgánica",3,1
+Pb,,,,,,PbCl2,PbCl₂,Sales Neutras,Dicloruro de plomo,Cloruro de plomo (II),Cloruro plumboso,"Sólido blanco, tóxico","Pigmentos, fundente",2,1
+Pb,2,O,-2,,,PbO,PbO,Óxidos,Monóxido de plomo,Óxido de plomo (II),Óxido plumboso,"Sólido amarillo, tóxico","Baterías, pigmentos",2,1
+Pb,4,O,-2,,,PbO2,PbO₂,Óxidos,Dióxido de plomo,Óxido de plomo (IV),Óxido plumbico,"Sólido marrón, tóxico","Baterías, oxidante",4,1
+Pb,+2,S,-2,,,PbS,PbS,Sales Neutras,Sulfuro de plomo(II),Sulfuro de plomo(II),Sulfuro plumboso,"Sólido negro, insoluble en agua, tóxico, mineral galena","Galena (mineral de plomo), semiconductores, detector de radiación infrarroja",,1
+Pd,,,,,,PdCl2,PdCl₂,Sales Neutras,Dicloruro de paladio,Cloruro de paladio (II),Cloruro paladioso,"Sólido marrón, higroscópico","Catalizador, galvanoplastia",2,1
+Pd,2,O,-2,,,PdO,PdO,Óxidos,Monóxido de paladio,Óxido de paladio (II),Óxido paladioso,"Sólido negro, catalizador","Catalizador, contactos eléctricos",2,1
+Pd,,,,,,PdS,PdS,Sales Neutras,Sulfuro de paladio,Sulfuro de paladio (II),Sulfuro paladioso,"Sólido negro, insoluble","Catalizador, investigación",2,1
+Po,,,,,,PoCl4,PoCl₄,Sales Neutras,Tetracloruro de polonio,Cloruro de polonio (IV),Cloruro polónico,"Sólido amarillo, radiactivo",Investigación científica,4,1
+Po,4,O,-2,,,PoO2,PoO₂,Óxidos,Dióxido de polonio,Óxido de polonio (IV),Óxido polónico,"Sólido amarillo, radiactivo","Investigación científica, fuentes de calor",4,1
+Pt,,,,,,PtCl2,PtCl₂,Sales Neutras,Dicloruro de platino,Cloruro de platino (II),Cloruro platinoso,"Sólido marrón, insoluble","Catalizador, galvanoplastia",2,1
+Pt,,,,,,PtCl4,PtCl₄,Sales Neutras,Tetracloruro de platino,Cloruro de platino (IV),Cloruro platínico,"Sólido rojo, higroscópico","Catalizador, fotografía",4,1
+Pt,2,O,-2,,,PtO,PtO,Óxidos,Monóxido de platino,Óxido de platino (II),Óxido platinoso,"Sólido negro, catalizador","Catalizador, contactos eléctricos",2,1
+Pt,4,O,-2,,,PtO2,PtO₂,Óxidos,Dióxido de platino,Óxido de platino (IV),Óxido platínico,"Sólido marrón, catalizador","Catalizador, electrodos",4,1
+Ra,+2,Cl,-13,,,RaCl2,RaCl₂,Sales Neutras,Dicloruro de radio,Cloruro de radio (II),Cloruro rádico,Altamente radiactivo,Investigación científica,,1
+Ra,,,,,,RaF2,RaF₂,Sales Neutras,Difluoruro de radio,Fluoruro de radio,Fluoruro rádico,Altamente radiactivo,Investigación científica,2,1
+Ra,+2,H,-1,,,RaH2,RaH₂,Sales Neutras,Dihidruro de radio,Hidruro de radio,Hidruro rádico,Altamente radiactivo,Investigación científica,2,1
+Ra,+2,O,-2,,,RaO,RaO,Óxidos,Monóxido de radio,Óxido de radio,Óxido rádico,"Altamente radiactivo, difícil de estudiar",Investigación científica,,1
+Ra,,,,,,RaSO4,RaSO₄,Oxisales,Tetraoxosulfato de radio,Sulfato de radio,Sulfato rádico,Altamente radiactivo,Investigación científica,2,1
+Rb,,,,,,Rb2CO3,Rb₂CO₃,Oxisales,Trioxocarbonato de dirubidio,Carbonato de rubidio,Carbonato rubídico,"Sólido blanco, soluble","Investigación, catalizador",1,1
+Rb,+1,O,-2,,,Rb2O,Rb₂O,Óxidos,Monóxido de dirubidio,Óxido de rubidio,Óxido rubídico,"Sólido amarillo, altamente reactivo con agua","Células fotoeléctricas, catalizadores",,1
+Rb,,,,,,Rb2SO4,Rb₂SO₄,Oxisales,Tetraoxosulfato de dirubidio,Sulfato de rubidio,Sulfato rubídico,"Sólido blanco, soluble","Investigación, catalizador",1,1
+Rb,+1,Br,-1,,,RbBr,RbBr,Sales Neutras,Monobromuro de rubidio,Bromuro de rubidio,Bromuro rubídico,"Sólido blanco, higroscópico","Medicina, fotografía",1,1
+Rb,+1,Cl,-1,,,RbCl,RbCl,Sales Neutras,Monocloruro de rubidio,Cloruro de rubidio,Cloruro rubídico,"Sólido blanco, iónico","Investigación, componentes electrónicos",1,1
+Rb,,,,,,RbF,RbF,Sales Neutras,Fluoruro de rubidio,Fluoruro de rubidio,Fluoruro rubídico,"Sólido blanco, iónico","Óptica, catalizador",1,1
+Rb,+1,H,-1,,,RbH,RbH,Hidruros,Monohidruro de rubidio,Hidruro de rubidio,Hidruro rubídico,"Sólido blanco, iónico",Agente reductor,1,1
+Rb,,,,,,RbI,RbI,Sales Neutras,Yoduro de rubidio,Yoduro de rubidio,Yoduro rubídico,"Sólido blanco, higroscópico","Medicina, investigación",1,1
+Rb,,,,,,RbNO3,RbNO₃,Oxisales,Trioxonitrato de rubidio,Nitrato de rubidio,Nitrato rubídico,"Sólido blanco, higroscópico","Pirotecnia, investigación",1,1
+Rb,1,O,-2,,,RbOH,RbOH,Óxidos,Hidróxido de rubidio,Hidróxido de rubidio,Hidróxido rubídico,"Sólido blanco, corrosivo","Baterías, investigación",1,1
+Re,7,O,-2,,,Re2O7,Re₂O₇,Óxidos,Heptaóxido de direnio,Óxido de renio (VII),Anhídrido perrénico,"Sólido amarillo, higroscópico","Catalizador, síntesis orgánica",7,1
+Re,,,,,,ReCl3,ReCl₃,Sales Neutras,Tricloruro de renio,Cloruro de renio (III),Cloruro renioso,"Sólido rojo, insoluble","Catalizador, recubrimientos",3,1
+Re,4,O,-2,,,ReO2,ReO₂,Óxidos,Dióxido de renio,Óxido de renio (IV),Óxido rénico,"Sólido negro, conductor","Catalizador, contactos eléctricos",4,1
+Rf,,,,,,RfC,RfC (teórico),Sales Neutras,Carburo de rutherfordio,Carburo de rutherfordio,Carburo rutherfordico,"Inestable, altamente radiactivo",,,1
+Rf,,,,,,RfCl4,RfCl₄ (teórico),Sales Neutras,Tetracloruro de rutherfordio,Cloruro de rutherfordio (IV),Cloruro rutherfordico,"Inestable, altamente radiactivo",Investigación científica,4,1
+Rf,4,O,-2,,,RfO2,RfO₂ (teórico),Óxidos,Dióxido de rutherfordio,Óxido de rutherfordio (IV),Óxido rutherfordico,"Inestable, altamente radiactivo",Investigación científica,4,1
+Rg,1,O,-2,,,Rg2O,Rg₂O (teórico),Óxidos,Monóxido de diroentgenio,Óxido de roentgenio (I),Óxido roentgenioso,"Inestable, altamente radiactivo",Investigación científica,1,1
+Rg,3,O,-2,,,Rg2O3,Rg₂O₃ (teórico),Óxidos,Trióxido de diroentgenio,Óxido de roentgenio (III),Óxido roentgenico,"Inestable, altamente radiactivo",Investigación científica,3,1
+Rg,,,,,,RgCl,RgCl (teórico),Sales Neutras,Cloruro de roentgenio,Cloruro de roentgenio (I),Cloruro roentgenioso,"Inestable, altamente radiactivo",Investigación científica,1,1
+Rg,,,,,,RgCl3,RgCl₃ (teórico),Sales Neutras,Tricloruro de roentgenio,Cloruro de roentgenio (III),Cloruro roentgenico,"Inestable, altamente radiactivo",Investigación científica,3,1
+Rh,3,O,-2,,,Rh2O3,Rh₂O₃,Óxidos,Trióxido de dirodio,Óxido de rodio (III),Óxido róhdico,"Sólido negro, catalizador","Catalizador, electrodos",3,1
+Rh,,,,,,RhCl3,RhCl₃,Sales Neutras,Tricloruro de rodio,Cloruro de rodio (III),Cloruro róhdico,"Sólido rojo, higroscópico","Catalizador, recubrimientos",3,1
+Rh,,,,,,RhF6,RhF₆,Sales Neutras,Hexafluoruro de rodio,Hexafluoruro de rodio,Hexafluoruro róhdico,"Sólido verde oscuro, oxidante","Fluoración, investigación",6,1
+Ru,,,,,,RuCl3,RuCl₃,Sales Neutras,Tricloruro de rutenio,Cloruro de rutenio (III),Cloruro ruténico,"Sólido marrón, higroscópico","Catalizador, recubrimientos",3,1
+Ru,,,,,,RuF6,RuF₆,Sales Neutras,Hexafluoruro de rutenio,Hexafluoruro de rutenio,Hexafluoruro ruténico,"Sólido amarillo, oxidante","Fluoración, investigación",6,1
+Ru,4,O,-2,,,RuO2,RuO₂,Óxidos,Dióxido de rutenio,Óxido de rutenio (IV),Óxido ruténico,"Sólido negro, catalizador","Catalizador, electrodos",4,1
+S₈,,,,,,S8,S₈,,Octaazufre,Azufre,Azufre,"Sólido amarillo, frágil","Pólvora, ácido sulfúrico","-2, +4, +6",1
+Sb,3,O,-2,,,Sb2O3,Sb₂O₃,Óxidos,Trióxido de diantimonio,Óxido de antimonio (III),Anhídrido antimonioso,"Sólido blanco, tóxico","Retardante de fuego, pigmentos",3,1
+Sb,5,O,-2,,,Sb2O5,Sb₂O₅,Óxidos,Pentóxido de diantimonio,Óxido de antimonio (V),Anhídrido antimónico,"Sólido amarillo, tóxico","Retardante de fuego, catalizador",5,1
+S,,,,,,Sb2S3,Sb₂S₃,Sales Neutras,Sulfuro de antimonio(III),Sulfuro de antimonio(III),Sulfuro antimonioso,"Sólido naranja o negro, insoluble en agua, semiconductor tipo p, mineral estibinita",,,1
+Sc,,,,,,Sc(NO3)3,Sc(NO₃)₃,Oxisales,Tris(trioxonitrato) de escandio,Nitrato de escandio,Nitrato escandico,"Sólido blanco, higroscópico",Síntesis de otros compuestos,3,1
+Sc,,,,,,Sc2(SO4)3,Sc₂(SO₄)₃,Oxisales,Tris(tetraoxosulfato) de diescandio,Sulfato de escandio,Sulfato escandico,"Sólido blanco, soluble","Investigación, cerámica",3,1
+Sc,3,O,-2,,,Sc2O3,Sc₂O₃,Óxidos,Trióxido de diescandio,Óxido de escandio,Óxido escandico,"Sólido blanco, refractario","Cerámica, aleaciones",3,1
+Sc,,,,,,ScCl3,ScCl₃,Sales Neutras,Tricloruro de escandio,Cloruro de escandio,Cloruro escandico,"Sólido blanco, higroscópico","Catalizador, lámparas",3,1
+Sc,,,,,,ScF3,ScF₃,Sales Neutras,Trifluoruro de escandio,Fluoruro de escandio,Fluoruro escandico,"Sólido blanco, insoluble","Óptica, recubrimientos",3,1
+Se,,,,,,Se8,Se₈,Sales Neutras,Octaselenio,Selenio,Selenio,"Sólido gris, semiconductor","Semiconductores, vidrio","-2, +4, +6",1
+Se,4,O,-2,,,SeO2,SeO₂,Óxidos,Dióxido de selenio,Óxido de selenio (IV),Anhídrido selenioso,"Sólido blanco, higroscópico","Síntesis orgánica, antioxidante",4,1
+Sg,,,,,,SgCl6,SgCl₆ (teórico),Sales Neutras,Hexacloruro de seaborgio,Cloruro de seaborgio (VI),Cloruro seaborgico,"Inestable, altamente radiactivo",Investigación,,1
+Sg,6,O,-2,,,SgO3,SgO₃ (teórico),Óxidos,Trióxido de seaborgio,Óxido de seaborgio (VI),Óxido seaborgico,"Inestable, altamente radiactivo",Investigación científica,6,1
+Si,,,,,,SiC,SiC,Sales Neutras,Carburo de silicio,Carburo de silicio,Carburo de silicio,"Sólido duro, abrasivo","Abrasivos, semiconductores",4,1
+Si,4,O,-2,,,SiO2,SiO₂,Óxidos,Dióxido de silicio,Dióxido de silicio,Sílice,"Sólido incoloro, refractario","Vidrio, cerámica",4,1
+Sn,,,,,,SnCl2,SnCl₂,Sales Neutras,Dicloruro de estaño,Cloruro de estaño (II),Cloruro estannoso,"Sólido blanco, reductor","Reductor, mordiente",2,1
+Sn,,,,,,SnCl4,SnCl₄,Sales Neutras,Tetracloruro de estaño,Cloruro de estaño (IV),Cloruro estannico,"Líquido incoloro, humeante","Catalizador, recubrimientos",4,1
+Sn,2,O,-2,,,SnO,SnO,Óxidos,Monóxido de estaño,Óxido de estaño (II),Óxido estannoso,"Sólido negro, reductor","Reductor, pigmentos",2,1
+Sn,4,O,-2,,,SnO2,SnO₂,Óxidos,Dióxido de estaño,Óxido de estaño (IV),Óxido estannico,"Sólido blanco, opacificante","Cerámica, pigmentos",4,1
+S,,,,,,SnS,SnS,Sales Neutras,Sulfuro de estaño(II),Sulfuro de estaño(II),Sulfuro estannoso,"Sólido marrón, insoluble en agua, semiconductor tipo p, superconductor a bajas temperaturas","Pigmento (marrón de estaño), semiconductores, lubricante sólido",,1
+SO,4,O,-2,,,SO2,SO₂,Óxidos,Dióxido de azufre,Óxido de azufre (IV),Anhídrido sulfuroso,"Gas incoloro, tóxico","Conservante, blanqueador",4,1
+SO,6,O,-2,,,SO3,SO₃,Óxidos,Trióxido de azufre,Óxido de azufre (VI),Anhídrido sulfúrico,"Líquido incoloro, corrosivo",Producción de ácido sulfúrico,6,1
+Sr,+2,Cl,-11,,,SrCl2,SrCl₂,Sales Neutras,Dicloruro de estroncio,Cloruro de estroncio (II),Cloruro estroncico,"Sólido blanco, higroscópico",Pirotecnia (color rojo),2,1
+Sr,,,,,,SrF2,SrF₂,Sales Neutras,Difluoruro de estroncio,Fluoruro de estroncio,Fluoruro estroncico,"Sólido blanco, insoluble","Óptica, láseres",2,1
+Sr,+2,H,-1,,,SrH2,SrH₂,Hidruros,Dihidruro de estroncio,Hidruro de estroncio,Hidruro estroncico,"Sólido blanco, iónico",Agente reductor,2,1
+Sr,2,O,-2,,,SrO,SrO,Óxidos,Monóxido de estroncio,Óxido de estroncio,Óxido estroncico,"Sólido blanco, higroscópico","Pirotecnia, cerámica",2,1
+Sr,,,,,,SrSO4,SrSO₄,Oxisales,Tetraoxosulfato de estroncio,Sulfato de estroncio,Sulfato estroncico,"Sólido blanco, insoluble","Pirotecnia, pigmentos",2,1
+Ta,5,O,-2,,,Ta2O5,Ta₂O₅,Óxidos,Pentóxido de ditántalo,Óxido de tántalo (V),Óxido tantálico,"Sólido blanco, capacitores","Capacitores, implantes médicos",5,1
+Ta,,,,,,TaC,TaC,Sales Neutras,Carburo de tántalo,Carburo de tántalo,Carburo tantálico,Sólido extremadamente duro,"Herramientas de corte, recubrimientos",4,1
+Ta,,,,,,TaCl5,TaCl₅,Sales Neutras,Pentacloruro de tántalo,Cloruro de tántalo (V),Cloruro tantálico,"Sólido blanco, higroscópico","Catalizador, producción de Ta₂O₅",5,1
+Ta,,,,,,TaH,TaH,Hidruros,Monohidruro de tántalo,Hidruro de tántalo,Hidruro tantálico,"Sólido gris, conductor",Almacenamiento de hidrógeno,1,1
+Ta,4,O,-2,,,TaO2,TaO₂,Óxidos,Dióxido de tántalo,Óxido de tántalo (IV),Óxido tantálico,Sólido azul,"Catalizadores, electrónica",4,1
+Tc,7,O,-2,,,Tc2O7,Tc₂O₇,Óxidos,Heptaóxido de ditecnecio,Óxido de tecnecio (VII),Anhídrido pertecnecio,"Sólido amarillo, higroscópico","Investigación, medicina nuclear",7,1
+Tc,,,,,,TcCl4,TcCl₄,Sales Neutras,Tetracloruro de tecnecio,Cloruro de tecnecio (IV),Cloruro tecnécico,"Sólido rojo, higroscópico","Investigación, catalizador",4,1
+Tc,4,O,-2,,,TcO2,TcO₂,Óxidos,Dióxido de tecnecio,Óxido de tecnecio (IV),Óxido tecnécico,"Sólido negro, radiactivo","Medicina nuclear, catalizador",4,1
+Te,,,,,,Te8,Te₈,,Octatelurio,Telurio,Telurio,"Sólido gris, semiconductor","Aleaciones, semiconductores","-2, +4, +6",1
+Te,4,O,-2,,,TeO2,TeO₂,Óxidos,Dióxido de telurio,Óxido de telurio (IV),Anhídrido teluroso,"Sólido blanco, semiconductor","Semiconductores, acústico-óptica",4,1
+Ti,,,,,,TiC,TiC,Sales Neutras,Carburo de titanio,Carburo de titanio,Carburo titánico,"Sólido refractario, duro","Herramientas de corte, recubrimientos",4,1
+Ti,,,,,,TiCl4,TiCl₄,Sales Neutras,Tetracloruro de titanio,Cloruro de titanio (IV),Cloruro titánico,"Líquido incoloro, humeante","Catalizador, producción de TiO₂",4,1
+Ti,,,,,,TiN,TiN,Sales Neutras,Nitruro de titanio,Nitruro de titanio,Nitruro titánico,"Sólido dorado, duro","Recubrimientos, herramientas",3,1
+Ti,4,O,-2,,,TiO2,TiO₂,Óxidos,Dióxido de titanio,Óxido de titanio (IV),Óxido titánico,"Sólido blanco, pigmento","Pigmentos, protectores solares",4,1
+Tl,1,O,-2,,,Tl2O,Tl₂O,Óxidos,Monóxido de ditalio,Óxido de talio (I),Óxido taloso,"Sólido negro, tóxico","Semiconductores, óptica",1,1
+Tl,3,O,-2,,,Tl2O3,Tl₂O₃,Óxidos,Trióxido de ditalio,Óxido de talio (III),Óxido tálico,"Sólido marrón, tóxico","Semiconductores, óptica",3,1
+Tl,,,,,,TlCl,TlCl,Sales Neutras,Cloruro de talio,Cloruro de talio (I),Cloruro taloso,"Sólido blanco, tóxico","Semiconductores, óptica",1,1
+Tl,,,,,,TlCl3,TlCl₃,Sales Neutras,Tricloruro de talio,Cloruro de talio (III),Cloruro tálico,"Sólido amarillo, tóxico","Semiconductores, óptica",3,1
+V₂,3,O,-2,,,V2O3,V₂O₃,Óxidos,Trióxido de divanadio,Óxido de vanadio (III),Óxido vanadioso,Sólido negro,"Catalizadores, pigmentos",3,1
+V,5,O,-2,,,V2O5,V₂O₅,Óxidos,Pentóxido de divanadio,Óxido de vanadio (V),Óxido vanádico,"Sólido naranja, catalizador","Catalizadores, vidrios",5,1
+V,,,,,,VC,VC,Sales Neutras,Carburo de vanadio,Carburo de vanadio,Carburo vanádico,"Sólido duro, refractario","Herramientas de corte, recubrimientos",3,1
+V,,,,,,VCl3,VCl₃,Sales Neutras,Tricloruro de vanadio,Cloruro de vanadio (III),Cloruro vanadioso,"Sólido púrpura, higroscópico","Catalizador, agente reductor",3,1
+V,,,,,,VH,VH,Hidruros,Monohidruro de vanadio,Hidruro de vanadio,Hidruro vanádico,"Sólido gris, conductor",Almacenamiento de hidrógeno,1,1
+V,2,O,-2,,,VO,VO,Óxidos,Monóxido de vanadio,Óxido de vanadio (II),Óxido vanadioso,Sólido gris,Materiales superconductores,2,1
+V,4,O,-2,,,VO2,VO₂,Óxidos,Dióxido de vanadio,Óxido de vanadio (IV),Óxido vanádico,Sólido azul-negro,"Catalizadores, electrónica",4,1
+WC,,,,,,WC,WC,Sales Neutras,Carburo de tungsteno,Carburo de tungsteno,Carburo túngstico,Sólido extremadamente duro,"Herramientas de corte, recubrimientos",4,1
+WC,,,,,,WCl6,WCl₆,Sales Neutras,Hexacloruro de tungsteno,Cloruro de tungsteno (VI),Cloruro túngstico,"Sólido azul oscuro, higroscópico","Catalizador, recubrimientos",6,1
+WO,6,O,-2,,,WO3,WO₃,Óxidos,Trióxido de tungsteno,Óxido de tungsteno (VI),Anhídrido túngstico,"Sólido amarillo, pigmento","Pigmentos, contactos eléctricos",6,1
+Y,,,,,,Y(NO3)3,Y(NO₃)₃,Oxisales,Tris(trioxonitrato) de itrio,Nitrato de itrio,Nitrato ítrico,"Sólido blanco, higroscópico",Síntesis de otros compuestos,3,1
+Y,,,,,,Y2(SO4)3,Y₂(SO₄)₃,Oxisales,Tris(tetraoxosulfato) de diitrio,Sulfato de itrio,Sulfato ítrico,"Sólido blanco, soluble","Investigación, superconductores",3,1
+Y₂,3,O,-2,,,Y2O3,Y₂O₃,Óxidos,Trióxido de diitrio,Óxido de itrio,Óxido ítrico,"Sólido blanco, usado en fósforos","Fósforos, láseres",3,1
+YC,,,,,,YCl3,YCl₃,Sales Neutras,Tricloruro de itrio,Cloruro de itrio,Cloruro ítrico,"Sólido blanco, higroscópico","Catalizador, cerámica",3,1
+YF,,,,,,YF3,YF₃,Sales Neutras,Trifluoruro de itrio,Fluoruro de itrio,Fluoruro ítrico,"Sólido blanco, insoluble","Óptica, recubrimientos",3,1
+Zn,,,,,,ZnCl2,ZnCl₂,Sales Neutras,Dicloruro de zinc,Cloruro de zinc,Cloruro de zinc,"Sólido blanco, higroscópico","Soldadura, baterías",2,1
+Zn,2,O,-2,,,ZnO,ZnO,Óxidos,Monóxido de zinc,Óxido de zinc,Óxido de zinc,"Sólido blanco, semiconductor","Pigmentos, protectores solares",2,1
+Zn,+2,S,-2,,,ZnS,ZnS,Sales Neutras,Sulfuro de zinc,Sulfuro de zinc,Sulfuro de zinc,"Sólido blanco o amarillo, fluorescente bajo luz UV, insoluble en agua, semiconductor tipo n","Pigmento (blanco de zinc), fósforos, semiconductores (LEDs, fotodetectores), lubricantes",2,1
+S,,,,,,ZnSO4,ZnSO₄,Oxisales,,Sulfato de zinc,Sulfato de zinc,"Sólido blanco, soluble en agua, astringente, suplemento dietético","Suplemento dietético (zinc), fertilizante (microelemento), mordiente en tintorería",,1
+Zr,,,,,,ZrC,ZrC,Sales Neutras,Carburo de zirconio,Carburo de zirconio,Carburo ziricónico,Sólido extremadamente duro,"Herramientas de corte, recubrimientos",4,1
+Zr,,,,,,ZrCl4,ZrCl₄,Sales Neutras,Tetracloruro de zirconio,Cloruro de zirconio (IV),Cloruro ziricónico,"Sólido blanco, higroscópico","Catalizador, producción de ZrO₂",4,1
+Zr,4,O,-2,,,ZrO2,ZrO₂,Óxidos,Dióxido de zirconio,Óxido de zirconio (IV),Óxido ziricónico,"Sólido blanco, refractario","Cerámica, refractarios",4,1
