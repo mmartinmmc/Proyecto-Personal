@@ -31,6 +31,9 @@ else:
 def buscar_compuesto(tipo_busqueda, valor_busqueda, nomenclatura_devolver=None):
     if df is None or df.empty:
         return None  # Si no hay base de datos cargada o está vacía, devuelve None
+
+    # Normalización del input (elimina espacios y convierte a minúsculas)
+    valor_busqueda = valor_busqueda.strip().lower()  
     
     if tipo_busqueda == "formula":
         # Buscar por fórmula (usando Formula)
@@ -50,13 +53,12 @@ def buscar_compuesto(tipo_busqueda, valor_busqueda, nomenclatura_devolver=None):
     
     elif tipo_busqueda == "nomenclatura":
         # Buscar por nomenclatura (en las tres columnas)
-        resultados = df[
-            (df['Sistematica'].str.lower() == valor_busqueda.lower()) |
-            (df['Stock'].str.lower() == valor_busqueda.lower()) |
-            (df['Tradicional'].str.lower() == valor_busqueda.lower())
-        ]
+       mask = (
+            df['Sistematica'].str.lower().str.strip().str.contains(valor_busqueda, regex=False) | 
+            df['Stock'].str.lower().str.strip().str.contains(valor_busqueda, regex=False) |        
+            df['Tradicional'].str.lower().str.strip().str.contains(valor_busqueda, regex=False)    
         # Devolver solo las columnas necesarias
-        resultados = resultados[['Formula2', 'Sistematica', 'Stock', 'Tradicional']]
+        resultados = df[mask]
     else:
         return None  # Tipo de búsqueda no válido
     
