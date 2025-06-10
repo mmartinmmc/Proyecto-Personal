@@ -3,214 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía de Formulación y Nomenclatura Química</title>
+    <title>Información Clave sobre Formulación Química</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <style>
+        /* Estilos específicos para esta página si es necesario */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: Arial, sans-serif;
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
+            margin: 20px;
+            background-color: #f4f4f4;
             color: #333;
         }
         .container {
             max-width: 900px;
-            margin: 2rem auto;
-            padding: 1rem 2rem;
-            background-color: #fff;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        header {
-            text-align: center;
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 1rem;
-            margin-bottom: 2rem;
-        }
-        h1 {
+        h1, h2, h3 {
             color: #2c3e50;
         }
-        h2 {
-            color: #34495e;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 0.5rem;
-            margin-top: 2.5rem;
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
         }
-        h3 {
-            color: #7f8c8d;
-            margin-top: 1.5rem;
+        section {
+            margin-bottom: 40px;
         }
-        p, li {
-            font-size: 1.1rem;
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
         }
-        code {
-            background-color: #ecf0f1;
-            padding: 0.2rem 0.5rem;
+        ol {
+            list-style-type: decimal;
+            margin-left: 20px;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        .importante {
+            background-color: #e6f7ff;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
             border-radius: 4px;
-            font-family: "Courier New", Courier, monospace;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-        th, td {
-            padding: 0.8rem;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #3498db;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
+        .ejemplo {
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 3px solid #ccc;
+            font-family: monospace;
+            white-space: pre-wrap; /* Para mantener saltos de línea y espacios */
         }
         .back-link {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 0.8rem 1.5rem;
-            background-color: #3498db;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .back-link:hover {
-            background-color: #2980b9;
-        }
-        .footer {
+            display: block;
+            margin-top: 30px;
             text-align: center;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #e0e0e0;
-            font-size: 0.9rem;
-            color: #777;
+            font-size: 1.1em;
+        }
+        .back-link a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Guía Rápida de Formulación y Nomenclatura Inorgánica</h1>
-            <p>Comprende cómo nombrar los compuestos químicos más comunes.</p>
-        </header>
+        <h1>Información Clave sobre Formulación Química</h1>
 
-        <main>
-            <section>
-                <h2>¿Qué es la Nomenclatura Química?</h2>
-                <p>La nomenclatura química es un conjunto de reglas que nos permite nombrar de forma única y sistemática los compuestos químicos. Esto es fundamental para evitar ambigüedades y asegurar que una fórmula química corresponda a un solo nombre y viceversa. Principalmente, existen tres sistemas de nomenclatura inorgánica aceptados:</p>
-                <ul>
-                    <li><strong>Nomenclatura Sistemática (IUPAC):</strong> Utiliza prefijos numéricos para indicar la cantidad de átomos de cada elemento.</li>
-                    <li><strong>Nomenclatura de Stock:</strong> Indica el estado de oxidación del metal con números romanos.</li>
-                    <li><strong>Nomenclatura Tradicional:</strong> Usa prefijos y sufijos (como "-oso" e "-ico") según los estados de oxidación del elemento.</li>
-                </ul>
-            </section>
+        <section>
+            <h2>1. Introducción a la Formulación y Nomenclatura Química</h2>
+            <p>La química, como ciencia que estudia la materia y sus transformaciones, requiere de un lenguaje universal y preciso para identificar y comunicar las sustancias. Este lenguaje se materializa a través de la <strong>formulación</strong> (representación simbólica de los compuestos) y la <strong>nomenclatura</strong> (asignación de nombres a los compuestos). La Unión Internacional de Química Pura y Aplicada (IUPAC) es el organismo encargado de establecer las reglas y recomendaciones que rigen este sistema, garantizando la claridad y evitando ambigüedades en la comunicación científica a nivel global.</p>
+            <p>Comprender la formulación y nomenclatura es fundamental para cualquier persona que se adentre en el estudio de la química, ya que permite:</p>
+            <ul>
+                <li>Identificar unívocamente cualquier sustancia química.</li>
+                <li>Comunicar de forma precisa la composición de un compuesto.</li>
+                <li>Predecir propiedades y reacciones químicas basándose en la estructura del compuesto.</li>
+                <li>Facilitar el trabajo en laboratorio y la investigación científica.</li>
+            </ul>
+        </section>
 
-            <section>
-                <h2>Tipos de Nomenclatura en Detalle</h2>
+        <section>
+            <h2>2. Conceptos Fundamentales</h2>
+            <h3>2.1. Átomos y Elementos</h3>
+            <p>Los <strong>átomos</strong> son las unidades básicas de la materia, compuestos por un núcleo (protones y neutrones) y electrones. Un <strong>elemento químico</strong> es una sustancia pura formada por átomos con el mismo número atómico (número de protones). Se representan mediante símbolos (ej. H para Hidrógeno, O para Oxígeno, Na para Sodio).</p>
 
-                <h3>1. Nomenclatura Sistemática (IUPAC)</h3>
-                <p>Es la más recomendada por la IUPAC. Se basa en el uso de prefijos griegos para indicar el número de átomos de cada elemento en la fórmula.</p>
-                <p><b>Prefijos:</b> Mono- (1), Di- (2), Tri- (3), Tetra- (4), Penta- (5), Hexa- (6), Hepta- (7), etc.</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Fórmula</th>
-                            <th>Nombre Sistemático</th>
-                            <th>Explicación</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>CO₂</code></td>
-                            <td>Dióxido de carbono</td>
-                            <td>Dos (di-) átomos de oxígeno.</td>
-                        </tr>
-                        <tr>
-                            <td><code>N₂O₃</code></td>
-                            <td>Trióxido de dinitrógeno</td>
-                            <td>Tres (tri-) oxígenos y dos (di-) nitrógenos.</td>
-                        </tr>
-                        <tr>
-                            <td><code>PCl₅</code></td>
-                            <td>Pentacloruro de fósforo</td>
-                            <td>Cinco (penta-) átomos de cloro.</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <h3>2. Nomenclatura de Stock</h3>
-                <p>Se utiliza principalmente para compuestos formados por un metal con varios estados de oxidación. El nombre del compuesto se escribe seguido del estado de oxidación del metal entre paréntesis y en números romanos.</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Fórmula</th>
-                            <th>Nombre de Stock</th>
-                            <th>Explicación</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>FeO</code></td>
-                            <td>Óxido de hierro (II)</td>
-                            <td>El hierro actúa con estado de oxidación +2.</td>
-                        </tr>
-                        <tr>
-                            <td><code>Fe₂O₃</code></td>
-                            <td>Óxido de hierro (III)</td>
-                            <td>El hierro actúa con estado de oxidación +3.</td>
-                        </tr>
-                        <tr>
-                            <td><code>CuCl</code></td>
-                            <td>Cloruro de cobre (I)</td>
-                            <td>El cobre actúa con estado de oxidación +1.</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <h3>3. Nomenclatura Tradicional</h3>
-                <p>Aunque está en desuso, es importante conocerla. Utiliza sufijos y prefijos para diferenciar los estados de oxidación del elemento central.</p>
-                <ul>
-                    <li>Para dos estados de oxidación: <strong>-oso</strong> (menor), <strong>-ico</strong> (mayor).</li>
-                    <li>Para más de dos: <strong>Hipo-...-oso</strong> (mínimo), <strong>-oso</strong>, <strong>-ico</strong>, <strong>Per-...-ico</strong> (máximo).</li>
-                </ul>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Fórmula</th>
-                            <th>Nombre Tradicional</th>
-                            <th>Explicación</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>Fe₂O₃</code></td>
-                            <td>Óxido férrico</td>
-                            <td>Hierro con su mayor valencia (+3).</td>
-                        </tr>
-                        <tr>
-                            <td><code>H₂SO₃</code></td>
-                            <td>Ácido sulfuroso</td>
-                            <td>Azufre con valencia intermedia (+4).</td>
-                        </tr>
-                        <tr>
-                            <td><code>HClO₄</code></td>
-                            <td>Ácido perclórico</td>
-                            <td>Cloro con su máxima valencia (+7).</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-            
-            <div style="text-align:center;">
-                <a href="/" class="back-link">Volver a la Herramienta</a>
+            <h3>2.2. Moléculas y Compuestos</h3>
+            <p>Una <strong>molécula</strong> es la unión de dos o más átomos, sean iguales o diferentes, mediante enlaces químicos. Un <strong>compuesto químico</strong> es una sustancia formada por la combinación de dos o más elementos diferentes en proporciones fijas.</p>
+            <div class="ejemplo">
+                Ejemplos:<br>
+                O₂ (Molécula de oxígeno, no un compuesto porque solo hay un elemento)<br>
+                H₂O (Molécula de agua, un compuesto formado por H y O)<br>
+                NaCl (Cloruro de sodio, un compuesto formado por Na y Cl)
             </div>
-        </main>
 
-        <footer class="footer">
-            <p>Proyecto de Formulación Química - 2025</p>
-        </footer>
+            <h3>2.3. Valencias y Números de Oxidación</h3>
+            <p>La <strong>valencia</strong> de un elemento es su capacidad de combinación con otros. El <strong>número de oxidación</strong> (o estado de oxidación) es una carga hipotética que tendría un átomo en un compuesto si todos los enlaces fueran iónicos. Es crucial para determinar la proporción de los elementos en un compuesto y para nombrar las sustancias.</p>
+            <ul>
+                <li><strong>Elementos metálicos:</strong> Generalmente poseen números de oxidación positivos.</li>
+                <li><strong>Elementos no metálicos:</strong> Pueden tener números de oxidación positivos (cuando se unen a elementos más electronegativos) o negativos (cuando se unen a metales o elementos menos electronegativos).</li>
+                <li><strong>Oxígeno:</strong> Casi siempre -2, excepto en peróxidos (-1) o con flúor (+2).</li>
+                <li><strong>Hidrógeno:</strong> +1 con no metales y -1 con metales.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>3. Clasificación de Compuestos Químicos</h2>
+            <p>Los compuestos se clasifican principalmente en dos grandes grupos:</p>
+
+            <h3>3.1. Compuestos Inorgánicos</h3>
+            <p>Estudian las sustancias que no tienen como elemento principal el carbono, o lo tienen en formas simples como CO, CO₂, etc. Se subdividen en:</p>
+            <ul>
+                <li><strong>Óxidos:</strong> Combinación de un elemento con oxígeno.
+                    <ul>
+                        <li>Óxidos metálicos (óxidos básicos): Metal + O. Ej: Fe₂O₃ (Óxido de hierro(III)).</li>
+                        <li>Óxidos no metálicos (óxidos ácidos o anhídridos): No metal + O. Ej: SO₂ (Dióxido de azufre).</li>
+                    </ul>
+                </li>
+                <li><strong>Hidruros:</strong> Combinación de un elemento con hidrógeno.
+                    <ul>
+                        <li>Hidruros metálicos: Metal + H. Ej: NaH (Hidruro de sodio).</li>
+                        <li>Hidruros no metálicos: No metal + H. Ej: HCl (Cloruro de hidrógeno).</li>
+                    </ul>
+                </li>
+                <li><strong>Ácidos:</strong>
+                    <ul>
+                        <li>Hidrácidos: H + No metal (del grupo 16 o 17). Ej: H₂S (Ácido sulfhídrico).</li>
+                        <li>Oxoácidos: H + No metal + O. Derivan de óxidos no metálicos. Ej: H₂SO₄ (Ácido sulfúrico).</li>
+                    </ul>
+                </li>
+                <li><strong>Bases (Hidróxidos):</strong> Metal + grupo OH⁻ (hidroxilo). Ej: NaOH (Hidróxido de sodio).</li>
+                <li><strong>Sales:</strong> Combinación de un metal o amonio con un no metal o un radical ácido.
+                    <ul>
+                        <li>Sales binarias: Metal + No metal. Ej: NaCl (Cloruro de sodio).</li>
+                        <li>Oxosales: Metal + radical de oxoácido. Ej: CaSO₄ (Sulfato de calcio).</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>3.2. Compuestos Orgánicos</h3>
+            <p>Estudian las sustancias que tienen como elemento principal el carbono, generalmente combinado con hidrógeno, oxígeno, nitrógeno, etc. La química orgánica es una rama muy extensa y posee su propio sistema de nomenclatura basado en la estructura de la cadena carbonada (alcanos, alquenos, alquinos, alcoholes, ácidos carboxílicos, etc.).</p>
+        </section>
+
+        <section>
+            <h2>4. Sistemas de Nomenclatura Química (IUPAC)</h2>
+            <p>La IUPAC ha establecido tres sistemas principales para nombrar compuestos inorgánicos, que a menudo se utilizan de forma complementaria:</p>
+
+            <h3>4.1. Nomenclatura Sistemática (o de Prefijos Multiplicadores)</h3>
+            <p>Este sistema indica el número de átomos de cada elemento en la fórmula utilizando prefijos numéricos griegos (mono-, di-, tri-, tetra-, penta-, hexa-, hepta-, etc.). Es el más explícito y menos ambiguo.</p>
+            <div class="ejemplo">
+                Fórmula: CO₂<br>
+                Nombre Sistemático: Dióxido de carbono (di- por dos oxígenos)
+                <br><br>
+                Fórmula: PCl₅<br>
+                Nombre Sistemático: Pentacloruro de fósforo (penta- por cinco cloros)
+            </div>
+
+            <h3>4.2. Nomenclatura de Stock (o de Números de Oxidación)</h3>
+            <p>Este sistema utiliza números romanos entre paréntesis después del nombre del elemento para indicar el número de oxidación del elemento que puede tener varios estados de oxidación. Se usa principalmente para metales.</p>
+            <div class="ejemplo">
+                Fórmula: Fe₂O₃<br>
+                Nombre de Stock: Óxido de hierro(III) (el hierro trabaja con +3)
+                <br><br>
+                Fórmula: FeO<br>
+                Nombre de Stock: Óxido de hierro(II) (el hierro trabaja con +2)
+            </div>
+
+            <h3>4.3. Nomenclatura Tradicional (o Clásica)</h3>
+            <p>Aunque está en desuso por la IUPAC para nuevas sustancias, sigue siendo muy utilizada y reconocida. Emplea sufijos (-oso, -ico) y prefijos (hipo-, per-) para indicar los distintos números de oxidación del elemento.</p>
+            <ul>
+                <li><strong>Hipo...oso:</strong> Para el menor número de oxidación (si hay 4).</li>
+                <li><strong>...oso:</strong> Para el segundo número de oxidación (o el menor si hay 2).</li>
+                <li><strong>...ico:</strong> Para el tercer número de oxidación (o el mayor si hay 2).</li>
+                <li><strong>Per...ico:</strong> Para el mayor número de oxidación (si hay 4).</li>
+            </ul>
+            <div class="ejemplo">
+                Cloro (estados de oxidación: +1, +3, +5, +7):<br>
+                HClO (ácido hipocloroso)<br>
+                HClO₂ (ácido cloroso)<br>
+                HClO₃ (ácido clórico)<br>
+                HClO₄ (ácido perclórico)
+            </div>
+
+            <div class="importante">
+                <h4>¡Importante!</h4>
+                <p>No todos los compuestos se nombran con los tres sistemas. La elección del sistema depende del tipo de compuesto y de las recomendaciones de la IUPAC. En la práctica, es común ver una combinación o el uso del sistema más adecuado para la claridad.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>5. Pasos Generales para Formular y Nombrar Compuestos</h2>
+
+            <h3>5.1. Para Formular (de Nombre a Fórmula)</h3>
+            <ol>
+                <li><strong>Identificar los elementos y sus valencias/estados de oxidación:</strong> Reconoce qué elementos participan y cuáles son sus números de oxidación más comunes o los indicados en el nombre.</li>
+                <li><strong>Escribir los símbolos de los elementos:</strong> Generalmente, el elemento más electropositivo (metal o hidrógeno) primero, seguido del más electronegativo (no metal u oxígeno).</li>
+                <li><strong>Intercambiar las valencias/números de oxidación:</strong> El número de oxidación de un elemento se convierte en el subíndice del otro (en valor absoluto).</li>
+                <li><strong>Simplificar subíndices (si es posible):</strong> Si los subíndices son divisibles por un número común, se simplifican a su mínima expresión. (Excepción: en óxidos de elementos que tienen valencias pares, no se simplifica si no se indica lo contrario en la nomenclatura de stock).</li>
+                <li><strong>Verificar la carga neta:</strong> Asegúrate de que la suma de las cargas de los átomos sea cero (en compuestos neutros).</li>
+            </ol>
+            <div class="ejemplo">
+                Ejemplo: Óxido de Aluminio(III)<br>
+                1. Elementos: Al (+3), O (-2)<br>
+                2. Símbolos: Al O<br>
+                3. Intercambiar valencias: Al₂O₃<br>
+                4. No se puede simplificar.<br>
+                5. Carga: (2 * +3) + (3 * -2) = +6 - 6 = 0
+            </div>
+
+            <h3>5.2. Para Nombrar (de Fórmula a Nombre)</h3>
+            <ol>
+                <li><strong>Identificar los elementos y su tipo de compuesto:</strong> Reconoce si es un óxido, hidruro, ácido, base, sal, etc.</li>
+                <li><strong>Determinar los números de oxidación:</strong> Calcula el número de oxidación del elemento que puede tener varios. El oxígeno es -2 (excepto peróxidos) y el hidrógeno es +1 (excepto hidruros metálicos -1). La suma de los números de oxidación debe ser cero.</li>
+                <li><strong>Aplicar el sistema de nomenclatura adecuado:</strong>
+                    <ul>
+                        <li><strong>Sistemática:</strong> Usar prefijos para indicar el número de átomos.</li>
+                        <li><strong>Stock:</strong> Usar números romanos para indicar el número de oxidación del elemento variable.</li>
+                        <li><strong>Tradicional:</strong> Usar prefijos y sufijos para indicar el número de oxidación.</li>
+                    </ul>
+                </li>
+            </ol>
+            <div class="ejemplo">
+                Ejemplo: H₂SO₄<br>
+                1. Tipo: Oxoácido (H, S, O)<br>
+                2. Números de oxidación: H (+1), O (-2). Para S: (2*1) + X + (4*-2) = 0 => 2 + X - 8 = 0 => X = +6. Azufre trabaja con +6.<br>
+                3. Nomenclatura:
+                    <ul>
+                        <li>Tradicional: Ácido sulfúrico (sulf- por azufre, -ico por +6, que es su mayor valencia).</li>
+                        <li>Stock: Ácido tetraoxosulfúrico(VI) (menos común para ácidos).</li>
+                        <li>Sistemática: Tetraoxosulfato(VI) de hidrógeno (para sales derivadas o compuestos complejos, pero en oxoácidos se prefiere la tradicional o Stock simplificada).</li>
+                    </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>6. Importancia y Aplicaciones de la Formulación Química</h2>
+            <p>La formulación y nomenclatura química no son solo un ejercicio académico, sino herramientas esenciales con aplicaciones críticas en diversas áreas:</p>
+            <ul>
+                <li><strong>Industria Química:</strong> Fundamental para la producción, control de calidad y seguridad en la fabricación de fármacos, plásticos, fertilizantes, productos de limpieza, etc.</li>
+                <li><strong>Medicina y Farmacia:</strong> Para identificar principios activos, dosificaciones y reacciones adversas de medicamentos. Los nombres sistemáticos y fórmulas son vitales para la investigación y el desarrollo de nuevos tratamientos.</li>
+                <li><strong>Ciencias Ambientales:</strong> Para el estudio de contaminantes, ciclos biogeoquímicos y desarrollo de estrategias de remediación. Conocer las fórmulas de gases de efecto invernadero o de contaminantes del agua es crucial.</li>
+                <li><strong>Investigación Científica:</strong> Permite a los investigadores de todo el mundo comunicarse de forma inequívoca sobre sus descubrimientos, replicar experimentos y construir sobre el conocimiento existente.</li>
+                <li><strong>Educación:</strong> Constituye la base para el aprendizaje de conceptos más avanzados en química y otras ciencias relacionadas.</li>
+            </ul>
+            <div class="importante">
+                <p>En resumen, la formulación y nomenclatura química son el alfabeto y la gramática del lenguaje de la química. Dominarlos no solo facilita el estudio de esta ciencia, sino que abre las puertas a una comprensión profunda del mundo material que nos rodea y a la capacidad de innovar y resolver problemas complejos.</p>
+            </div>
+        </section>
+
+        <div class="back-link">
+            <p><a href="/">Volver a la herramienta principal</a></p>
+        </div>
     </div>
 </body>
 </html>
