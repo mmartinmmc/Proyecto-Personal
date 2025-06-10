@@ -54,9 +54,10 @@ def buscar_compuesto(tipo_busqueda, valor_busqueda, nomenclatura_devolver=None):
     elif tipo_busqueda == "nomenclatura":
         # Buscar por nomenclatura (en las tres columnas)
        mask = (
-            df['Sistematica'].str.lower().str.strip().str.contains(valor_busqueda, regex=False) | 
-            df['Stock'].str.lower().str.strip().str.contains(valor_busqueda, regex=False) |        
-            df['Tradicional'].str.lower().str.strip().str.contains(valor_busqueda, regex=False)    
+            df['Sistematica'].astype(str).str.lower().str.strip().str.contains(valor_busqueda, regex=False, na=False) |  # <<< na=False
+            df['Stock'].astype(str).str.lower().str.strip().str.contains(valor_busqueda, regex=False, na=False) |        # <<< na=False
+            df['Tradicional'].astype(str).str.lower().str.strip().str.contains(valor_busqueda, regex=False, na=False)    # <<< na=False
+        )    
         # Devolver solo las columnas necesarias
         resultados = df[mask]
     else:
