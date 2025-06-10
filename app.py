@@ -58,8 +58,8 @@ def buscar_compuesto(tipo_busqueda, valor_busqueda, nomenclatura_devolver=None):
             df['Stock'].astype(str).str.lower().str.strip().str.contains(valor_busqueda, regex=False, na=False) |        # <<< na=False
             df['Tradicional'].astype(str).str.lower().str.strip().str.contains(valor_busqueda, regex=False, na=False)    # <<< na=False
         )    
-    # Devolver solo las columnas necesarias
-    resultados = df[mask]
+        # Devolver solo las columnas necesarias
+        resultados = df[mask]
     else:
         return None  # Tipo de búsqueda no válido
     
