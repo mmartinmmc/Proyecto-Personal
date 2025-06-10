@@ -68,6 +68,14 @@ def buscar_compuesto(tipo_busqueda, valor_busqueda, nomenclatura_devolver=None):
 def index():
     return render_template('index.html', titulo=TITULO)
 
+# --- NUEVO CÓDIGO AÑADIDO ---
+# Ruta para la página de información
+@app.route('/informacion')
+def informacion():
+    # Renderiza el nuevo template que creaste
+    return render_template('informacion.html', titulo="Guía de Nomenclatura")
+# -----------------------------
+
 # Ruta para la búsqueda
 @app.route('/buscar', methods=['POST'])
 def buscar():
@@ -97,10 +105,10 @@ def buscar():
 
         # Pasar el DataFrame y la nomenclatura seleccionada a la plantilla
         return render_template('resultados.html', titulo=TITULO, tipo_busqueda=tipo_busqueda,
-                               valor_busqueda=valor_busqueda,
-                               resultados=resultados,
-                               nomenclatura_devolver=nomenclatura_devolver,  # Pasar la nomenclatura seleccionada
-                               error=None)
+                                     valor_busqueda=valor_busqueda,
+                                     resultados=resultados,
+                                     nomenclatura_devolver=nomenclatura_devolver,  # Pasar la nomenclatura seleccionada
+                                     error=None)
     except Exception as e:
         return render_template('resultados.html', titulo=TITULO, error=f"❌ Error interno: {str(e)}"), 500
 
