@@ -6,7 +6,7 @@
     <title>Información Clave sobre Formulación Química</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <style>
-        /* Estilos específicos para esta página si es necesario */
+        /* Estilos generales (los que ya tenías y los que moverías de aquí a styles.css) */
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
@@ -56,7 +56,7 @@
             margin: 10px 0;
             border-left: 3px solid #ccc;
             font-family: monospace;
-            white-space: pre-wrap; /* Para mantener saltos de línea y espacios */
+            white-space: pre-wrap;
         }
         .back-link {
             display: block;
@@ -71,6 +71,25 @@
         }
         .back-link a:hover {
             text-decoration: underline;
+        }
+
+        /* Estilos para videos responsive */
+        .video-responsive {
+            position: relative;
+            padding-bottom: 56.25%; /* Relación de aspecto 16:9 (altura / ancho = 9 / 16 = 0.5625) */
+            padding-top: 25px; /* Para ocultar controles o título inicial de YouTube */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 20px; /* Espacio entre videos */
+            background-color: #000; /* Fondo negro mientras carga el video */
+        }
+        .video-responsive iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
     </style>
 </head>
@@ -244,7 +263,60 @@
         </section>
 
         <section>
-            <h2>6. Importancia y Aplicaciones de la Formulación Química</h2>
+            <h2>6. Estequiometría</h2>
+            <p>La <strong>estequiometría</strong> es la rama de la química que estudia las relaciones cuantitativas entre los reactivos y productos en una reacción química. Permite calcular las cantidades de sustancias que reaccionan y se producen en una reacción química balanceada.</p>
+            <h3>6.1. Conceptos clave</h3>
+            <ul>
+              <li><strong>Ecuación química balanceada:</strong> Representación simbólica de una reacción química donde el número de átomos de cada elemento es el mismo en los reactivos y en los productos.</li>
+              <li><strong>Mol:</strong> Unidad de cantidad de sustancia en el Sistema Internacional de Unidades (SI). Un mol contiene 6.022 x 10^23 entidades elementales (átomos, moléculas, iones, etc.).</li>
+              <li><strong>Masa molar:</strong> Masa de un mol de una sustancia, expresada en gramos/mol.</li>
+              <li><strong>Reactivo limitante:</strong> Reactivo que se consume completamente en una reacción química y determina la cantidad máxima de producto que se puede formar.</li>
+              <li><strong>Rendimiento de reacción:</strong> Cantidad de producto obtenido en una reacción química, comparado con la cantidad teórica calculada estequiométricamente.</li>
+            </ul>
+            <h3>6.2. Cálculos estequiométricos</h3>
+            <p>Los cálculos estequiométricos involucran la conversión entre masa, moles y volumen de las sustancias en una reacción química, utilizando la ecuación química balanceada y las masas molares.</p>
+            <div class="ejemplo">
+              Ejemplo:
+              Dada la reacción: 2 H₂ + O₂ → 2 H₂O
+              Si reaccionan 4 gramos de H₂, ¿cuántos gramos de H₂O se producen?
+              <ol>
+                <li>Masa molar de H₂: 2 g/mol</li>
+                <li>Moles de H₂: 4 g / (2 g/mol) = 2 moles</li>
+                <li>De la ecuación balanceada, 2 moles de H₂ producen 2 moles de H₂O.</li>
+                <li>Masa molar de H₂O: 18 g/mol</li>
+                <li>Masa de H₂O producida: 2 moles * (18 g/mol) = 36 gramos</li>
+              </ol>
+            </div>
+        </section>
+
+        <section>
+            <h2>7. Recursos Visuales y Ejemplos Prácticos</h2>
+            <p>Para complementar la información teórica, a continuación encontrarás videos que explican de forma visual y práctica algunos de los conceptos clave de la formulación y nomenclatura química, y ahora también sobre estequiometría.</p>
+
+            <h3>7.1. Video: Cómo formular en 8 minutos 👍 Formulación química ⚛️ ideas básicas</h3>
+            <div class="video-responsive">
+                <iframe src="http://www.youtube.com/watch?v=QrJSL0VN8yE?controls=1&rel=0"
+                        title="Cómo formular en 8 minutos 👍 Formulación química ⚛️ ideas básicas"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <p>Este video ofrece una visión general sobre cómo empezar a formular compuestos inorgánicos, explicando las bases de los elementos y las valencias.</p>
+
+            <h3>7.2. Video: ESTEQUIOMETRÍA PASO A PASO CON EJEMPLOS | Química básica</h3>
+            <div class="video-responsive">
+                <iframe src="http://www.youtube.com/watch?v=o5n-Ok8vdgE?controls=1&rel=0"
+                        title="ESTEQUIOMETRÍA PASO A PASO CON EJEMPLOS | Química básica"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <p>En este video, se explica la estequiometría paso a paso con ejemplos prácticos.</p>
+
+        </section>
+
+        <section>
+            <h2>8. Importancia y Aplicaciones de la Formulación Química</h2>
             <p>La formulación y nomenclatura química no son solo un ejercicio académico, sino herramientas esenciales con aplicaciones críticas en diversas áreas:</p>
             <ul>
                 <li><strong>Industria Química:</strong> Fundamental para la producción, control de calidad y seguridad en la fabricación de fármacos, plásticos, fertilizantes, productos de limpieza, etc.</li>
