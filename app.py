@@ -97,11 +97,17 @@ def buscar():
     except Exception as e:
         return render_template('resultados.html', titulo=TITULO, error=f"❌ Error interno: {str(e)}"), 500
 
-# Ruta del test interactivo
+# Ruta del test interactivo con manejo de errores para depuración
 @app.route("/test")
 def test():
-    preguntas = cargar_preguntas()
-    return render_template("test.html", titulo="Test de Formulación Química", preguntas=preguntas)
+    try:
+        preguntas = cargar_preguntas()
+        return render_template("test.html", titulo="Test de Formulación Química", preguntas=preguntas)
+    except Exception as e:
+        import traceback
+        tb = traceback.format_exc()
+        # Mostrar el error detallado en HTML para facilitar la depuración
+        return f"<h1>Error al cargar test</h1><pre>{tb}</pre>", 500
 
 @app.route("/evaluar_test", methods=["POST"])
 def evaluar_test():
@@ -127,18 +133,29 @@ def evaluar_test():
 
     return render_template("resultados.html", titulo="Resultados del Test", resultados=resultados, puntaje=puntaje, total=total)
 
+# Función para cargar preguntas del DataFrame de forma segura
 def cargar_preguntas():
     preguntas = []
     if df is None or df.empty:
         return preguntas
 
+    # Aseguramos que existan columnas necesarias
+    columnas_necesarias = {'Formula2', 'Sistematica', 'Stock', 'Tradicional'}
+    if not columnas_necesarias.issubset(df.columns):
+        return preguntas
+
+    # Seleccionar hasta 10 compuestos al azar
     seleccionadas = df.sample(n=min(10, len(df)))
+
     for _, fila in seleccionadas.iterrows():
+        # Elegir tipo de pregunta al azar
         tipo = random.choice(["formula_a_nombre", "nombre_a_formula"])
+
         if tipo == "formula_a_nombre":
+            nombre = fila.get("Tradicional") or fila.get("Stock") or fila.get("Sistematica") or ""
             preguntas.append({
                 "enunciado": f"¿Cuál es el nombre del compuesto {fila['Formula2']}?",
-                "respuesta": fila.get("Tradicional") or fila.get("Stock") or fila.get("Sistematica") or "",
+                "respuesta": nombre,
             })
         else:
             nombre = fila.get("Tradicional") or fila.get("Stock") or fila.get("Sistematica")
