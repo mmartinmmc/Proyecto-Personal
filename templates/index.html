@@ -25,7 +25,8 @@
     <div class="container-main">
         <h1>{{ titulo }}</h1>
 
-        <form action="/buscar" method="POST" class="card"> <label for="tipo_busqueda">Buscar por:</label>
+        <form action="/buscar" method="POST" class="card">
+            <label for="tipo_busqueda">Buscar por:</label>
             <select id="tipo_busqueda" name="tipo_busqueda" onchange="mostrarCampoBusqueda()" required>
                 <option value="formula">Fórmula</option>
                 <option value="nomenclatura">Nomenclatura</option>
@@ -49,21 +50,7 @@
             <button type="submit">Buscar</button>
         </form>
 
-        <div class="desplegable-grid"> <div class="desplegable">
-                <h3>Teoría sobre la formulación</h3>
-                <p>Aquí puedes encontrar información teórica sobre la formulación química.</p>
-                </div>
-
-            <div class="desplegable">
-                <h3>Ejercicios de práctica</h3>
-                <p>Practica tus habilidades con ejercicios de formulación química.</p>
-                </div>
-
-            <div class="desplegable">
-                <h3>Proceso de creación</h3>
-                <p>Descubre cómo se crean y nombran los compuestos químicos.</p>
-                </div>
-
+        <div class="desplegable-grid">
             <div class="desplegable">
                 <h3><a href="/informacion">Información Clave sobre Formulación</a></h3>
                 <p>Haz clic aquí para acceder a un apartado con información esencial sobre este tema.</p>
