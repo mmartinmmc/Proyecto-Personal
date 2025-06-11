@@ -16,6 +16,8 @@
                     if (link.getAttribute('href') === '/test') {
                         link.classList.add('active');
                     }
+                } else if (currentPath === '/informe_proyecto' && link.getAttribute('href') === '/informe_proyecto') {
+                    link.classList.add('active');
                 } else if (link.getAttribute('href') === currentPath) {
                     link.classList.add('active');
                 }
@@ -29,6 +31,7 @@
             <div class="navbar-item"><a href="/">Herramienta Principal</a></div>
             <div class="navbar-item"><a href="/informacion">Información Clave</a></div>
             <div class="navbar-item"><a href="/test" class="active">Test de Conocimientos</a></div>
+            <div class="navbar-item"><a href="/informe_proyecto">Informe del Proyecto</a></div>
         </div>
     </nav>
 
