@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }} - Comentarios</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script type="module">
+        // Importar las funciones necesarias de Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, serverTimestamp, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        let db;
+        let auth;
+        let userId = 'anonimo'; // Valor por defecto
+
+        // Función para inicializar Firebase y autenticar al usuario
+        async function initFirebase() {
+            try {
+                // Obtener las variables globales de Canvas
+                const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+                const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+                const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+                if (!firebaseConfig) {
+                    console.error("Error: firebaseConfig no está definido. No se puede inicializar Firebase.");
+                    return;
+                }
+
+                const app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
+
+                onAuthStateChanged(auth, async (user) => {
+                    if (user) {
+                        userId = user.uid;
+                        document.getElementById('user-id-display').textContent = `Tu ID de usuario: ${userId}`;
+                        console.log("Usuario autenticado:", userId);
+                        loadComments(); // Cargar comentarios una vez que el usuario esté autenticado
+                    } else {
+                        // Si no hay token de autenticación inicial, iniciar sesión de forma anónima
+                        if (!initialAuthToken) {
+                            try {
+                                const anonUser = await signInAnonymously(auth);
+                                userId = anonUser.user.uid;
+                                document.getElementById('user-id-display').textContent = `Tu ID de usuario: ${userId}`;
+                                console.log("Sesión anónima iniciada:", userId);
+                                loadComments();
+                            } catch (error) {
+                                console.error("Error al iniciar sesión anónima:", error);
+                                document.getElementById('message-box').textContent = "Error de autenticación. No se pueden cargar los comentarios.";
+                                document.getElementById('message-box').className = 'message-box error';
+                            }
+                        }
+                    }
+                });
+
+                // Intentar iniciar sesión con el token personalizado si está disponible
+                if (initialAuthToken) {
+                    try {
+                        await signInWithCustomToken(auth, initialAuthToken);
+                        console.log("Sesión con token personalizado iniciada.");
+                    } catch (error) {
+                        console.error("Error al iniciar sesión con token personalizado:", error);
+                        // Fallback a anónimo si el token personalizado falla
+                        try {
+                            await signInAnonymously(auth);
+                            console.log("Fallback: Sesión anónima iniciada.");
+                        } catch (anonError) {
+                            console.error("Error en fallback a sesión anónima:", anonError);
+                            document.getElementById('message-box').textContent = "Error de autenticación crítico. No se pueden cargar los comentarios.";
+                            document.getElementById('message-box').className = 'message-box error';
+                        }
+                    }
+                }
+
+            } catch (error) {
+                console.error("Error al inicializar Firebase:", error);
+                document.getElementById('message-box').textContent = "Error al inicializar la aplicación. Verifica la configuración de Firebase.";
+                document.getElementById('message-box').className = 'message-box error';
+            }
+        }
+
+        // Función para guardar un comentario en Firestore
+        async function saveComment() {
+            const commentInput = document.getElementById('comment-text');
+            const commentText = commentInput.value.trim();
+            const messageBox = document.getElementById('message-box');
+            messageBox.className = 'message-box'; // Limpiar clases anteriores
+            messageBox.textContent = ''; // Limpiar mensaje anterior
+
+            if (!commentText) {
+                messageBox.textContent = 'Por favor, escribe tu comentario antes de enviarlo.';
+                messageBox.className = 'message-box error';
+                return;
+            }
+
+            if (!db) {
+                messageBox.textContent = 'La base de datos no está lista. Inténtalo de nuevo en un momento.';
+                messageBox.className = 'message-box error';
+                console.error("Firestore DB no está inicializado.");
+                return;
+            }
+
+            // Mostrar indicador de carga
+            document.getElementById('loading-indicator').style.display = 'block';
+            document.getElementById('submit-button').disabled = true;
+
+            try {
+                // Ruta para datos públicos (para compartir con otros usuarios)
+                const commentsCollectionRef = collection(db, `artifacts/${__app_id}/public/data/comments`);
+
+                await addDoc(commentsCollectionRef, {
+                    userId: userId, // Usar el ID de usuario autenticado o anónimo
+                    comment: commentText,
+                    timestamp: serverTimestamp() // Marca de tiempo del servidor
+                });
+
+                commentInput.value = ''; // Limpiar el input
+                messageBox.textContent = '¡Comentario enviado con éxito!';
+                messageBox.className = 'message-box success';
+                console.log("Comentario guardado con éxito.");
+
+            } catch (e) {
+                messageBox.textContent = `Error al enviar el comentario: ${e.message}`;
+                messageBox.className = 'message-box error';
+                console.error("Error al añadir documento: ", e);
+            } finally {
+                // Ocultar indicador de carga
+                document.getElementById('loading-indicator').style.display = 'none';
+                document.getElementById('submit-button').disabled = false;
+            }
+        }
+
+        // Función para cargar y mostrar los comentarios en tiempo real
+        function loadComments() {
+            if (!db) {
+                console.error("Firestore DB no está inicializado para cargar comentarios.");
+                return;
+            }
+
+            const commentsList = document.getElementById('comments-list');
+            const commentsCollectionRef = collection(db, `artifacts/${__app_id}/public/data/comments`);
+            const q = query(commentsCollectionRef, orderBy('timestamp', 'desc')); // Ordenar por fecha, los más recientes primero
+
+            onSnapshot(q, (snapshot) => {
+                commentsList.innerHTML = ''; // Limpiar la lista antes de añadir nuevos comentarios
+                if (snapshot.empty) {
+                    commentsList.innerHTML = '<p class="text-center text-gray-500">No hay comentarios todavía. ¡Sé el primero en dejar uno!</p>';
+                    return;
+                }
+                snapshot.forEach((doc) => {
+                    const commentData = doc.data();
+                    const commentElement = document.createElement('div');
+                    commentElement.className = 'comment-item bg-white p-4 rounded-lg shadow-sm mb-4';
+                    
+                    const timestamp = commentData.timestamp ? new Date(commentData.timestamp.seconds * 1000).toLocaleString() : 'Fecha desconocida';
+
+                    commentElement.innerHTML = `
+                        <p class="text-gray-800 break-words">${commentData.comment}</p>
+                        <p class="text-sm text-gray-600 mt-2">
+                            <span class="font-semibold">Usuario:</span> ${commentData.userId}
+                            <span class="ml-4 font-semibold">Fecha:</span> ${timestamp}
+                        </p>
+                    `;
+                    commentsList.appendChild(commentElement);
+                });
+            }, (error) => {
+                console.error("Error al obtener comentarios en tiempo real:", error);
+                document.getElementById('message-box').textContent = `Error al cargar los comentarios: ${error.message}`;
+                document.getElementById('message-box').className = 'message-box error';
+            });
+        }
+
+        // Script para resaltar el enlace activo del menú (copiado de otras plantillas)
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('.navbar-item a');
+            navLinks.forEach(link => {
+                // Resaltar "Test de Conocimientos" si estamos en /test, /pregunta, /resultados_test
+                if (currentPath.includes('/test') || currentPath.includes('/pregunta') || currentPath.includes('/resultados_test')) {
+                    if (link.getAttribute('href') === '/test') {
+                        link.classList.add('active');
+                    }
+                } else if (currentPath === '/informe_proyecto' && link.getAttribute('href') === '/informe_proyecto') {
+                    link.classList.add('active');
+                } else if (currentPath === '/comentarios' && link.getAttribute('href') === '/comentarios') {
+                    link.classList.add('active');
+                }
+                else if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Inicializar Firebase cuando el DOM esté completamente cargado
+            initFirebase();
+            document.getElementById('submit-button').addEventListener('click', saveComment);
+        });
+    </script>
+    <style>
+        .comment-form {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .comment-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            resize: vertical; /* Permite redimensionar verticalmente */
+            min-height: 100px;
+        }
+        .comment-form button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .comment-form button:hover {
+            background-color: #0056b3;
+        }
+        .comment-form button:disabled {
+            background-color: #a0aec0;
+            cursor: not-allowed;
+        }
+        .comments-list-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .comment-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+        .comment-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .message-box {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+            display: none; /* Oculto por defecto */
+        }
+        .message-box.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        .message-box.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        #loading-indicator {
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic;
+            color: #6c757d;
+            display: none; /* Oculto por defecto */
+        }
+        .user-id-display {
+            font-size: 0.9em;
+            color: #6c757d;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-item"><a href="/">Herramienta Principal</a></div>
+            <div class="navbar-item"><a href="/informacion">Información Clave</a></div>
+            <div class="navbar-item"><a href="/test">Test de Conocimientos</a></div>
+            <div class="navbar-item"><a href="/informe_proyecto">Informe del Proyecto</a></div>
+            <div class="navbar-item"><a href="/comentarios" class="active">Comentarios</a></div>{# Nuevo enlace #}
+        </div>
+    </nav>
+
+    <div class="container-main">
+        <h1>Comentarios y Sugerencias</h1>
+        <p>¡Ayúdanos a mejorar! Deja tus comentarios o sugerencias para la aplicación de formulación química.</p>
+
+        <div class="comment-form">
+            <div id="message-box" class="message-box"></div>
+            <textarea id="comment-text" placeholder="Escribe tu comentario aquí..." maxlength="500"></textarea>
+            <button id="submit-button">Enviar Comentario</button>
+            <div id="loading-indicator">Enviando comentario...</div>
+            <p id="user-id-display" class="user-id-display">Conectando...</p>
+        </div>
+
+        <div class="comments-list-section">
+            <h2>Comentarios de Otros Usuarios</h2>
+            <div id="comments-list">
+                <!-- Los comentarios se cargarán aquí dinámicamente -->
+                <p class="text-center text-gray-500">Cargando comentarios...</p>
+            </div>
+        </div>
+
+        <div class="back-link">
+            <p><a href="/">Volver a la herramienta principal</a></p>
+        </div>
+    </div>
+    <div class="footer">
+        <p>© 2025 Mi Propia IA - Mateo Martín Castro</p>
+    </div>
+</body>
+</html>
