@@ -131,7 +131,8 @@ def evaluar_test():
         if correcta:
             puntaje += 1
 
-    return render_template("resultados.html", titulo="Resultados del Test", resultados=resultados, puntaje=puntaje, total=total)
+    # *** CAMBIO: usar un template específico para resultados del test ***
+    return render_template("resultados_test.html", titulo="Resultados del Test", resultados=resultados, puntaje=puntaje, total=total)
 
 # Función para cargar preguntas del DataFrame de forma segura
 def cargar_preguntas():
