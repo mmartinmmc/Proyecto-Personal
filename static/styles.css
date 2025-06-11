@@ -582,3 +582,83 @@ button:hover {
         min-width: 320px; /* Asegura un mínimo para la tabla en móviles muy pequeños */
     }
 }
+
+/* --- ESTILOS ADICIONALES PARA BOTONES DE DIFICULTAD --- */
+.difficulty-selection {
+    text-align: center; /* Centra el texto y los elementos inline-block */
+    margin-top: 30px;
+    padding: 20px;
+    background-color: var(--background-semi-transparent);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.difficulty-selection p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.difficulty-selection form {
+    display: inline-block; /* Permite que los formularios estén en la misma línea */
+    margin: 0 15px; /* Espacio entre los botones */
+    max-width: none; /* Elimina la restricción de max-width del formulario general */
+    box-shadow: none; /* Elimina la sombra del formulario general */
+    background: none; /* Elimina el fondo del formulario general */
+    padding: 0; /* Elimina el padding del formulario general */
+}
+
+.difficulty-selection button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: 700;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra para los botones */
+    width: auto; /* Ajusta el ancho al contenido */
+    max-width: none; /* Asegura que no se limite el ancho por reglas generales */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Estilo para el botón Fácil */
+.difficulty-selection .button-easy {
+    background-color: #28a745; /* Verde */
+    background-image: linear-gradient(45deg, #28a745 0%, #218838 100%);
+    border: 2px solid #1e7e34;
+}
+
+.difficulty-selection .button-easy:hover {
+    background-color: #218838;
+    background-image: linear-gradient(45deg, #218838 0%, #1e7e34 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+/* Estilo para el botón Difícil */
+.difficulty-selection .button-hard {
+    background-color: #dc3545; /* Rojo */
+    background-image: linear-gradient(45deg, #dc3545 0%, #c82333 100%);
+    border: 2px solid #bd2130;
+}
+
+.difficulty-selection .button-hard:hover {
+    background-color: #c82333;
+    background-image: linear-gradient(45deg, #c82333 0%, #bd2130 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+/* Responsive para botones de dificultad */
+@media (max-width: 600px) {
+    .difficulty-selection form {
+        display: block; /* Apila los formularios en pantallas más pequeñas */
+        margin: 10px auto; /* Centra y da espacio vertical */
+        width: 80%; /* Ancho para botones apilados */
+        max-width: 280px; /* Max width para que no sean demasiado grandes */
+    }
+    .difficulty-selection button {
+        width: 100%; /* Asegura que ocupen todo el ancho disponible */
+        padding: 12px 20px; /* Ajusta padding */
+        font-size: 1.1em; /* Ajusta tamaño de fuente */
+    }
+}
