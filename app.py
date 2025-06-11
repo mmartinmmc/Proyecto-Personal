@@ -12,41 +12,7 @@ app.config['DEBUG'] = True
 # Título personalizado
 TITULO = "Mi Propia IA - Mateo Martín Castro" # Se actualiza el título aquí también
 
-# Definir la ruta correcta para `compuestos_quimicos.xlsx` (ajustado para tu base de datos)
-db_path_excel = os.path.join(os.path.dirname(__file__), 'compuestos_quimicos.xlsx')
-db_path_csv = os.path.join(os.path.dirname(__file__), 'data', 'Compuestos.csv') # Por si acaso, se mantiene la referencia al CSV
-
-df_compuestos = None
-
-# Intentar cargar desde Excel primero, si no, desde CSV
-if os.path.exists(db_path_excel):
-    try:
-        df_compuestos = pd.read_excel(db_path_excel)
-        print(f"✔️ Se cargó 'compuestos_quimicos.xlsx'.")
-    except Exception as e:
-        print(f"❌ Error al leer el archivo Excel '{db_path_excel}': {str(e)}")
-elif os.path.exists(db_path_csv):
-    try:
-        df_compuestos = pd.read_csv(db_path_csv)
-        print(f"✔️ Se cargó 'Compuestos.csv'.")
-    except Exception as e:
-        print(f"❌ Error al leer el archivo CSV '{db_path_csv}': {str(e)}")
-else:
-    print(f"⚠️ Error: No se encontró 'compuestos_quimicos.xlsx' ni 'Compuestos.csv'. Verifica que al menos uno esté en la ubicación correcta.")
-
-# Verificar y preparar el DataFrame
-if df_compuestos is not None:
-    columnas_requeridas = {'Formula', 'Formula2', 'Sistematica', 'Stock', 'Tradicional'}
-    if not columnas_requeridas.issubset(df_compuestos.columns):
-        df_compuestos = None
-        print(f"⚠️ Error: El archivo de datos no tiene las columnas requeridas: {columnas_requeridas}.")
-    else:
-        # Añadir columna normalizada para fórmulas (para comparación más robusta en el test)
-        df_compuestos['Formula2_Normalizada'] = df_compuestos['Formula2'].astype(str).apply(lambda x: normalizar_formula(x) if pd.notna(x) else "")
-else:
-    print("El DataFrame de compuestos no se pudo cargar. La funcionalidad de búsqueda y test podría estar limitada.")
-
-# --- Funciones Auxiliares ---
+# --- Funciones Auxiliares (MOVIDAS AQUÍ PARA SER DEFINIDAS ANTES DE USARSE) ---
 def normalizar_formula(formula):
     """
     Normaliza una fórmula química para comparación (elimina espacios, unifica subíndices, etc.).
@@ -82,6 +48,40 @@ def normalizar_formula(formula):
     normalized = re.sub(r'\s+', '', normalized) # Eliminar cualquier espacio remanente
 
     return normalized
+
+# Definir la ruta correcta para `compuestos_quimicos.xlsx` (ajustado para tu base de datos)
+db_path_excel = os.path.join(os.path.dirname(__file__), 'compuestos_quimicos.xlsx')
+db_path_csv = os.path.join(os.path.dirname(__file__), 'data', 'Compuestos.csv') # Por si acaso, se mantiene la referencia al CSV
+
+df_compuestos = None
+
+# Intentar cargar desde Excel primero, si no, desde CSV
+if os.path.exists(db_path_excel):
+    try:
+        df_compuestos = pd.read_excel(db_path_excel)
+        print(f"✔️ Se cargó 'compuestos_quimicos.xlsx'.")
+    except Exception as e:
+        print(f"❌ Error al leer el archivo Excel '{db_path_excel}': {str(e)}")
+elif os.path.exists(db_path_csv):
+    try:
+        df_compuestos = pd.read_csv(db_path_csv)
+        print(f"✔️ Se cargó 'Compuestos.csv'.")
+    except Exception as e:
+        print(f"❌ Error al leer el archivo CSV '{db_path_csv}': {str(e)}")
+else:
+    print(f"⚠️ Error: No se encontró 'compuestos_quimicos.xlsx' ni 'Compuestos.csv'. Verifica que al menos uno esté en la ubicación correcta.")
+
+# Verificar y preparar el DataFrame
+if df_compuestos is not None:
+    columnas_requeridas = {'Formula', 'Formula2', 'Sistematica', 'Stock', 'Tradicional'}
+    if not columnas_requeridas.issubset(df_compuestos.columns):
+        df_compuestos = None
+        print(f"⚠️ Error: El archivo de datos no tiene las columnas requeridas: {columnas_requeridas}.")
+    else:
+        # Añadir columna normalizada para fórmulas (para comparación más robusta en el test)
+        df_compuestos['Formula2_Normalizada'] = df_compuestos['Formula2'].astype(str).apply(lambda x: normalizar_formula(x) if pd.notna(x) else "")
+else:
+    print("El DataFrame de compuestos no se pudo cargar. La funcionalidad de búsqueda y test podría estar limitada.")
 
 def buscar_compuesto(tipo_busqueda, valor_busqueda, nomenclatura_devolver=None):
     if df_compuestos is None or df_compuestos.empty:
