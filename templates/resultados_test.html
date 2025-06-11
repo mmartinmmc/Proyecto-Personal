@@ -18,7 +18,10 @@
                     }
                 } else if (currentPath === '/informe_proyecto' && link.getAttribute('href') === '/informe_proyecto') {
                     link.classList.add('active');
-                } else if (link.getAttribute('href') === currentPath) {
+                } else if (currentPath === '/comentarios' && link.getAttribute('href') === '/comentarios') {
+                    link.classList.add('active');
+                }
+                else if (link.getAttribute('href') === currentPath) {
                     link.classList.add('active');
                 }
             });
@@ -32,6 +35,7 @@
             <div class="navbar-item"><a href="/informacion">Información Clave</a></div>
             <div class="navbar-item"><a href="/test" class="active">Test de Conocimientos</a></div>
             <div class="navbar-item"><a href="/informe_proyecto">Informe del Proyecto</a></div>
+            <div class="navbar-item"><a href="/comentarios">Comentarios</a></div>{# Nuevo enlace #}
         </div>
     </nav>
 
@@ -79,7 +83,8 @@
                 {% elif puntaje >= total * 0.4 %}
                     Buen intento, pero te recomiendo repasar algunos conceptos para mejorar tu puntuación.
                 {% else %}
-                    No te desanimes, la química puede ser difícil. Repasa y vuelve a intentarlo pronto.
+                    No te desanimes, la química puede ser difícil. Repasa y vuelve a intentarlo pronto.<br>
+                    Puedes repasar la información clave <a href="/informacion">aquí</a> o reintentar el test.
                 {% endif %}
             </div>
 
