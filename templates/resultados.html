@@ -59,6 +59,9 @@
                                 {% if nomenclatura_devolver == "tradicional" or nomenclatura_devolver == "todas" %}
                                     <th>Tradicional</th>
                                 {% endif %}
+                                {# Nuevas columnas para Características y Usos #}
+                                <th>Características</th>
+                                <th>Usos</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -74,6 +77,9 @@
                                     {% if nomenclatura_devolver == "tradicional" or nomenclatura_devolver == "todas" %}
                                         <td>{{ fila['Tradicional'] }}</td>
                                     {% endif %}
+                                    {# Mostrar Contenido de Características y Usos #}
+                                    <td>{{ fila['Caracteristicas'] if fila['Caracteristicas'] is not none else 'N/A' }}</td>
+                                    <td>{{ fila['Usos'] if fila['Usos'] is not none else 'N/A' }}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
