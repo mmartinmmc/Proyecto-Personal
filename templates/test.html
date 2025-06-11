@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mi Propia IA - Mateo Martín Castro</title>
+    <title>{{ titulo }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script>
@@ -11,7 +11,12 @@
             const currentPath = window.location.pathname;
             const navLinks = document.querySelectorAll('.navbar-item a');
             navLinks.forEach(link => {
-                if (link.getAttribute('href') === currentPath) {
+                // Resaltar "Test de Conocimientos" si estamos en /test, /pregunta, /resultados_test
+                if (currentPath.includes('/test') || currentPath.includes('/pregunta') || currentPath.includes('/resultados_test')) {
+                    if (link.getAttribute('href') === '/test') {
+                        link.classList.add('active');
+                    }
+                } else if (link.getAttribute('href') === currentPath) {
                     link.classList.add('active');
                 }
             });
@@ -29,7 +34,7 @@
 
     <div class="container-main">
         <div class="test-container">
-            <h1>Mi Propia IA - Mateo Martín Castro</h1>
+            <h1>{{ titulo }}</h1>
 
             <div class="instrucciones">
                 <p>Este test contiene 10 preguntas seleccionadas aleatoriamente de nuestra base de datos de compuestos químicos.</p>
@@ -38,19 +43,14 @@
                     <li>Otras te pedirán nombrar un compuesto dado su <strong>fórmula molecular</strong>.</li>
                     <li>Las respuestas deben escribirse con precisión: revisa tildes, subíndices (como <em>H₂O</em>), y mayúsculas si aplica.</li>
                 </ul>
-                <p>Escribe tus respuestas y presiona el botón <strong>"Enviar respuestas"</strong> al final para ver tu puntuación.</p>
+                <p>Haz clic en "Iniciar Test" para comenzar. Las preguntas se mostrarán una por una.</p>
+                {% if error %}
+                    <p class="error">{{ error }}</p>
+                {% endif %}
             </div>
 
-            <form action="/evaluar_test" method="POST">
-                {% for pregunta in preguntas %}
-                    <div class="pregunta">
-                        <label for="respuesta_{{ loop.index0 }}">{{ loop.index }}. {{ pregunta.enunciado }}</label>
-                        <input type="text" name="respuesta_{{ loop.index0 }}" id="respuesta_{{ loop.index0 }}" required>
-                        <input type="hidden" name="correcta_{{ loop.index0 }}" value="{{ pregunta.respuesta }}">
-                        <input type="hidden" name="enunciado_{{ loop.index0 }}" value="{{ pregunta.enunciado }}">
-                    </div>
-                {% endfor %}
-                <button type="submit">Enviar respuestas</button>
+            <form action="/test" method="GET">
+                <button type="submit">Iniciar Test</button>
             </form>
         </div>
     </div>
