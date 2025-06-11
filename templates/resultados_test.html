@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <title>Mi Propia IA - Mateo Martín Castro</title>
+    <title>{{ titulo }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
     <script>
@@ -11,10 +11,11 @@
             const currentPath = window.location.pathname;
             const navLinks = document.querySelectorAll('.navbar-item a');
             navLinks.forEach(link => {
-                // Si la URL actual contiene '/test' (que cubre /test y /resultados_test),
-                // activa el enlace del test.
-                if (currentPath.includes('/test')) {
-                    document.querySelector('.navbar-item a[href="/test"]').classList.add('active');
+                // Resaltar "Test de Conocimientos" si estamos en /test, /pregunta, /resultados_test
+                if (currentPath.includes('/test') || currentPath.includes('/pregunta') || currentPath.includes('/resultados_test')) {
+                    if (link.getAttribute('href') === '/test') {
+                        link.classList.add('active');
+                    }
                 } else if (link.getAttribute('href') === currentPath) {
                     link.classList.add('active');
                 }
@@ -27,13 +28,13 @@
         <div class="navbar-container">
             <div class="navbar-item"><a href="/">Herramienta Principal</a></div>
             <div class="navbar-item"><a href="/informacion">Información Clave</a></div>
-            <div class="navbar-item"><a href="/test">Test de Conocimientos</a></div>
+            <div class="navbar-item"><a href="/test" class="active">Test de Conocimientos</a></div>
         </div>
     </nav>
 
     <div class="container-main">
         <div class="test-container">
-            <h1>Mi Propia IA - Mateo Martín Castro</h1>
+            <h1>{{ titulo }}</h1>
             <div class="puntaje">
                 Has obtenido <strong>{{ puntaje }} de {{ total }}</strong> respuestas correctas.
             </div>
@@ -52,7 +53,7 @@
                     {% for r in resultados %}
                         <tr class="{{ 'correcta' if r.correcta else 'incorrecta' }}">
                             <td>{{ loop.index }}</td>
-                            <td>{{ r.enunciado }}</td>
+                            <td>{{ r.enunciado | safe }}</td> {# Usar 'safe' para el enunciado si contiene HTML (ej. <strong>) #}
                             <td>{{ r.respuesta_usuario }}</td>
                             <td>{{ r.respuesta_correcta }}</td>
                             <td>
