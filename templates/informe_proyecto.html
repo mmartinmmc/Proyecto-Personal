@@ -48,10 +48,17 @@
             const currentPath = window.location.pathname;
             const navLinks = document.querySelectorAll('.navbar-item a');
             navLinks.forEach(link => {
-                // Resaltar "Informe del Proyecto" si la ruta es /informe_proyecto
-                if (currentPath === '/informe_proyecto' && link.getAttribute('href') === '/informe_proyecto') {
+                // Resaltar "Test de Conocimientos" si estamos en /test, /pregunta, /resultados_test
+                if (currentPath.includes('/test') || currentPath.includes('/pregunta') || currentPath.includes('/resultados_test')) {
+                    if (link.getAttribute('href') === '/test') {
+                        link.classList.add('active');
+                    }
+                } else if (currentPath === '/informe_proyecto' && link.getAttribute('href') === '/informe_proyecto') {
                     link.classList.add('active');
-                } else if (link.getAttribute('href') === currentPath) {
+                } else if (currentPath === '/comentarios' && link.getAttribute('href') === '/comentarios') {
+                    link.classList.add('active');
+                }
+                else if (link.getAttribute('href') === currentPath) {
                     link.classList.add('active');
                 }
             });
@@ -65,6 +72,7 @@
             <div class="navbar-item"><a href="/informacion">Información Clave</a></div>
             <div class="navbar-item"><a href="/test">Test de Conocimientos</a></div>
             <div class="navbar-item"><a href="/informe_proyecto" class="active">Informe del Proyecto</a></div>
+            <div class="navbar-item"><a href="/comentarios">Comentarios</a></div>{# Nuevo enlace #}
         </div>
     </nav>
 
@@ -73,7 +81,7 @@
         <p>Aquí puedes ver el informe completo del proyecto de la aplicación de formulación química.</p>
 
         <div class="pdf-container">
-            <!-- El iframe carga el PDF. ¡RUTA CORREGIDA! -->
+            <!-- El iframe carga el PDF. Asegúrate de que la ruta sea correcta. -->
             <iframe src="{{ url_for('static', filename='docs/informe_proyecto.pdf') }}" title="Informe del Proyecto de Química">
                 Este navegador no soporta PDFs incrustados. Puedes descargar el <a href="{{ url_for('static', filename='docs/informe_proyecto.pdf') }}" target="_blank">informe del proyecto aquí</a>.
             </iframe>
