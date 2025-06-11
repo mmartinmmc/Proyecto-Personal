@@ -1,171 +1,315 @@
 import os
 import pandas as pd
 import random
-from flask import Flask, render_template, request
+import re # Importar el módulo re para expresiones regulares
+from flask import Flask, render_template, request, redirect, url_for, session
 
 app = Flask(__name__)
-app.config['DEBUG'] = True  # Modo depuración activado
+# ¡¡¡IMPORTANTE!!! CAMBIA ESTO POR UNA CLAVE SEGURA Y ÚNICA EN PRODUCCIÓN
+app.secret_key = 'super_secret_key_very_unique_12345'
+app.config['DEBUG'] = True
 
 # Título personalizado
-TITULO = "PROYECTO PERSONAL"
+TITULO = "Mi Propia IA - Mateo Martín Castro" # Se actualiza el título aquí también
 
-# Definir la ruta correcta para `Compuestos.csv`
-db_path = os.path.join(os.path.dirname(__file__), 'data', 'Compuestos.csv')
+# Definir la ruta correcta para `compuestos_quimicos.xlsx` (ajustado para tu base de datos)
+db_path_excel = os.path.join(os.path.dirname(__file__), 'compuestos_quimicos.xlsx')
+db_path_csv = os.path.join(os.path.dirname(__file__), 'data', 'Compuestos.csv') # Por si acaso, se mantiene la referencia al CSV
 
-# Verificar si el archivo existe antes de cargarlo
-if os.path.exists(db_path):
+df_compuestos = None
+
+# Intentar cargar desde Excel primero, si no, desde CSV
+if os.path.exists(db_path_excel):
     try:
-        df = pd.read_csv(db_path)
-        columnas_requeridas = {'Formula', 'Formula2', 'Sistematica', 'Stock', 'Tradicional'}
-        if not columnas_requeridas.issubset(df.columns):
-            df = None
-            print(f"⚠️ Error: El archivo '{db_path}' no tiene las columnas requeridas: {columnas_requeridas}.")
+        df_compuestos = pd.read_excel(db_path_excel)
+        print(f"✔️ Se cargó 'compuestos_quimicos.xlsx'.")
     except Exception as e:
-        df = None
-        print(f"⚠️ Error al leer el archivo CSV: {str(e)}")
+        print(f"❌ Error al leer el archivo Excel '{db_path_excel}': {str(e)}")
+elif os.path.exists(db_path_csv):
+    try:
+        df_compuestos = pd.read_csv(db_path_csv)
+        print(f"✔️ Se cargó 'Compuestos.csv'.")
+    except Exception as e:
+        print(f"❌ Error al leer el archivo CSV '{db_path_csv}': {str(e)}")
 else:
-    df = None
-    print(f"⚠️ Error: No se encontró '{db_path}'. Verifica que el archivo esté en la carpeta 'data/'.")
+    print(f"⚠️ Error: No se encontró 'compuestos_quimicos.xlsx' ni 'Compuestos.csv'. Verifica que al menos uno esté en la ubicación correcta.")
 
-# Función para buscar compuestos
+# Verificar y preparar el DataFrame
+if df_compuestos is not None:
+    columnas_requeridas = {'Formula', 'Formula2', 'Sistematica', 'Stock', 'Tradicional'}
+    if not columnas_requeridas.issubset(df_compuestos.columns):
+        df_compuestos = None
+        print(f"⚠️ Error: El archivo de datos no tiene las columnas requeridas: {columnas_requeridas}.")
+    else:
+        # Añadir columna normalizada para fórmulas (para comparación más robusta en el test)
+        df_compuestos['Formula2_Normalizada'] = df_compuestos['Formula2'].astype(str).apply(lambda x: normalizar_formula(x) if pd.notna(x) else "")
+else:
+    print("El DataFrame de compuestos no se pudo cargar. La funcionalidad de búsqueda y test podría estar limitada.")
+
+# --- Funciones Auxiliares ---
+def normalizar_formula(formula):
+    """
+    Normaliza una fórmula química para comparación (elimina espacios, unifica subíndices, etc.).
+    Ej: H₂O -> H2O, Nacl -> NaCl
+    """
+    if pd.isna(formula):
+        return ""
+    formula = str(formula).strip()
+    # Reemplazar subíndices unicode por dígitos ASCII
+    subindices_map = {
+        '₀': '0', '₁': '1', '₂': '2', '₃': '3', '₄': '4',
+        '₅': '5', '₆': '6', '₇': '7', '₈': '8', '₉': '9'
+    }
+    for old, new in subindices_map.items():
+        formula = formula.replace(old, new)
+
+    # Capitalizar el primer carácter de cada posible elemento (ej. co -> Co, cl -> Cl)
+    # Esto es una simplificación. Un parser real de fórmulas sería más complejo.
+    # Esta regex busca una letra mayúscula seguida opcionalmente de una minúscula,
+    # o una letra minúscula que podría ser el inicio de un nuevo elemento (ej. Fe2O3, no fe2o3)
+    def _capitalize_element_symbol(match):
+        s = match.group(0)
+        if len(s) == 1:
+            return s.upper() # Elemento de una letra siempre mayúscula
+        return s[0].upper() + s[1:].lower() # Elemento de dos letras: primera mayúscula, segunda minúscula
+
+    # Usar una expresión regular para encontrar posibles símbolos de elementos (A o Aa)
+    # y aplicar la capitalización. Esto es heurístico.
+    normalized = re.sub(r'([A-Z][a-z]?|[a-z])', _capitalize_element_symbol, formula)
+
+    # Eliminar espacios y números sueltos si no están seguidos de un símbolo de elemento.
+    # Esto es una simplificación y puede no ser robusto para todas las fórmulas.
+    normalized = re.sub(r'\s+', '', normalized) # Eliminar cualquier espacio remanente
+
+    return normalized
+
 def buscar_compuesto(tipo_busqueda, valor_busqueda, nomenclatura_devolver=None):
-    if df is None or df.empty:
+    if df_compuestos is None or df_compuestos.empty:
         return None
 
     if tipo_busqueda == "formula":
-        resultados = df[df['Formula'].str.lower() == valor_busqueda.lower()]
-        if nomenclatura_devolver == "sistematica":
-            resultados = resultados[['Formula2', 'Sistematica']]
-        elif nomenclatura_devolver == "stock":
-            resultados = resultados[['Formula2', 'Stock']]
-        elif nomenclatura_devolver == "tradicional":
-            resultados = resultados[['Formula2', 'Tradicional']]
-        elif nomenclatura_devolver == "todas":
-            resultados = resultados[['Formula2', 'Sistematica', 'Stock', 'Tradicional']]
-        else:
-            return None
-
+        # Normalizar el valor de búsqueda y la columna de fórmulas
+        formula_normalizada_buscada = normalizar_formula(valor_busqueda)
+        resultados = df_compuestos[df_compuestos['Formula2_Normalizada'] == formula_normalizada_buscada].copy()
+        return resultados if not resultados.empty else None
     elif tipo_busqueda == "nomenclatura":
-        resultados = df[
-            (df['Sistematica'].str.lower() == valor_busqueda.lower()) |
-            (df['Stock'].str.lower() == valor_busqueda.lower()) |
-            (df['Tradicional'].str.lower() == valor_busqueda.lower())
-        ]
-        resultados = resultados[['Formula2', 'Sistematica', 'Stock', 'Tradicional']]
-    else:
-        return None
+        valor_busqueda_lower = valor_busqueda.strip().lower()
+        mask = df_compuestos['Sistematica'].astype(str).str.lower().str.contains(valor_busqueda_lower, na=False) | \
+               df_compuestos['Stock'].astype(str).str.lower().str.contains(valor_busqueda_lower, na=False) | \
+               df_compuestos['Tradicional'].astype(str).str.lower().str.contains(valor_busqueda_lower, na=False)
+        resultados = df_compuestos[mask].copy()
+        return resultados if not resultados.empty else None
+    return None
 
-    return resultados if not resultados.empty else None
-
+# --- Rutas de la Aplicación ---
 @app.route('/')
 def index():
     return render_template('index.html', titulo=TITULO)
 
 @app.route('/informacion')
 def informacion():
-    return render_template('informacion.html', titulo="Guía de Nomenclatura")
+    return render_template('informacion.html', titulo=TITULO)
 
 @app.route('/buscar', methods=['POST'])
-def buscar():
-    try:
-        tipo_busqueda = request.form.get('tipo_busqueda')
-        formula = request.form.get('formula')
-        nomenclatura = request.form.get('nomenclatura')
-        nomenclatura_devolver = request.form.get('nomenclatura_devolver')
+def buscar_post():
+    tipo_busqueda = request.form['tipo_busqueda']
+    valor_busqueda = ""
+    error = None
+    nomenclatura_devolver = request.form.get('nomenclatura_devolver', 'todas')
 
-        if tipo_busqueda == "formula":
-            if not formula:
-                return render_template('resultados.html', titulo=TITULO, error="⚠️ Debes ingresar una fórmula.")
-            valor_busqueda = formula
-        elif tipo_busqueda == "nomenclatura":
-            if not nomenclatura:
-                return render_template('resultados.html', titulo=TITULO, error="⚠️ Debes ingresar una nomenclatura.")
-            valor_busqueda = nomenclatura
-        else:
-            return render_template('resultados.html', titulo=TITULO, error="⚠️ Tipo de búsqueda no válido.")
+    if tipo_busqueda == 'formula':
+        valor_busqueda = request.form['formula'].strip()
+        if not valor_busqueda:
+            error = "La fórmula no puede estar vacía."
+    elif tipo_busqueda == 'nomenclatura':
+        valor_busqueda = request.form['nomenclatura'].strip()
+        if not valor_busqueda:
+            error = "La nomenclatura no puede estar vacía."
+    else:
+        error = "Tipo de búsqueda no válido."
 
+    resultados = None
+    if not error:
         resultados = buscar_compuesto(tipo_busqueda, valor_busqueda, nomenclatura_devolver)
-
         if resultados is None or resultados.empty:
-            return render_template('resultados.html', titulo=TITULO, error="No se encontraron resultados.")
+            error = f"No se encontraron resultados para '{valor_busqueda}'."
 
-        return render_template('resultados.html', titulo=TITULO, tipo_busqueda=tipo_busqueda,
-                               valor_busqueda=valor_busqueda,
-                               resultados=resultados,
-                               nomenclatura_devolver=nomenclatura_devolver,
-                               error=None)
-    except Exception as e:
-        return render_template('resultados.html', titulo=TITULO, error=f"❌ Error interno: {str(e)}"), 500
+    return render_template('resultados.html',
+                           titulo=TITULO,
+                           tipo_busqueda=tipo_busqueda,
+                           valor_busqueda=valor_busqueda,
+                           resultados=resultados,
+                           error=error,
+                           nomenclatura_devolver=nomenclatura_devolver)
 
-# Ruta del test interactivo con manejo de errores para depuración
-@app.route("/test")
+@app.route('/test', methods=['GET'])
 def test():
-    try:
-        preguntas = cargar_preguntas()
-        return render_template("test.html", titulo="Test de Formulación Química", preguntas=preguntas)
-    except Exception as e:
-        import traceback
-        tb = traceback.format_exc()
-        # Mostrar el error detallado en HTML para facilitar la depuración
-        return f"<h1>Error al cargar test</h1><pre>{tb}</pre>", 500
+    # Reiniciar el test si se accede a /test directamente
+    session.pop('test_preguntas', None)
+    session.pop('test_respuestas_usuario', None)
+    session.pop('test_indice_actual', None)
 
-@app.route("/evaluar_test", methods=["POST"])
+    if df_compuestos is None or df_compuestos.empty:
+        return render_template('test.html', titulo=TITULO, error="No se pueden generar preguntas: No hay datos de compuestos cargados.")
+
+    # Generar 10 preguntas aleatorias
+    # Asegurarse de tener al menos 10 filas para samplear, o tomar todas si hay menos.
+    num_preguntas_a_generar = min(10, len(df_compuestos))
+    if num_preguntas_a_generar == 0:
+        return render_template('test.html', titulo=TITULO, error="No hay compuestos en la base de datos para generar preguntas.")
+
+    preguntas_df_sample = df_compuestos.sample(n=num_preguntas_a_generar).reset_index(drop=True)
+    preguntas_para_test = []
+
+    for index, row in preguntas_df_sample.iterrows():
+        # Decidir si la pregunta es de fórmula a nombre o de nombre a fórmula
+        pregunta_formula_a_nombre = random.choice([True, False])
+
+        if pregunta_formula_a_nombre: # Dar fórmula, pedir nombre
+            opciones_nomenclatura = []
+            if pd.notna(row['Sistematica']):
+                opciones_nomenclatura.append(('Sistemática', row['Sistematica']))
+            if pd.notna(row['Stock']):
+                opciones_nomenclatura.append(('Stock', row['Stock']))
+            if pd.notna(row['Tradicional']):
+                opciones_nomenclatura.append(('Tradicional', row['Tradicional']))
+
+            if opciones_nomenclatura:
+                tipo_nom_elegida, respuesta_correcta = random.choice(opciones_nomenclatura)
+                enunciado = f"¿Cuál es la nomenclatura {tipo_nom_elegida} de la fórmula: <strong>{row['Formula2']}</strong>?"
+                preguntas_para_test.append({
+                    'enunciado': enunciado,
+                    'respuesta': str(respuesta_correcta),
+                    'tipo_pregunta': 'formula_a_nombre',
+                    'formula_original': row['Formula2'],
+                    'tipo_nomenclatura_pedida': tipo_nom_elegida
+                })
+            else:
+                # Si no hay nomenclaturas disponibles, saltar esta fila o generar otro tipo de pregunta
+                continue # Saltar esta iteración
+        else: # Dar nombre, pedir fórmula
+            opciones_nomenclatura_para_pregunta = []
+            if pd.notna(row['Sistematica']):
+                opciones_nomenclatura_para_pregunta.append(row['Sistematica'])
+            if pd.notna(row['Stock']):
+                opciones_nomenclatura_para_pregunta.append(row['Stock'])
+            if pd.notna(row['Tradicional']):
+                opciones_nomenclatura_para_pregunta.append(row['Tradicional'])
+
+            if opciones_nomenclatura_para_pregunta:
+                nomenclatura_elegida = random.choice(opciones_nomenclatura_para_pregunta)
+                enunciado = f"¿Cuál es la fórmula química de: <strong>{nomenclatura_elegida}</strong>?"
+                preguntas_para_test.append({
+                    'enunciado': enunciado,
+                    'respuesta': str(row['Formula2']), # La respuesta correcta es la fórmula
+                    'tipo_pregunta': 'nombre_a_formula',
+                    'nomenclatura_original': nomenclatura_elegida
+                })
+            else:
+                # Si no hay nomenclaturas disponibles, saltar esta fila o generar otro tipo de pregunta
+                continue # Saltar esta iteración
+
+    # Asegurarse de que tenemos un número razonable de preguntas
+    if not preguntas_para_test:
+        return render_template('test.html', titulo=TITULO, error="No se pudieron generar preguntas válidas. Verifica el contenido de tu archivo de datos.")
+
+    session['test_preguntas'] = preguntas_para_test
+    session['test_respuestas_usuario'] = [None] * len(preguntas_para_test)
+    session['test_indice_actual'] = 0
+
+    # Redirigir a la primera pregunta
+    return redirect(url_for('mostrar_pregunta', indice=0))
+
+
+@app.route('/pregunta/<int:indice>', methods=['GET'])
+def mostrar_pregunta(indice):
+    preguntas = session.get('test_preguntas')
+    if not preguntas or indice >= len(preguntas) or indice < 0:
+        # Si no hay test en progreso o el índice es inválido, redirigir al inicio del test
+        return redirect(url_for('test'))
+
+    pregunta_actual = preguntas[indice]
+    total_preguntas = len(preguntas)
+    
+    return render_template('pregunta.html',
+                           titulo=TITULO,
+                           pregunta=pregunta_actual,
+                           indice_actual=indice,
+                           total_preguntas=total_preguntas)
+
+
+@app.route('/responder', methods=['POST'])
+def responder_pregunta():
+    preguntas = session.get('test_preguntas')
+    respuestas_usuario = session.get('test_respuestas_usuario')
+    indice_actual = session.get('test_indice_actual')
+
+    if not preguntas or respuestas_usuario is None or indice_actual is None:
+        # Si la sesión no es válida (por ejemplo, el usuario cerró el navegador y volvió)
+        return redirect(url_for('test'))
+
+    respuesta_dada = request.form['respuesta'].strip()
+
+    # Almacenar la respuesta del usuario
+    if indice_actual < len(respuestas_usuario): # Asegurarse de que el índice sea válido
+        respuestas_usuario[indice_actual] = respuesta_dada
+        session['test_respuestas_usuario'] = respuestas_usuario
+
+    # Incrementar el índice para la próxima pregunta
+    session['test_indice_actual'] = indice_actual + 1
+
+    if session['test_indice_actual'] < len(preguntas):
+        # Todavía hay preguntas, ir a la siguiente
+        return redirect(url_for('mostrar_pregunta', indice=session['test_indice_actual']))
+    else:
+        # Todas las preguntas respondidas, ir a evaluar
+        return redirect(url_for('evaluar_test'))
+
+@app.route('/evaluar_test')
 def evaluar_test():
-    resultados = []
-    puntaje = 0
-    total = 0
+    preguntas = session.get('test_preguntas')
+    respuestas_usuario = session.get('test_respuestas_usuario')
 
-    for i in range(10):
-        respuesta_usuario = request.form.get(f"respuesta_{i}")
-        respuesta_correcta = request.form.get(f"correcta_{i}")
-        if respuesta_usuario is None or respuesta_correcta is None:
-            continue
-        total += 1
-        correcta = respuesta_usuario.strip().lower() == respuesta_correcta.strip().lower()
-        resultados.append({
-            "pregunta": i + 1,
-            "respuesta_usuario": respuesta_usuario,
-            "respuesta_correcta": respuesta_correcta,
-            "correcta": correcta
-        })
-        if correcta:
+    if not preguntas or not respuestas_usuario:
+        return redirect(url_for('test')) # Si no hay datos, volver al test
+
+    puntaje = 0
+    resultados_test = []
+
+    for i, pregunta in enumerate(preguntas):
+        respuesta_correcta = str(pregunta['respuesta']).strip()
+        respuesta_dada = str(respuestas_usuario[i]).strip() if respuestas_usuario[i] is not None else ""
+
+        es_correcta = False
+        if pregunta['tipo_pregunta'] == 'nombre_a_formula':
+            # Para fórmulas, normalizar ambas para comparar
+            es_correcta = normalizar_formula(respuesta_dada) == normalizar_formula(respuesta_correcta)
+        else: # 'formula_a_nombre'
+            # Para nombres, comparar de forma insensible a mayúsculas/minúsculas y espacios extra
+            es_correcta = respuesta_dada.lower() == respuesta_correcta.lower()
+
+        if es_correcta:
             puntaje += 1
 
-    # *** CAMBIO: usar un template específico para resultados del test ***
-    return render_template("resultados_test.html", titulo="Resultados del Test", resultados=resultados, puntaje=puntaje, total=total)
+        resultados_test.append({
+            'enunciado': pregunta['enunciado'],
+            'respuesta_usuario': respuesta_dada,
+            'respuesta_correcta': respuesta_correcta,
+            'correcta': es_correcta
+        })
 
-# Función para cargar preguntas del DataFrame de forma segura
-def cargar_preguntas():
-    preguntas = []
-    if df is None or df.empty:
-        return preguntas
+    total_preguntas = len(preguntas)
 
-    # Aseguramos que existan columnas necesarias
-    columnas_necesarias = {'Formula2', 'Sistematica', 'Stock', 'Tradicional'}
-    if not columnas_necesarias.issubset(df.columns):
-        return preguntas
+    # Limpiar la sesión del test después de la evaluación para que un nuevo test inicie limpio
+    session.pop('test_preguntas', None)
+    session.pop('test_respuestas_usuario', None)
+    session.pop('test_indice_actual', None)
 
-    # Seleccionar hasta 10 compuestos al azar
-    seleccionadas = df.sample(n=min(10, len(df)))
-
-    for _, fila in seleccionadas.iterrows():
-        # Elegir tipo de pregunta al azar
-        tipo = random.choice(["formula_a_nombre", "nombre_a_formula"])
-
-        if tipo == "formula_a_nombre":
-            nombre = fila.get("Tradicional") or fila.get("Stock") or fila.get("Sistematica") or ""
-            preguntas.append({
-                "enunciado": f"¿Cuál es el nombre del compuesto {fila['Formula2']}?",
-                "respuesta": nombre,
-            })
-        else:
-            nombre = fila.get("Tradicional") or fila.get("Stock") or fila.get("Sistematica")
-            if nombre:
-                preguntas.append({
-                    "enunciado": f"¿Cuál es la fórmula del compuesto {nombre}?",
-                    "respuesta": fila['Formula2']
-                })
-    return preguntas
+    return render_template('resultados_test.html',
+                           titulo=TITULO,
+                           puntaje=puntaje,
+                           total=total_preguntas,
+                           resultados=resultados_test)
 
 if __name__ == '__main__':
     app.run(debug=True)
