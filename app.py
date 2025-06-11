@@ -124,6 +124,10 @@ def informacion():
 def informe_proyecto():
     return render_template('informe_proyecto.html', titulo=TITULO)
 
+# Nueva ruta para la página de comentarios
+@app.route('/comentarios')
+def comentarios():
+    return render_template('comentarios.html', titulo=TITULO)
 
 @app.route('/buscar', methods=['POST'])
 def buscar_post():
