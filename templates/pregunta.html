@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ titulo }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        // Script para resaltar el enlace activo del menú
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('.navbar-item a');
+            navLinks.forEach(link => {
+                // Resaltar "Test de Conocimientos" si estamos en /test, /pregunta, /resultados_test
+                if (currentPath.includes('/test') || currentPath.includes('/pregunta') || currentPath.includes('/resultados_test')) {
+                    if (link.getAttribute('href') === '/test') {
+                        link.classList.add('active');
+                    }
+                } else if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-item"><a href="/">Herramienta Principal</a></div>
+            <div class="navbar-item"><a href="/informacion">Información Clave</a></div>
+            <div class="navbar-item"><a href="/test" class="active">Test de Conocimientos</a></div>
+        </div>
+    </nav>
+
+    <div class="container-main">
+        <div class="test-container">
+            <h1>{{ titulo }}</h1>
+
+            <div class="pregunta">
+                <p class="numero-pregunta">Pregunta {{ indice_actual + 1 }} de {{ total_preguntas }}</p>
+                <label for="respuesta">{{ pregunta.enunciado | safe }}</label>
+                <form action="/responder" method="POST">
+                    <input type="text" name="respuesta" id="respuesta" required autofocus>
+                    <button type="submit">{{ 'Siguiente Pregunta' if indice_actual + 1 < total_preguntas else 'Finalizar Test' }}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>© 2025 Mi Propia IA - Mateo Martín Castro</p>
+    </div>
+</body>
+</html>
