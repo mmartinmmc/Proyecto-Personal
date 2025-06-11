@@ -260,7 +260,7 @@ button:hover {
 }
 
 
-/* --- Estilos específicos de información.html --- */
+/* --- Estilos específicos de informacion.html --- */
 .info-section {
     background: var(--background-semi-transparent);
     padding: 30px;
@@ -364,7 +364,7 @@ button:hover {
     border: 0;
 }
 
-/* --- Estilos específicos de test.html y resultados_test.html --- */
+/* --- Estilos específicos de test.html, pregunta.html y resultados_test.html --- */
 .test-container {
     max-width: 800px;
     margin: 30px auto;
@@ -407,9 +407,26 @@ button:hover {
 
 .pregunta label {
     font-weight: 700;
-    font-size: 1.1em;
-    margin-bottom: 10px;
+    font-size: 1.3em; /* Un poco más grande para la pregunta actual */
+    margin-bottom: 15px; /* Más espacio */
     color: var(--secondary-color);
+    display: block; /* Para que ocupe su propia línea */
+}
+
+/* Nuevo estilo para el número de pregunta */
+.pregunta .numero-pregunta {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--primary-dark-color);
+    margin-bottom: 15px;
+    text-align: center;
+    background-color: rgba(var(--primary-color), 0.1);
+    padding: 8px 15px;
+    border-radius: 8px;
+    display: inline-block;
+    min-width: 150px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* resultados_test.html específicos */
