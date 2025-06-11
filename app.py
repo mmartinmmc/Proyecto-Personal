@@ -110,6 +110,11 @@ def index():
 def informacion():
     return render_template('informacion.html', titulo=TITULO)
 
+# Nueva ruta para el informe del proyecto
+@app.route('/informe_proyecto')
+def informe_proyecto():
+    return render_template('informe_proyecto.html', titulo=TITULO)
+
 @app.route('/buscar', methods=['POST'])
 def buscar_post():
     tipo_busqueda = request.form['tipo_busqueda']
