@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>{{ titulo }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f9faff;
+            margin: 30px;
+            color: #222;
+        }
+        h1 {
+            color: #004080;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .resultado-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 25px 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #0074D9;
+            color: white;
+            font-weight: 600;
+        }
+        tr.correcta {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        tr.incorrecta {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .puntaje {
+            font-size: 22px;
+            font-weight: 700;
+            margin-top: 25px;
+            text-align: center;
+            color: #004080;
+        }
+        .mensaje-final {
+            margin-top: 15px;
+            font-style: italic;
+            text-align: center;
+            color: #555;
+        }
+        .btn-reintentar {
+            display: block;
+            margin: 30px auto 0;
+            padding: 12px 28px;
+            background-color: #0074D9;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            width: fit-content;
+        }
+        .btn-reintentar:hover {
+            background-color: #005fa3;
+        }
+        @media (max-width: 600px) {
+            body {
+                margin: 15px;
+            }
+            table {
+                font-size: 14px;
+            }
+            .resultado-container {
+                padding: 20px 15px;
+            }
+            .btn-reintentar {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resultado-container">
+        <h1>{{ titulo }}</h1>
+        <div class="puntaje">
+            Has obtenido <strong>{{ puntaje }} de {{ total }}</strong> respuestas correctas.
+        </div>
+
+        <table aria-label="Resultados del test de formulación química">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Pregunta</th>
+                    <th>Tu respuesta</th>
+                    <th>Respuesta correcta</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in resultados %}
+                    <tr class="{{ 'correcta' if r.correcta else 'incorrecta' }}">
+                        <td>{{ r.pregunta }}</td>
+                        <td>{{ r.pregunta_text if r.pregunta_text is defined else 'Pregunta ' ~ r.pregunta }}</td>
+                        <td>{{ r.respuesta_usuario }}</td>
+                        <td>{{ r.respuesta_correcta }}</td>
+                        <td>
+                            {% if r.correcta %}
+                                ✅ Correcta
+                            {% else %}
+                                ❌ Incorrecta
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="mensaje-final">
+            {% if puntaje == total %}
+                ¡Felicidades! Has acertado todas las preguntas, eres un experto en formulación química.
+            {% elif puntaje >= total * 0.7 %}
+                Muy bien, tienes un buen dominio de la materia. Sigue practicando para mejorar aún más.
+            {% elif puntaje >= total * 0.4 %}
+                Buen intento, pero te recomiendo repasar algunos conceptos para mejorar tu puntuación.
+            {% else %}
+                No te desanimes, la química puede ser difícil. Repasa y vuelve a intentarlo pronto.
+            {% endif %}
+        </div>
+
+        <a href="/test" class="btn-reintentar" role="button" aria-label="Reintentar el test de formulación química">Reintentar Test</a>
+    </div>
+</body>
+</html>
