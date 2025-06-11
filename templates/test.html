@@ -5,8 +5,28 @@
     <title>Mi Propia IA - Mateo Martín Castro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        // Script para resaltar el enlace activo del menú
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('.navbar-item a');
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-item"><a href="/">Herramienta Principal</a></div>
+            <div class="navbar-item"><a href="/informacion">Información Clave</a></div>
+            <div class="navbar-item"><a href="/test" class="active">Test de Conocimientos</a></div>
+        </div>
+    </nav>
+
     <div class="container-main">
         <div class="test-container">
             <h1>Mi Propia IA - Mateo Martín Castro</h1>
