@@ -5,8 +5,31 @@
     <title>Mi Propia IA - Mateo Martín Castro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <script>
+        // Script para resaltar el enlace activo del menú
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('.navbar-item a');
+            navLinks.forEach(link => {
+                // Hay que manejar /resultados_test y /test de manera que uno u otro resalten el "Test de Conocimientos"
+                if (currentPath.includes('/test')) { // Si la URL contiene /test o /resultados_test
+                    document.querySelector('.navbar-item a[href="/test"]').classList.add('active');
+                } else if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-item"><a href="/">Herramienta Principal</a></div>
+            <div class="navbar-item"><a href="/informacion">Información Clave</a></div>
+            <div class="navbar-item"><a href="/test">Test de Conocimientos</a></div>
+        </div>
+    </nav>
+
     <div class="container-main">
         <div class="test-container">
             <h1>Mi Propia IA - Mateo Martín Castro</h1>
