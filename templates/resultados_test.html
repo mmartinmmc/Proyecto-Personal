@@ -2,18 +2,20 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <title>{{ titulo }}</title>
+    <title>Mi Propia IA - Mateo Martín Castro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
-    </head>
+</head>
 <body>
     <div class="container-main">
-        <div class="test-container"> <h1>{{ titulo }}</h1>
+        <div class="test-container">
+            <h1>Mi Propia IA - Mateo Martín Castro</h1>
             <div class="puntaje">
                 Has obtenido <strong>{{ puntaje }} de {{ total }}</strong> respuestas correctas.
             </div>
 
-            <table class="tabla-resultados test-table" aria-label="Resultados del test de formulación química"> <thead>
+            <table class="tabla-resultados test-table" aria-label="Resultados del test de formulación química">
+                <thead>
                     <tr>
                         <th>#</th>
                         <th>Pregunta</th>
@@ -25,7 +27,9 @@
                 <tbody>
                     {% for r in resultados %}
                         <tr class="{{ 'correcta' if r.correcta else 'incorrecta' }}">
-                            <td>{{ loop.index }}</td> <td>{{ r.enunciado }}</td> <td>{{ r.respuesta_usuario }}</td>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ r.enunciado }}</td>
+                            <td>{{ r.respuesta_usuario }}</td>
                             <td>{{ r.respuesta_correcta }}</td>
                             <td>
                                 {% if r.correcta %}
@@ -55,7 +59,7 @@
         </div>
     </div>
     <div class="footer">
-        <p>© 2025 Proyecto Personal - Mateo Martín</p>
+        <p>© 2025 Mi Propia IA - Mateo Martín Castro</p>
     </div>
 </body>
 </html>
