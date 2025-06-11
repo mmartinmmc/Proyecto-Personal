@@ -180,14 +180,17 @@ button:hover {
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 20px var(--shadow-medium);
+    /* CRÍTICO: Añadido para el desplazamiento horizontal de la tabla */
+    overflow-x: auto; /* Permite el desplazamiento horizontal si la tabla es más ancha */
 }
 
 .tabla-resultados {
     width: 100%;
+    min-width: 650px; /* Añadido: Mínimo ancho para evitar que la tabla se colapse demasiado */
     border-collapse: separate; /* Permite border-radius en celdas */
     border-spacing: 0; /* Elimina espacio entre celdas */
     margin-top: 25px;
-    overflow: hidden; /* Asegura que los bordes redondeados se apliquen */
+    /* overflow: hidden; -- Eliminado, se maneja en el padre (.resultados) */
     border-radius: 10px; /* Bordes redondeados para la tabla */
 }
 
@@ -195,6 +198,8 @@ button:hover {
     padding: 15px; /* Más padding */
     text-align: left;
     border-bottom: 1px solid var(--border-color);
+    /* CRÍTICO: Añadido para que las palabras largas se rompan y ajusten */
+    word-break: break-word; /* Permite que las palabras se rompan en cualquier punto */
 }
 
 .tabla-resultados th {
@@ -265,14 +270,12 @@ button:hover {
 }
 
 .navbar-container {
-    /* Eliminamos max-width y overflow-x para permitir el desbordamiento si el usuario lo desea */
     margin: 0 auto;
     display: flex;
     justify-content: center; /* Centra los elementos del menú */
     align-items: center;
     flex-wrap: nowrap; /* Mantiene los elementos en una sola línea */
     padding: 0 20px; /* Padding a los lados */
-    /* No hay overflow-x: auto; ni hidden aquí */
 }
 
 .navbar-item {
@@ -531,15 +534,12 @@ button:hover {
 /* Ajustes para pantallas pequeñas */
 @media (max-width: 768px) {
     .navbar-container {
-        /* Eliminamos flex-direction: column; para que siga en fila */
         justify-content: flex-start; /* Alinea los elementos al inicio */
         padding: 0 10px;
-        /* No hay overflow-x: auto; ni hidden aquí */
     }
     .navbar-item {
         margin: 0 8px; /* Reduce el margen en pantallas pequeñas */
         padding: 6px 10px;
-        /* Asegura que los elementos no se rompan por espacio limitado */
         flex-shrink: 0;
         white-space: nowrap;
     }
@@ -577,5 +577,8 @@ button:hover {
     }
     .desplegable-grid {
         grid-template-columns: 1fr; /* Apila las columnas en pantallas muy pequeñas */
+    }
+    .tabla-resultados {
+        min-width: 320px; /* Asegura un mínimo para la tabla en móviles muy pequeños */
     }
 }
