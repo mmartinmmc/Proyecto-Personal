@@ -5,195 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ titulo }} - Comentarios</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <script type="module">
-        // Importar las funciones necesarias de Firebase
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, serverTimestamp, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        let db;
-        let auth;
-        let userId = 'anonimo'; // Valor por defecto
-        let isFirebaseReady = false; // Bandera para controlar el estado de Firebase
-
-        // Función para mostrar mensajes al usuario
-        function showMessage(text, type) {
-            const messageBox = document.getElementById('message-box');
-            messageBox.textContent = text;
-            messageBox.className = `message-box ${type}`;
-            messageBox.style.display = 'block'; // Mostrar el mensaje
-        }
-
-        // Función para inicializar Firebase y autenticar al usuario
-        async function initFirebase() {
-            // Mostrar estado inicial de conexión
-            document.getElementById('user-id-display').textContent = "Conectando a la base de datos...";
-            document.getElementById('submit-button').disabled = true; // Deshabilitar botón al inicio
-
-            try {
-                // Las variables globales __app_id, __firebase_config, __initial_auth_token
-                // son proporcionadas por el entorno de ejecución de Canvas/Render.
-                const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-                const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
-                const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-
-                if (!firebaseConfig) {
-                    console.error("Error: firebaseConfig no está definido. No se puede inicializar Firebase.");
-                    showMessage("Error al inicializar la aplicación. La configuración de Firebase no está disponible. Asegúrate de que el entorno la proporcione.", 'error');
-                    document.getElementById('user-id-display').textContent = "Error de configuración";
-                    return; // Detener la inicialización si la configuración no está disponible
-                }
-
-                const app = initializeApp(firebaseConfig);
-                auth = getAuth(app);
-                db = getFirestore(app);
-
-                onAuthStateChanged(auth, async (user) => {
-                    if (user) {
-                        userId = user.uid;
-                        document.getElementById('user-id-display').textContent = `Tu ID de usuario: ${userId}`;
-                        console.log("Usuario autenticado:", userId);
-                        isFirebaseReady = true; // Marcar Firebase como listo
-                        document.getElementById('submit-button').disabled = false; // Habilitar botón
-                        loadComments(); // Cargar comentarios una vez que el usuario esté autenticado
-                        showMessage("", "hidden"); // Limpiar cualquier mensaje de error de conexión
-                    } else {
-                        // Si no hay token de autenticación inicial, iniciar sesión de forma anónima
-                        if (!initialAuthToken) {
-                            try {
-                                const anonUser = await signInAnonymously(auth);
-                                userId = anonUser.user.uid;
-                                document.getElementById('user-id-display').textContent = `Tu ID de usuario: ${userId}`;
-                                console.log("Sesión anónima iniciada:", userId);
-                                isFirebaseReady = true; // Marcar Firebase como listo
-                                document.getElementById('submit-button').disabled = false; // Habilitar botón
-                                loadComments();
-                                showMessage("", "hidden");
-                            } catch (error) {
-                                console.error("Error al iniciar sesión anónima:", error);
-                                showMessage("Error de autenticación. No se pueden enviar ni cargar los comentarios. " + error.message, 'error');
-                                document.getElementById('user-id-display').textContent = "Error de autenticación";
-                            }
-                        }
-                    }
-                });
-
-                // Intentar iniciar sesión con el token personalizado si está disponible
-                if (initialAuthToken) {
-                    try {
-                        await signInWithCustomToken(auth, initialAuthToken);
-                        console.log("Sesión con token personalizado iniciada.");
-                        // onAuthStateChanged manejará el resto (establecer userId, isFirebaseReady, loadComments)
-                    } catch (error) {
-                        console.error("Error al iniciar sesión con token personalizado:", error);
-                        // Fallback a anónimo si el token personalizado falla
-                        try {
-                            await signInAnonymously(auth);
-                            console.log("Fallback: Sesión anónima iniciada.");
-                        } catch (anonError) {
-                            console.error("Error en fallback a sesión anónima:", anonError);
-                            showMessage("Error de autenticación crítico. No se pueden enviar ni cargar los comentarios.", 'error');
-                            document.getElementById('user-id-display').textContent = "Error de autenticación";
-                        }
-                    }
-                }
-
-            } catch (error) {
-                console.error("Error al inicializar Firebase:", error);
-                showMessage("Error al inicializar la aplicación. Verifica la configuración de Firebase y tu conexión.", 'error');
-                document.getElementById('user-id-display').textContent = "Error de inicialización";
-            }
-        }
-
-        // Función para guardar un comentario en Firestore
-        async function saveComment() {
-            const commentInput = document.getElementById('comment-text');
-            const commentText = commentInput.value.trim();
-            
-            showMessage("", "hidden"); // Limpiar mensaje anterior
-
-            if (!commentText) {
-                showMessage('Por favor, escribe tu comentario antes de enviarlo.', 'error');
-                return;
-            }
-
-            if (!isFirebaseReady) { // Usar la bandera de listo
-                showMessage('La base de datos no está lista. Por favor, espera o recarga la página.', 'error');
-                console.error("Firestore DB no está inicializado o autenticado.");
-                return;
-            }
-
-            // Mostrar indicador de carga
-            document.getElementById('loading-indicator').style.display = 'block';
-            document.getElementById('submit-button').disabled = true;
-
-            try {
-                // Ruta para datos públicos (para compartir con otros usuarios)
-                const commentsCollectionRef = collection(db, `artifacts/${__app_id}/public/data/comments`);
-
-                await addDoc(commentsCollectionRef, {
-                    userId: userId, // Usar el ID de usuario autenticado o anónimo
-                    comment: commentText,
-                    timestamp: serverTimestamp() // Marca de tiempo del servidor
-                });
-
-                commentInput.value = ''; // Limpiar el input
-                showMessage('¡Comentario enviado con éxito!', 'success');
-                console.log("Comentario guardado con éxito.");
-
-            } catch (e) {
-                showMessage(`Error al enviar el comentario: ${e.message}`, 'error');
-                console.error("Error al añadir documento: ", e);
-            } finally {
-                // Ocultar indicador de carga
-                document.getElementById('loading-indicator').style.display = 'none';
-                document.getElementById('submit-button').disabled = false; // Habilitar botón de nuevo
-            }
-        }
-
-        // Función para cargar y mostrar los comentarios en tiempo real
-        function loadComments() {
-            if (!db) {
-                console.error("Firestore DB no está inicializado para cargar comentarios.");
-                // showMessage("Error al cargar comentarios: La base de datos no está lista.", 'error'); // No mostrar este aquí para evitar doble mensaje
-                return;
-            }
-
-            const commentsList = document.getElementById('comments-list');
-            commentsList.innerHTML = '<p class="text-center text-gray-500">Cargando comentarios...</p>'; // Mensaje de carga inicial
-
-            const commentsCollectionRef = collection(db, `artifacts/${__app_id}/public/data/comments`);
-            const q = query(commentsCollectionRef, orderBy('timestamp', 'desc')); // Ordenar por fecha, los más recientes primero
-
-            onSnapshot(q, (snapshot) => {
-                commentsList.innerHTML = ''; // Limpiar la lista antes de añadir nuevos comentarios
-                if (snapshot.empty) {
-                    commentsList.innerHTML = '<p class="text-center text-gray-500">No hay comentarios todavía. ¡Sé el primero en dejar uno!</p>';
-                    return;
-                }
-                snapshot.forEach((doc) => {
-                    const commentData = doc.data();
-                    const commentElement = document.createElement('div');
-                    commentElement.className = 'comment-item bg-white p-4 rounded-lg shadow-sm mb-4';
-                    
-                    const timestamp = commentData.timestamp ? new Date(commentData.timestamp.seconds * 1000).toLocaleString() : 'Fecha desconocida';
-
-                    commentElement.innerHTML = `
-                        <p class="text-gray-800 break-words">${commentData.comment}</p>
-                        <p class="text-sm text-gray-600 mt-2">
-                            <span class="font-semibold">Usuario:</span> ${commentData.userId}
-                            <span class="ml-4 font-semibold">Fecha:</span> ${timestamp}
-                        </p>
-                    `;
-                    commentsList.appendChild(commentElement);
-                });
-            }, (error) => {
-                console.error("Error al obtener comentarios en tiempo real:", error);
-                showMessage(`Error al cargar los comentarios: ${error.message}`, 'error');
-            });
-        }
-
-        // Script para resaltar el enlace activo del menú (copiado de otras plantillas)
+    <script>
+        // Script para resaltar el enlace activo del menú
         document.addEventListener('DOMContentLoaded', function() {
             const currentPath = window.location.pathname;
             const navLinks = document.querySelectorAll('.navbar-item a');
@@ -212,98 +25,42 @@
                     link.classList.add('active');
                 }
             });
-
-            // Inicializar Firebase cuando el DOM esté completamente cargado
-            initFirebase();
-            document.getElementById('submit-button').addEventListener('click', saveComment);
         });
     </script>
     <style>
-        .comment-form {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
-        .comment-form textarea {
+        /* Estilos específicos para el contenedor del formulario de Google */
+        .google-form-container {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            resize: vertical; /* Permite redimensionar verticalmente */
-            min-height: 100px;
-            box-sizing: border-box; /* ¡Soluciona el desbordamiento! */
-        }
-        .comment-form button {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .comment-form button:hover {
-            background-color: #0056b3;
-        }
-        .comment-form button:disabled {
-            background-color: #a0aec0;
-            cursor: not-allowed;
-        }
-        .comments-list-section {
+            /* Ajusta la altura a un valor fijo o a 'auto' si quieres que se adapte */
+            height: 800px; /* Puedes ajustar esto. Google Forms se adapta bien en altura */
+            max-width: 800px; /* Limita el ancho del formulario */
+            margin: 30px auto; /* Centra el contenedor */
             background-color: #f8f9fa;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden; /* Asegura que no se salgan elementos */
         }
-        .comment-item {
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 15px;
-            margin-bottom: 15px;
+
+        .google-form-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none; /* Elimina el borde del iframe */
+            border-radius: 5px; /* Bordes redondeados para el iframe */
         }
-        .comment-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        .message-box {
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            text-align: center;
-            font-weight: bold;
-            display: none; /* Oculto por defecto */
-        }
-        .message-box.success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-            display: block;
-        }
-        .message-box.error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-            display: block;
-        }
-        .message-box.hidden { /* Nueva clase para ocultar el mensaje completamente */
-            display: none;
-        }
-        #loading-indicator {
-            text-align: center;
-            margin-top: 10px;
-            font-style: italic;
-            color: #6c757d;
-            display: none; /* Oculto por defecto */
-        }
-        .user-id-display {
-            font-size: 0.9em;
-            color: #6c757d;
-            text-align: center;
-            margin-top: 15px; /* Ajuste para un mejor espaciado */
-        }
+
+        /* Puedes eliminar o ajustar los estilos anteriores de .comment-form, .comments-list-section, etc.
+           si ya no se van a usar, para mantener el CSS limpio. Los he dejado comentados en caso de que
+           quisieras referencias, pero en una implementación final, se deberían quitar. */
+        /*
+        .comment-form { ... }
+        .comment-form textarea { ... }
+        .comments-list-section { ... }
+        .comment-item { ... }
+        .message-box { ... }
+        #loading-indicator { ... }
+        .user-id-display { ... }
+        */
     </style>
 </head>
 <body>
@@ -319,22 +76,13 @@
 
     <div class="container-main">
         <h1>Comentarios y Sugerencias</h1>
-        <p>¡Ayúdanos a mejorar! Deja tus comentarios o sugerencias para la aplicación de formulación química.</p>
+        <p class="text-center">¡Ayúdanos a mejorar! Envía tus comentarios o sugerencias a través del siguiente formulario de Google.</p>
 
-        <div class="comment-form">
-            <div id="message-box" class="message-box"></div>
-            <textarea id="comment-text" placeholder="Escribe tu comentario aquí..." maxlength="500"></textarea>
-            <button id="submit-button" disabled>Enviar Comentario</button> {# Deshabilitado por defecto #}
-            <div id="loading-indicator">Enviando comentario...</div>
-            <p id="user-id-display" class="user-id-display">Conectando a la base de datos...</p>
-        </div>
-
-        <div class="comments-list-section">
-            <h2>Comentarios de Otros Usuarios</h2>
-            <div id="comments-list">
-                <!-- Los comentarios se cargarán aquí dinámicamente -->
-                <p class="text-center text-gray-500">Cargando comentarios...</p>
-            </div>
+        <div class="google-form-container">
+            <!-- AQUÍ ES DONDE DEBERÁS PEGAR EL CÓDIGO DEL IFRAME DE TU GOOGLE FORM -->
+            <!-- Ejemplo (REEMPLÁZALO CON TU PROPIO CÓDIGO DE INCORPORACIÓN DE GOOGLE FORMS): -->
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScz_YOUR_FORM_ID_HERE/viewform?embedded=true" width="640" height="800" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+            <!-- Fin del ejemplo -->
         </div>
 
         <div class="back-link">
