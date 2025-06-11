@@ -217,7 +217,12 @@ def test():
     session.pop('test_indice_actual', None)
 
     # Obtener la dificultad de la URL o establecer un valor predeterminado
-    dificultad = request.args.get('dificultad', 'facil') # 'facil' por defecto
+    dificultad = request.args.get('dificultad', None) # Ahora por defecto es None, para que muestre las opciones
+    
+    if dificultad is None:
+        # Si no se ha seleccionado dificultad, mostrar la página test.html con las opciones
+        return render_template('test.html', titulo=TITULO, show_difficulty_options=True)
+
 
     if df_compuestos is None or df_compuestos.empty:
         return render_template('test.html', titulo=TITULO, error="No se pueden generar preguntas: No hay datos de compuestos cargados.")
