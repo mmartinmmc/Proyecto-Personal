@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Propia IA - Mateo Martín Castro</title>
+    <title>{{ titulo }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script>
         // Script para resaltar el enlace activo del menú
@@ -28,7 +28,7 @@
     </nav>
 
     <div class="container-main">
-        <h1>Mi Propia IA - Mateo Martín Castro</h1>
+        <h1>{{ titulo }}</h1>
 
         {% if error %}
             <p class="error">{{ error }}</p>
