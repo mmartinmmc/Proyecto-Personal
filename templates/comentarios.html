@@ -32,7 +32,7 @@
         .google-form-container {
             width: 100%;
             /* Ajusta la altura a un valor fijo o a 'auto' si quieres que se adapte */
-            height: 800px; /* Puedes ajustar esto. Google Forms se adapta bien en altura */
+            height: 800px; /* Puedes ajustar esto según el tamaño de tu formulario si es necesario */
             max-width: 800px; /* Limita el ancho del formulario */
             margin: 30px auto; /* Centra el contenedor */
             background-color: #f8f9fa;
@@ -49,18 +49,22 @@
             border-radius: 5px; /* Bordes redondeados para el iframe */
         }
 
-        /* Puedes eliminar o ajustar los estilos anteriores de .comment-form, .comments-list-section, etc.
-           si ya no se van a usar, para mantener el CSS limpio. Los he dejado comentados en caso de que
-           quisieras referencias, pero en una implementación final, se deberían quitar. */
-        /*
-        .comment-form { ... }
-        .comment-form textarea { ... }
-        .comments-list-section { ... }
-        .comment-item { ... }
-        .message-box { ... }
-        #loading-indicator { ... }
-        .user-id-display { ... }
-        */
+        /* Responsive adjustments for the form container */
+        @media (max-width: 768px) {
+            .google-form-container {
+                padding: 10px;
+                margin: 20px auto;
+                height: 700px; /* Adjust height for smaller screens if needed */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .google-form-container {
+                padding: 5px;
+                margin: 15px auto;
+                height: 600px; /* Adjust height for even smaller screens */
+            }
+        }
     </style>
 </head>
 <body>
@@ -79,10 +83,7 @@
         <p class="text-center">¡Ayúdanos a mejorar! Envía tus comentarios o sugerencias a través del siguiente formulario de Google.</p>
 
         <div class="google-form-container">
-            <!-- AQUÍ ES DONDE DEBERÁS PEGAR EL CÓDIGO DEL IFRAME DE TU GOOGLE FORM -->
-            <!-- Ejemplo (REEMPLÁZALO CON TU PROPIO CÓDIGO DE INCORPORACIÓN DE GOOGLE FORMS): -->
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScz_YOUR_FORM_ID_HERE/viewform?embedded=true" width="640" height="800" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
-            <!-- Fin del ejemplo -->
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdg0HRK8xmYqcWR4lPwUuDaMaU6i7AtjBqtZ7St76jceKVTFg/viewform?embedded=true" width="640" height="800" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
         </div>
 
         <div class="back-link">
