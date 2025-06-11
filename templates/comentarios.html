@@ -31,15 +31,17 @@
             document.getElementById('submit-button').disabled = true; // Deshabilitar botón al inicio
 
             try {
-                // Obtener las variables globales de Canvas
+                // Las variables globales __app_id, __firebase_config, __initial_auth_token
+                // son proporcionadas por el entorno de ejecución de Canvas/Render.
                 const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
                 const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
                 const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
 
                 if (!firebaseConfig) {
                     console.error("Error: firebaseConfig no está definido. No se puede inicializar Firebase.");
-                    showMessage("Error al inicializar la aplicación. La configuración de Firebase no está disponible.", 'error');
-                    return;
+                    showMessage("Error al inicializar la aplicación. La configuración de Firebase no está disponible. Asegúrate de que el entorno la proporcione.", 'error');
+                    document.getElementById('user-id-display').textContent = "Error de configuración";
+                    return; // Detener la inicialización si la configuración no está disponible
                 }
 
                 const app = initializeApp(firebaseConfig);
@@ -98,7 +100,7 @@
 
             } catch (error) {
                 console.error("Error al inicializar Firebase:", error);
-                showMessage("Error al inicializar la aplicación. Verifica la configuración de Firebase.", 'error');
+                showMessage("Error al inicializar la aplicación. Verifica la configuración de Firebase y tu conexión.", 'error');
                 document.getElementById('user-id-display').textContent = "Error de inicialización";
             }
         }
@@ -311,7 +313,7 @@
             <div class="navbar-item"><a href="/informacion">Información Clave</a></div>
             <div class="navbar-item"><a href="/test">Test de Conocimientos</a></div>
             <div class="navbar-item"><a href="/informe_proyecto">Informe del Proyecto</a></div>
-            <div class="navbar-item"><a href="/comentarios" class="active">Comentarios</a></div>{# Reordenado: a la derecha de Informe del Proyecto #}
+            <div class="navbar-item"><a href="/comentarios">Comentarios</a></div>{# ORDENADO: a la derecha de Informe del Proyecto #}
         </div>
     </nav>
 
