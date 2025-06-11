@@ -25,8 +25,12 @@
             const currentPath = window.location.pathname;
             const navLinks = document.querySelectorAll('.navbar-item a');
             navLinks.forEach(link => {
-                // Modificado para resaltar "Informe del Proyecto" si la ruta es /informe_proyecto
-                if (currentPath === '/informe_proyecto' && link.getAttribute('href') === '/informe_proyecto') {
+                // Resaltar "Test de Conocimientos" si estamos en /test, /pregunta, /resultados_test
+                if (currentPath.includes('/test') || currentPath.includes('/pregunta') || currentPath.includes('/resultados_test')) {
+                    if (link.getAttribute('href') === '/test') {
+                        link.classList.add('active');
+                    }
+                } else if (currentPath === '/informe_proyecto' && link.getAttribute('href') === '/informe_proyecto') {
                     link.classList.add('active');
                 } else if (link.getAttribute('href') === currentPath) {
                     link.classList.add('active');
@@ -41,7 +45,6 @@
             <div class="navbar-item"><a href="/">Herramienta Principal</a></div>
             <div class="navbar-item"><a href="/informacion">Información Clave</a></div>
             <div class="navbar-item"><a href="/test">Test de Conocimientos</a></div>
-            <!-- Enlace actualizado para abrir el PDF dentro de la página -->
             <div class="navbar-item"><a href="/informe_proyecto">Informe del Proyecto</a></div>
         </div>
     </nav>
