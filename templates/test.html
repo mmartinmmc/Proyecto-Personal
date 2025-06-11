@@ -2,35 +2,65 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Test de Formulación Química</title>
+    <title>{{ titulo }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function corregirRespuestas() {
+            let correctas = 0;
+
+            const respuestas = {
+                q1: "agua",
+                q2: "CO2",
+                q3: "óxido de sodio"
+            };
+
+            for (let clave in respuestas) {
+                const input = document.querySelector(`input[name="${clave}"]`);
+                const valor = input.value.trim().toLowerCase();
+                const resultado = document.getElementById(`resultado_${clave}`);
+                if (valor === respuestas[clave]) {
+                    resultado.textContent = "✅ Correcto";
+                    resultado.style.color = "green";
+                    correctas++;
+                } else {
+                    resultado.textContent = `❌ Incorrecto (Respuesta: ${respuestas[clave]})`;
+                    resultado.style.color = "red";
+                }
+            }
+
+            document.getElementById("resultado_final").innerHTML = `<strong>Obtuviste ${correctas} de 3 correctas.</strong>`;
+        }
+    </script>
 </head>
 <body>
-    <div class="contenedor">
-        <h1>Test de Formulación Química</h1>
-        <p>Responde a las siguientes preguntas para evaluar tus conocimientos sobre la formulación de compuestos químicos.</p>
+    <h1>{{ titulo }}</h1>
 
-        <form action="/evaluar_test" method="POST">
-            {% for i, pregunta in enumerate(preguntas) %}
-                <div class="pregunta">
-                    <p><strong>Pregunta {{ i + 1 }}:</strong> {{ pregunta["enunciado"] }}</p>
-                    <input type="text" name="respuesta_{{ i }}" placeholder="Escribe tu respuesta" required>
-                    <input type="hidden" name="correcta_{{ i }}" value="{{ pregunta['respuesta'] }}">
-                </div>
-            {% endfor %}
-            <button type="submit">Enviar respuestas</button>
-        </form>
-
-        <div class="instrucciones">
-            <h3>Consejos para completar el test:</h3>
-            <ul>
-                <li>Escribe fórmulas con mayúsculas correctamente (Ej: <code>NaCl</code>, <code>H2SO4</code>).</li>
-                <li>Los nombres deben incluir el tipo correcto de nomenclatura (Ej: “Ácido sulfúrico”).</li>
-                <li>No dejes respuestas en blanco.</li>
-            </ul>
+    <form onsubmit="event.preventDefault(); corregirRespuestas();">
+        <div class="pregunta">
+            <label>1. ¿Cómo se llama el compuesto H₂O?</label><br>
+            <input type="text" name="q1">
+            <div id="resultado_q1"></div>
         </div>
 
-        <a href="/" class="boton-volver">← Volver al inicio</a>
+        <div class="pregunta">
+            <label>2. ¿Cuál es la fórmula del dióxido de carbono?</label><br>
+            <input type="text" name="q2">
+            <div id="resultado_q2"></div>
+        </div>
+
+        <div class="pregunta">
+            <label>3. ¿Cómo se llama el compuesto Na₂O?</label><br>
+            <input type="text" name="q3">
+            <div id="resultado_q3"></div>
+        </div>
+
+        <button type="submit">Corregir</button>
+    </form>
+
+    <div id="resultado_final" style="margin-top: 20px;"></div>
+
+    <div class="footer">
+        <p>© 2025 Proyecto Personal - Mateo Martín</p>
     </div>
 </body>
 </html>
