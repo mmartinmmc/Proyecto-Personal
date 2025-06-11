@@ -5,334 +5,250 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Información Clave sobre Formulación Química</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <style>
-        /* Estilos generales (los que ya tenías y los que moverías de aquí a styles.css) */
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        .container {
-            max-width: 900px;
-            margin: auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1, h2, h3 {
-            color: #2c3e50;
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        section {
-            margin-bottom: 40px;
-        }
-        ul {
-            list-style-type: disc;
-            margin-left: 20px;
-        }
-        ol {
-            list-style-type: decimal;
-            margin-left: 20px;
-        }
-        p {
-            margin-bottom: 10px;
-        }
-        .importante {
-            background-color: #e6f7ff;
-            border-left: 5px solid #3498db;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 4px;
-        }
-        .ejemplo {
-            background-color: #f0f0f0;
-            padding: 10px;
-            margin: 10px 0;
-            border-left: 3px solid #ccc;
-            font-family: monospace;
-            white-space: pre-wrap;
-        }
-        .back-link {
-            display: block;
-            margin-top: 30px;
-            text-align: center;
-            font-size: 1.1em;
-        }
-        .back-link a {
-            color: #3498db;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .back-link a:hover {
-            text-decoration: underline;
-        }
-
-        /* Estilos para videos responsive */
-        .video-responsive {
-            position: relative;
-            padding-bottom: 56.25%; /* Relación de aspecto 16:9 (altura / ancho = 9 / 16 = 0.5625) */
-            padding-top: 25px; /* Para ocultar controles o título inicial de YouTube */
-            height: 0;
-            overflow: hidden;
-            margin-bottom: 20px; /* Espacio entre videos */
-            background-color: #000; /* Fondo negro mientras carga el video */
-        }
-        .video-responsive iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-    </style>
-</head>
+    </head>
 <body>
-    <div class="container">
-        <h1>Información Clave sobre Formulación Química</h1>
+    <div class="container-main"> <div class="info-section"> <h1>Información Clave sobre Formulación Química</h1>
 
-        <section>
-            <h2>1. Introducción a la Formulación y Nomenclatura Química</h2>
-            <p>La química, como ciencia que estudia la materia y sus transformaciones, requiere de un lenguaje universal y preciso para identificar y comunicar las sustancias. Este lenguaje se materializa a través de la <strong>formulación</strong> (representación simbólica de los compuestos) y la <strong>nomenclatura</strong> (asignación de nombres a los compuestos). La Unión Internacional de Química Pura y Aplicada (IUPAC) es el organismo encargado de establecer las reglas y recomendaciones que rigen este sistema, garantizando la claridad y evitando ambigüedades en la comunicación científica a nivel global.</p>
-            <p>Comprender la formulación y nomenclatura es fundamental para cualquier persona que se adentre en el estudio de la química, ya que permite:</p>
-            <ul>
-                <li>Identificar unívocamente cualquier sustancia química.</li>
-                <li>Comunicar de forma precisa la composición de un compuesto.</li>
-                <li>Predecir propiedades y reacciones químicas basándose en la estructura del compuesto.</li>
-                <li>Facilitar el trabajo en laboratorio y la investigación científica.</li>
-            </ul>
-        </section>
+            <section>
+                <h2>1. Introducción a la Formulación y Nomenclatura Química</h2>
+                <p>La química, como ciencia que estudia la materia y sus transformaciones, requiere de un lenguaje universal y preciso para identificar y comunicar las sustancias. Este lenguaje se materializa a través de la <strong>formulación</strong> (representación simbólica de los compuestos) y la <strong>nomenclatura</strong> (asignación de nombres a los compuestos). La Unión Internacional de Química Pura y Aplicada (IUPAC) es el organismo encargado de establecer las reglas y recomendaciones que rigen este sistema, garantizando la claridad y evitando ambigüedades en la comunicación científica a nivel global.</p>
+                <p>Comprender la formulación y nomenclatura es fundamental para cualquier persona que se adentre en el estudio de la química, ya que permite:</p>
+                <ul>
+                    <li>Identificar unívocamente cualquier sustancia química.</li>
+                    <li>Comunicar de forma precisa la composición de un compuesto.</li>
+                    <li>Predecir propiedades y reacciones químicas basándose en la estructura del compuesto.</li>
+                    <li>Facilitar el trabajo en laboratorio y la investigación científica.</li>
+                </ul>
+            </section>
 
-        <section>
-            <h2>2. Conceptos Fundamentales</h2>
-            <h3>2.1. Átomos y Elementos</h3>
-            <p>Los <strong>átomos</strong> son las unidades básicas de la materia, compuestos por un núcleo (protones y neutrones) y electrones. Un <strong>elemento químico</strong> es una sustancia pura formada por átomos con el mismo número atómico (número de protones). Se representan mediante símbolos (ej. H para Hidrógeno, O para Oxígeno, Na para Sodio).</p>
+            <section>
+                <h2>2. Conceptos Fundamentales</h2>
+                <h3>2.1. Átomos y Elementos</h3>
+                <p>Los <strong>átomos</strong> son las unidades básicas de la materia, compuestos por un núcleo (protones y neutrones) y electrones. Un <strong>elemento químico</strong> es una sustancia pura formada por átomos con el mismo número atómico (número de protones). Se representan mediante símbolos (ej. H para Hidrógeno, O para Oxígeno, Na para Sodio).</p>
 
-            <h3>2.2. Moléculas y Compuestos</h3>
-            <p>Una <strong>molécula</strong> es la unión de dos o más átomos, sean iguales o diferentes, mediante enlaces químicos. Un <strong>compuesto químico</strong> es una sustancia formada por la combinación de dos o más elementos diferentes en proporciones fijas.</p>
-            <div class="ejemplo">
-                Ejemplos:<br>
-                O₂ (Molécula de oxígeno, no un compuesto porque solo hay un elemento)<br>
-                H₂O (Molécula de agua, un compuesto formado por H y O)<br>
-                NaCl (Cloruro de sodio, un compuesto formado por Na y Cl)
+                <h3>2.2. Moléculas y Compuestos</h3>
+                <p>Una <strong>molécula</strong> es la unión de dos o más átomos, sean iguales o diferentes, mediante enlaces químicos. Un <strong>compuesto químico</strong> es una sustancia formada por la combinación de dos o más elementos diferentes en proporciones fijas.</p>
+                <div class="ejemplo">
+                    Ejemplos:<br>
+                    O₂ (Molécula de oxígeno, no un compuesto porque solo hay un elemento)<br>
+                    H₂O (Molécula de agua, un compuesto formado por H y O)<br>
+                    NaCl (Cloruro de sodio, un compuesto formado por Na y Cl)
+                </div>
+
+                <h3>2.3. Valencias y Números de Oxidación</h3>
+                <p>La <strong>valencia</strong> de un elemento es su capacidad de combinación con otros. El <strong>número de oxidación</strong> (o estado de oxidación) es una carga hipotética que tendría un átomo en un compuesto si todos los enlaces fueran iónicos. Es crucial para determinar la proporción de los elementos en un compuesto y para nombrar las sustancias.</p>
+                <ul>
+                    <li><strong>Elementos metálicos:</strong> Generalmente poseen números de oxidación positivos.</li>
+                    <li><strong>Elementos no metálicos:</strong> Pueden tener números de oxidación positivos (cuando se unen a elementos más electronegativos) o negativos (cuando se unen a metales o elementos menos electronegativos).</li>
+                    <li><strong>Oxígeno:</strong> Casi siempre -2, excepto en peróxidos (-1) o con flúor (+2).</li>
+                    <li><strong>Hidrógeno:</strong> +1 con no metales y -1 con metales.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>3. Clasificación de Compuestos Químicos</h2>
+                <p>Los compuestos se clasifican principalmente en dos grandes grupos:</p>
+
+                <h3>3.1. Compuestos Inorgánicos</h3>
+                <p>Estudian las sustancias que no tienen como elemento principal el carbono, o lo tienen en formas simples como CO, CO₂, etc. Se subdividen en:</p>
+                <ul>
+                    <li><strong>Óxidos:</strong> Combinación de un elemento con oxígeno.
+                        <ul>
+                            <li>Óxidos metálicos (óxidos básicos): Metal + O. Ej: Fe₂O₃ (Óxido de hierro(III)).</li>
+                            <li>Óxidos no metálicos (óxidos ácidos o anhídridos): No metal + O. Ej: SO₂ (Dióxido de azufre).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Hidruros:</strong> Combinación de un elemento con hidrógeno.
+                        <ul>
+                            <li>Hidruros metálicos: Metal + H. Ej: NaH (Hidruro de sodio).</li>
+                            <li>Hidruros no metálicos: No metal + H. Ej: HCl (Cloruro de hidrógeno).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Ácidos:</strong>
+                        <ul>
+                            <li>Hidrácidos: H + No metal (del grupo 16 o 17). Ej: H₂S (Ácido sulfhídrico).</li>
+                            <li>Oxoácidos: H + No metal + O. Derivan de óxidos no metálicos. Ej: H₂SO₄ (Ácido sulfúrico).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Bases (Hidróxidos):</strong> Metal + grupo OH⁻ (hidroxilo). Ej: NaOH (Hidróxido de sodio).</li>
+                    <li><strong>Sales:</strong> Combinación de un metal o amonio con un no metal o un radical ácido.
+                        <ul>
+                            <li>Sales binarias: Metal + No metal. Ej: NaCl (Cloruro de sodio).</li>
+                            <li>Oxosales: Metal + radical de oxoácido. Ej: CaSO₄ (Sulfato de calcio).</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>3.2. Compuestos Orgánicos</h3>
+                <p>Estudian las sustancias que tienen como elemento principal el carbono, generalmente combinado con hidrógeno, oxígeno, nitrógeno, etc. La química orgánica es una rama muy extensa y posee su propio sistema de nomenclatura basado en la estructura de la cadena carbonada (alcanos, alquenos, alquinos, alcoholes, ácidos carboxílicos, etc.).</p>
+            </section>
+
+            <section>
+                <h2>4. Sistemas de Nomenclatura Química (IUPAC)</h2>
+                <p>La IUPAC ha establecido tres sistemas principales para nombrar compuestos inorgánicos, que a menudo se utilizan de forma complementaria:</p>
+
+                <h3>4.1. Nomenclatura Sistemática (o de Prefijos Multiplicadores)</h3>
+                <p>Este sistema indica el número de átomos de cada elemento en la fórmula utilizando prefijos numéricos griegos (mono-, di-, tri-, tetra-, penta-, hexa-, hepta-, etc.). Es el más explícito y menos ambiguo.</p>
+                <div class="ejemplo">
+                    Fórmula: CO₂<br>
+                    Nombre Sistemático: Dióxido de carbono (di- por dos oxígenos)
+                    <br><br>
+                    Fórmula: PCl₅<br>
+                    Nombre Sistemático: Pentacloruro de fósforo (penta- por cinco cloros)
+                </div>
+
+                <h3>4.2. Nomenclatura de Stock (o de Números de Oxidación)</h3>
+                <p>Este sistema utiliza números romanos entre paréntesis después del nombre del elemento para indicar el número de oxidación del elemento que puede tener varios estados de oxidación. Se usa principalmente para metales.</p>
+                <div class="ejemplo">
+                    Fórmula: Fe₂O₃<br>
+                    Nombre de Stock: Óxido de hierro(III) (el hierro trabaja con +3)
+                    <br><br>
+                    Fórmula: FeO<br>
+                    Nombre de Stock: Óxido de hierro(II) (el hierro trabaja con +2)
+                </div>
+
+                <h3>4.3. Nomenclatura Tradicional (o Clásica)</h3>
+                <p>Aunque está en desuso por la IUPAC para nuevas sustancias, sigue siendo muy utilizada y reconocida. Emplea sufijos (-oso, -ico) y prefijos (hipo-, per-) para indicar los distintos números de oxidación del elemento.</p>
+                <ul>
+                    <li><strong>Hipo...oso:</strong> Para el menor número de oxidación (si hay 4).</li>
+                    <li><strong>...oso:</strong> Para el segundo número de oxidación (o el menor si hay 2).</li>
+                    <li><strong>...ico:</strong> Para el tercer número de oxidación (o el mayor si hay 2).</li>
+                    <li><strong>Per...ico:</strong> Para el mayor número de oxidación (si hay 4).</li>
+                </ul>
+                <div class="ejemplo">
+                    Cloro (estados de oxidación: +1, +3, +5, +7):<br>
+                    HClO (ácido hipocloroso)<br>
+                    HClO₂ (ácido cloroso)<br>
+                    HClO₃ (ácido clórico)<br>
+                    HClO₄ (ácido perclórico)
+                </div>
+
+                <div class="importante">
+                    <h4>¡Importante!</h4>
+                    <p>No todos los compuestos se nombran con los tres sistemas. La elección del sistema depende del tipo de compuesto y de las recomendaciones de la IUPAC. En la práctica, es común ver una combinación o el uso del sistema más adecuado para la claridad.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>5. Pasos Generales para Formular y Nombrar Compuestos</h2>
+
+                <h3>5.1. Para Formular (de Nombre a Fórmula)</h3>
+                <ol>
+                    <li><strong>Identificar los elementos y sus valencias/estados de oxidación:</strong> Reconoce qué elementos participan y cuáles son sus números de oxidación más comunes o los indicados en el nombre.</li>
+                    <li><strong>Escribir los símbolos de los elementos:</strong> Generalmente, el elemento más electropositivo (metal o hidrógeno) primero, seguido del más electronegativo (no metal u oxígeno).</li>
+                    <li><strong>Intercambiar las valencias/números de oxidación:</strong> El número de oxidación de un elemento se convierte en el subíndice del otro (en valor absoluto).</li>
+                    <li><strong>Simplificar subíndices (si es posible):</strong> Si los subíndices son divisibles por un número común, se simplifican a su mínima expresión. (Excepción: en óxidos de elementos que tienen valencias pares, no se simplifica si no se indica lo contrario en la nomenclatura de stock).</li>
+                    <li><strong>Verificar la carga neta:</strong> Asegúrate de que la suma de las cargas de los átomos sea cero (en compuestos neutros).</li>
+                </ol>
+                <div class="ejemplo">
+                    Ejemplo: Óxido de Aluminio(III)<br>
+                    1. Elementos: Al (+3), O (-2)<br>
+                    2. Símbolos: Al O<br>
+                    3. Intercambiar valencias: Al₂O₃<br>
+                    4. No se puede simplificar.<br>
+                    5. Carga: (2 * +3) + (3 * -2) = +6 - 6 = 0
+                </div>
+
+                <h3>5.2. Para Nombrar (de Fórmula a Nombre)</h3>
+                <ol>
+                    <li><strong>Identificar los elementos y su tipo de compuesto:</strong> Reconoce si es un óxido, hidruro, ácido, base, sal, etc.</li>
+                    <li><strong>Determinar los números de oxidación:</strong> Calcula el número de oxidación del elemento que puede tener varios. El oxígeno es -2 (excepto peróxidos) y el hidrógeno es +1 (excepto hidruros metálicos -1). La suma de los números de oxidación debe ser cero.</li>
+                    <li><strong>Aplicar el sistema de nomenclatura adecuado:</strong>
+                        <ul>
+                            <li><strong>Sistemática:</strong> Usar prefijos para indicar el número de átomos.</li>
+                            <li><strong>Stock:</strong> Usar números romanos para indicar el número de oxidación del elemento variable.</li>
+                            <li><strong>Tradicional:</strong> Usar prefijos y sufijos para indicar el número de oxidación.</li>
+                        </ul>
+                    </li>
+                </ol>
+                <div class="ejemplo">
+                    Ejemplo: H₂SO₄<br>
+                    1. Tipo: Oxoácido (H, S, O)<br>
+                    2. Números de oxidación: H (+1), O (-2). Para S: (2*1) + X + (4*-2) = 0 => 2 + X - 8 = 0 => X = +6. Azufre trabaja con +6.<br>
+                    3. Nomenclatura:
+                        <ul>
+                            <li>Tradicional: Ácido sulfúrico (sulf- por azufre, -ico por +6, que es su mayor valencia).</li>
+                            <li>Stock: Ácido tetraoxosulfúrico(VI) (menos común para ácidos).</li>
+                            <li>Sistemática: Tetraoxosulfato(VI) de hidrógeno (para sales derivadas o compuestos complejos, pero en oxoácidos se prefiere la tradicional o Stock simplificada).</li>
+                        </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>6. Estequiometría</h2>
+                <p>La <strong>estequiometría</strong> es la rama de la química que estudia las relaciones cuantitativas entre los reactivos y productos en una reacción química. Permite calcular las cantidades de sustancias que reaccionan y se producen en una reacción química balanceada.</p>
+                <h3>6.1. Conceptos clave</h3>
+                <ul>
+                <li><strong>Ecuación química balanceada:</strong> Representación simbólica de una reacción química donde el número de átomos de cada elemento es el mismo en los reactivos y en los productos.</li>
+                <li><strong>Mol:</strong> Unidad de cantidad de sustancia en el Sistema Internacional de Unidades (SI). Un mol contiene 6.022 x 10^23 entidades elementales (átomos, moléculas, iones, etc.).</li>
+                <li><strong>Masa molar:</strong> Masa de un mol de una sustancia, expresada en gramos/mol.</li>
+                <li><strong>Reactivo limitante:</strong> Reactivo que se consume completamente en una reacción química y determina la cantidad máxima de producto que se puede formar.</li>
+                <li><strong>Rendimiento de reacción:</strong> Cantidad de producto obtenido en una reacción química, comparado con la cantidad teórica calculada estequiométricamente.</li>
+                </ul>
+                <h3>6.2. Cálculos estequiométricos</h3>
+                <p>Los cálculos estequiométricos involucran la conversión entre masa, moles y volumen de las sustancias en una reacción química, utilizando la ecuación química balanceada y las masas molares.</p>
+                <div class="ejemplo">
+                Ejemplo:
+                Dada la reacción: 2 H₂ + O₂ → 2 H₂O
+                Si reaccionan 4 gramos de H₂, ¿cuántos gramos de H₂O se producen?
+                <ol>
+                    <li>Masa molar de H₂: 2 g/mol</li>
+                    <li>Moles de H₂: 4 g / (2 g/mol) = 2 moles</li>
+                    <li>De la ecuación balanceada, 2 moles de H₂ producen 2 moles de H₂O.</li>
+                    <li>Masa molar de H₂O: 18 g/mol</li>
+                    <li>Masa de H₂O producida: 2 moles * (18 g/mol) = 36 gramos</li>
+                </ol>
+                </div>
+            </section>
+
+            <section>
+                <h2>7. Recursos Visuales y Ejemplos Prácticos</h2>
+                <p>Para complementar la información teórica, a continuación encontrarás videos que explican de forma visual y práctica algunos de los conceptos clave de la formulación y nomenclatura química, y ahora también sobre estequiometría.</p>
+
+                <h3>7.1. Video: Cómo formular en 8 minutos 👍 Formulación química ⚛️ ideas básicas</h3>
+                <div class="video-responsive">
+                    <iframe src="https://www.youtube.com/embed/QrJSL0VN8yE"
+                            title="Cómo formular en 8 minutos 👍 Formulación química ⚛️ ideas básicas"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <p>Este video ofrece una visión general sobre cómo empezar a formular compuestos inorgánicos, explicando las bases de los elementos y las valencias.</p>
+
+                <h3>7.2. Video: ESTEQUIOMETRÍA PASO A PASO CON EJEMPLOS | Química básica</h3>
+                <div class="video-responsive">
+                    <iframe src="https://www.youtube.com/embed/o5n-Ok8vdgE"
+                            title="ESTEQUIOMETRÍA PASO A PASO CON EJEMPLOS | Química básica"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <p>En este video, se explica la estequiometría paso a paso con ejemplos prácticos.</p>
+
+            </section>
+
+            <section>
+                <h2>8. Importancia y Aplicaciones de la Formulación Química</h2>
+                <p>La formulación y nomenclatura química no son solo un ejercicio académico, sino herramientas esenciales con aplicaciones críticas en diversas áreas:</p>
+                <ul>
+                    <li><strong>Industria Química:</strong> Fundamental para la producción, control de calidad y seguridad en la fabricación de fármacos, plásticos, fertilizantes, productos de limpieza, etc.</li>
+                    <li><strong>Medicina y Farmacia:</strong> Para identificar principios activos, dosificaciones y reacciones adversas de medicamentos. Los nombres sistemáticos y fórmulas son vitales para la investigación y el desarrollo de nuevos tratamientos.</li>
+                    <li><strong>Ciencias Ambientales:</strong> Para el estudio de contaminantes, ciclos biogeoquímicos y desarrollo de estrategias de remediación. Conocer las fórmulas de gases de efecto invernadero o de contaminantes del agua es crucial.</li>
+                    <li><strong>Investigación Científica:</strong> Permite a los investigadores de todo el mundo comunicarse de forma inequívoca sobre sus descubrimientos, replicar experimentos y construir sobre el conocimiento existente.</li>
+                    <li><strong>Educación:</strong> Constituye la base para el aprendizaje de conceptos más avanzados en química y otras ciencias relacionadas.</li>
+                </ul>
+                <div class="importante">
+                    <p>En resumen, la formulación y nomenclatura química son el alfabeto y la gramática del lenguaje de la química. Dominarlos no solo facilita el estudio de esta ciencia, sino que abre las puertas a una comprensión profunda del mundo material que nos rodea y a la capacidad de innovar y resolver problemas complejos.</p>
+                </div>
+            </section>
+
+            <div class="back-link">
+                <p><a href="/">Volver a la herramienta principal</a></p>
             </div>
-
-            <h3>2.3. Valencias y Números de Oxidación</h3>
-            <p>La <strong>valencia</strong> de un elemento es su capacidad de combinación con otros. El <strong>número de oxidación</strong> (o estado de oxidación) es una carga hipotética que tendría un átomo en un compuesto si todos los enlaces fueran iónicos. Es crucial para determinar la proporción de los elementos en un compuesto y para nombrar las sustancias.</p>
-            <ul>
-                <li><strong>Elementos metálicos:</strong> Generalmente poseen números de oxidación positivos.</li>
-                <li><strong>Elementos no metálicos:</strong> Pueden tener números de oxidación positivos (cuando se unen a elementos más electronegativos) o negativos (cuando se unen a metales o elementos menos electronegativos).</li>
-                <li><strong>Oxígeno:</strong> Casi siempre -2, excepto en peróxidos (-1) o con flúor (+2).</li>
-                <li><strong>Hidrógeno:</strong> +1 con no metales y -1 con metales.</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>3. Clasificación de Compuestos Químicos</h2>
-            <p>Los compuestos se clasifican principalmente en dos grandes grupos:</p>
-
-            <h3>3.1. Compuestos Inorgánicos</h3>
-            <p>Estudian las sustancias que no tienen como elemento principal el carbono, o lo tienen en formas simples como CO, CO₂, etc. Se subdividen en:</p>
-            <ul>
-                <li><strong>Óxidos:</strong> Combinación de un elemento con oxígeno.
-                    <ul>
-                        <li>Óxidos metálicos (óxidos básicos): Metal + O. Ej: Fe₂O₃ (Óxido de hierro(III)).</li>
-                        <li>Óxidos no metálicos (óxidos ácidos o anhídridos): No metal + O. Ej: SO₂ (Dióxido de azufre).</li>
-                    </ul>
-                </li>
-                <li><strong>Hidruros:</strong> Combinación de un elemento con hidrógeno.
-                    <ul>
-                        <li>Hidruros metálicos: Metal + H. Ej: NaH (Hidruro de sodio).</li>
-                        <li>Hidruros no metálicos: No metal + H. Ej: HCl (Cloruro de hidrógeno).</li>
-                    </ul>
-                </li>
-                <li><strong>Ácidos:</strong>
-                    <ul>
-                        <li>Hidrácidos: H + No metal (del grupo 16 o 17). Ej: H₂S (Ácido sulfhídrico).</li>
-                        <li>Oxoácidos: H + No metal + O. Derivan de óxidos no metálicos. Ej: H₂SO₄ (Ácido sulfúrico).</li>
-                    </ul>
-                </li>
-                <li><strong>Bases (Hidróxidos):</strong> Metal + grupo OH⁻ (hidroxilo). Ej: NaOH (Hidróxido de sodio).</li>
-                <li><strong>Sales:</strong> Combinación de un metal o amonio con un no metal o un radical ácido.
-                    <ul>
-                        <li>Sales binarias: Metal + No metal. Ej: NaCl (Cloruro de sodio).</li>
-                        <li>Oxosales: Metal + radical de oxoácido. Ej: CaSO₄ (Sulfato de calcio).</li>
-                    </ul>
-                </li>
-            </ul>
-
-            <h3>3.2. Compuestos Orgánicos</h3>
-            <p>Estudian las sustancias que tienen como elemento principal el carbono, generalmente combinado con hidrógeno, oxígeno, nitrógeno, etc. La química orgánica es una rama muy extensa y posee su propio sistema de nomenclatura basado en la estructura de la cadena carbonada (alcanos, alquenos, alquinos, alcoholes, ácidos carboxílicos, etc.).</p>
-        </section>
-
-        <section>
-            <h2>4. Sistemas de Nomenclatura Química (IUPAC)</h2>
-            <p>La IUPAC ha establecido tres sistemas principales para nombrar compuestos inorgánicos, que a menudo se utilizan de forma complementaria:</p>
-
-            <h3>4.1. Nomenclatura Sistemática (o de Prefijos Multiplicadores)</h3>
-            <p>Este sistema indica el número de átomos de cada elemento en la fórmula utilizando prefijos numéricos griegos (mono-, di-, tri-, tetra-, penta-, hexa-, hepta-, etc.). Es el más explícito y menos ambiguo.</p>
-            <div class="ejemplo">
-                Fórmula: CO₂<br>
-                Nombre Sistemático: Dióxido de carbono (di- por dos oxígenos)
-                <br><br>
-                Fórmula: PCl₅<br>
-                Nombre Sistemático: Pentacloruro de fósforo (penta- por cinco cloros)
-            </div>
-
-            <h3>4.2. Nomenclatura de Stock (o de Números de Oxidación)</h3>
-            <p>Este sistema utiliza números romanos entre paréntesis después del nombre del elemento para indicar el número de oxidación del elemento que puede tener varios estados de oxidación. Se usa principalmente para metales.</p>
-            <div class="ejemplo">
-                Fórmula: Fe₂O₃<br>
-                Nombre de Stock: Óxido de hierro(III) (el hierro trabaja con +3)
-                <br><br>
-                Fórmula: FeO<br>
-                Nombre de Stock: Óxido de hierro(II) (el hierro trabaja con +2)
-            </div>
-
-            <h3>4.3. Nomenclatura Tradicional (o Clásica)</h3>
-            <p>Aunque está en desuso por la IUPAC para nuevas sustancias, sigue siendo muy utilizada y reconocida. Emplea sufijos (-oso, -ico) y prefijos (hipo-, per-) para indicar los distintos números de oxidación del elemento.</p>
-            <ul>
-                <li><strong>Hipo...oso:</strong> Para el menor número de oxidación (si hay 4).</li>
-                <li><strong>...oso:</strong> Para el segundo número de oxidación (o el menor si hay 2).</li>
-                <li><strong>...ico:</strong> Para el tercer número de oxidación (o el mayor si hay 2).</li>
-                <li><strong>Per...ico:</strong> Para el mayor número de oxidación (si hay 4).</li>
-            </ul>
-            <div class="ejemplo">
-                Cloro (estados de oxidación: +1, +3, +5, +7):<br>
-                HClO (ácido hipocloroso)<br>
-                HClO₂ (ácido cloroso)<br>
-                HClO₃ (ácido clórico)<br>
-                HClO₄ (ácido perclórico)
-            </div>
-
-            <div class="importante">
-                <h4>¡Importante!</h4>
-                <p>No todos los compuestos se nombran con los tres sistemas. La elección del sistema depende del tipo de compuesto y de las recomendaciones de la IUPAC. En la práctica, es común ver una combinación o el uso del sistema más adecuado para la claridad.</p>
-            </div>
-        </section>
-
-        <section>
-            <h2>5. Pasos Generales para Formular y Nombrar Compuestos</h2>
-
-            <h3>5.1. Para Formular (de Nombre a Fórmula)</h3>
-            <ol>
-                <li><strong>Identificar los elementos y sus valencias/estados de oxidación:</strong> Reconoce qué elementos participan y cuáles son sus números de oxidación más comunes o los indicados en el nombre.</li>
-                <li><strong>Escribir los símbolos de los elementos:</strong> Generalmente, el elemento más electropositivo (metal o hidrógeno) primero, seguido del más electronegativo (no metal u oxígeno).</li>
-                <li><strong>Intercambiar las valencias/números de oxidación:</strong> El número de oxidación de un elemento se convierte en el subíndice del otro (en valor absoluto).</li>
-                <li><strong>Simplificar subíndices (si es posible):</strong> Si los subíndices son divisibles por un número común, se simplifican a su mínima expresión. (Excepción: en óxidos de elementos que tienen valencias pares, no se simplifica si no se indica lo contrario en la nomenclatura de stock).</li>
-                <li><strong>Verificar la carga neta:</strong> Asegúrate de que la suma de las cargas de los átomos sea cero (en compuestos neutros).</li>
-            </ol>
-            <div class="ejemplo">
-                Ejemplo: Óxido de Aluminio(III)<br>
-                1. Elementos: Al (+3), O (-2)<br>
-                2. Símbolos: Al O<br>
-                3. Intercambiar valencias: Al₂O₃<br>
-                4. No se puede simplificar.<br>
-                5. Carga: (2 * +3) + (3 * -2) = +6 - 6 = 0
-            </div>
-
-            <h3>5.2. Para Nombrar (de Fórmula a Nombre)</h3>
-            <ol>
-                <li><strong>Identificar los elementos y su tipo de compuesto:</strong> Reconoce si es un óxido, hidruro, ácido, base, sal, etc.</li>
-                <li><strong>Determinar los números de oxidación:</strong> Calcula el número de oxidación del elemento que puede tener varios. El oxígeno es -2 (excepto peróxidos) y el hidrógeno es +1 (excepto hidruros metálicos -1). La suma de los números de oxidación debe ser cero.</li>
-                <li><strong>Aplicar el sistema de nomenclatura adecuado:</strong>
-                    <ul>
-                        <li><strong>Sistemática:</strong> Usar prefijos para indicar el número de átomos.</li>
-                        <li><strong>Stock:</strong> Usar números romanos para indicar el número de oxidación del elemento variable.</li>
-                        <li><strong>Tradicional:</strong> Usar prefijos y sufijos para indicar el número de oxidación.</li>
-                    </ul>
-                </li>
-            </ol>
-            <div class="ejemplo">
-                Ejemplo: H₂SO₄<br>
-                1. Tipo: Oxoácido (H, S, O)<br>
-                2. Números de oxidación: H (+1), O (-2). Para S: (2*1) + X + (4*-2) = 0 => 2 + X - 8 = 0 => X = +6. Azufre trabaja con +6.<br>
-                3. Nomenclatura:
-                    <ul>
-                        <li>Tradicional: Ácido sulfúrico (sulf- por azufre, -ico por +6, que es su mayor valencia).</li>
-                        <li>Stock: Ácido tetraoxosulfúrico(VI) (menos común para ácidos).</li>
-                        <li>Sistemática: Tetraoxosulfato(VI) de hidrógeno (para sales derivadas o compuestos complejos, pero en oxoácidos se prefiere la tradicional o Stock simplificada).</li>
-                    </ul>
-            </div>
-        </section>
-
-        <section>
-            <h2>6. Estequiometría</h2>
-            <p>La <strong>estequiometría</strong> es la rama de la química que estudia las relaciones cuantitativas entre los reactivos y productos en una reacción química. Permite calcular las cantidades de sustancias que reaccionan y se producen en una reacción química balanceada.</p>
-            <h3>6.1. Conceptos clave</h3>
-            <ul>
-              <li><strong>Ecuación química balanceada:</strong> Representación simbólica de una reacción química donde el número de átomos de cada elemento es el mismo en los reactivos y en los productos.</li>
-              <li><strong>Mol:</strong> Unidad de cantidad de sustancia en el Sistema Internacional de Unidades (SI). Un mol contiene 6.022 x 10^23 entidades elementales (átomos, moléculas, iones, etc.).</li>
-              <li><strong>Masa molar:</strong> Masa de un mol de una sustancia, expresada en gramos/mol.</li>
-              <li><strong>Reactivo limitante:</strong> Reactivo que se consume completamente en una reacción química y determina la cantidad máxima de producto que se puede formar.</li>
-              <li><strong>Rendimiento de reacción:</strong> Cantidad de producto obtenido en una reacción química, comparado con la cantidad teórica calculada estequiométricamente.</li>
-            </ul>
-            <h3>6.2. Cálculos estequiométricos</h3>
-            <p>Los cálculos estequiométricos involucran la conversión entre masa, moles y volumen de las sustancias en una reacción química, utilizando la ecuación química balanceada y las masas molares.</p>
-            <div class="ejemplo">
-              Ejemplo:
-              Dada la reacción: 2 H₂ + O₂ → 2 H₂O
-              Si reaccionan 4 gramos de H₂, ¿cuántos gramos de H₂O se producen?
-              <ol>
-                <li>Masa molar de H₂: 2 g/mol</li>
-                <li>Moles de H₂: 4 g / (2 g/mol) = 2 moles</li>
-                <li>De la ecuación balanceada, 2 moles de H₂ producen 2 moles de H₂O.</li>
-                <li>Masa molar de H₂O: 18 g/mol</li>
-                <li>Masa de H₂O producida: 2 moles * (18 g/mol) = 36 gramos</li>
-              </ol>
-            </div>
-        </section>
-
-        <section>
-            <h2>7. Recursos Visuales y Ejemplos Prácticos</h2>
-            <p>Para complementar la información teórica, a continuación encontrarás videos que explican de forma visual y práctica algunos de los conceptos clave de la formulación y nomenclatura química, y ahora también sobre estequiometría.</p>
-
-            <h3>7.1. Video: Cómo formular en 8 minutos 👍 Formulación química ⚛️ ideas básicas</h3>
-            <div class="video-responsive">
-                <iframe src="https://www.youtube.com/embed/QrJSL0VN8yE"
-                        title="Cómo formular en 8 minutos 👍 Formulación química ⚛️ ideas básicas"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen>
-                </iframe>
-            </div>
-            <p>Este video ofrece una visión general sobre cómo empezar a formular compuestos inorgánicos, explicando las bases de los elementos y las valencias.</p>
-
-            <h3>7.2. Video: ESTEQUIOMETRÍA PASO A PASO CON EJEMPLOS | Química básica</h3>
-            <div class="video-responsive">
-                <iframe src="https://www.youtube.com/embed/o5n-Ok8vdgE"
-                        title="ESTEQUIOMETRÍA PASO A PASO CON EJEMPLOS | Química básica"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen>
-                </iframe>
-            </div>
-            <p>En este video, se explica la estequiometría paso a paso con ejemplos prácticos.</p>
-
-        </section>
-
-        <section>
-            <h2>8. Importancia y Aplicaciones de la Formulación Química</h2>
-            <p>La formulación y nomenclatura química no son solo un ejercicio académico, sino herramientas esenciales con aplicaciones críticas en diversas áreas:</p>
-            <ul>
-                <li><strong>Industria Química:</strong> Fundamental para la producción, control de calidad y seguridad en la fabricación de fármacos, plásticos, fertilizantes, productos de limpieza, etc.</li>
-                <li><strong>Medicina y Farmacia:</strong> Para identificar principios activos, dosificaciones y reacciones adversas de medicamentos. Los nombres sistemáticos y fórmulas son vitales para la investigación y el desarrollo de nuevos tratamientos.</li>
-                <li><strong>Ciencias Ambientales:</strong> Para el estudio de contaminantes, ciclos biogeoquímicos y desarrollo de estrategias de remediación. Conocer las fórmulas de gases de efecto invernadero o de contaminantes del agua es crucial.</li>
-                <li><strong>Investigación Científica:</strong> Permite a los investigadores de todo el mundo comunicarse de forma inequívoca sobre sus descubrimientos, replicar experimentos y construir sobre el conocimiento existente.</li>
-                <li><strong>Educación:</strong> Constituye la base para el aprendizaje de conceptos más avanzados en química y otras ciencias relacionadas.</li>
-            </ul>
-            <div class="importante">
-                <p>En resumen, la formulación y nomenclatura química son el alfabeto y la gramática del lenguaje de la química. Dominarlos no solo facilita el estudio de esta ciencia, sino que abre las puertas a una comprensión profunda del mundo material que nos rodea y a la capacidad de innovar y resolver problemas complejos.</p>
-            </div>
-        </section>
-
-        <div class="back-link">
-            <p><a href="/">Volver a la herramienta principal</a></p>
         </div>
+    </div>
+    <div class="footer">
+        <p>© 2025 Proyecto Personal - Mateo Martín</p>
     </div>
 </body>
 </html>
