@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+import random
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
@@ -15,7 +16,6 @@ db_path = os.path.join(os.path.dirname(__file__), 'data', 'Compuestos.csv')
 if os.path.exists(db_path):
     try:
         df = pd.read_csv(db_path)
-        # Verificar que el archivo tenga las columnas necesarias
         columnas_requeridas = {'Formula', 'Formula2', 'Sistematica', 'Stock', 'Tradicional'}
         if not columnas_requeridas.issubset(df.columns):
             df = None
@@ -30,15 +30,12 @@ else:
 # Función para buscar compuestos
 def buscar_compuesto(tipo_busqueda, valor_busqueda, nomenclatura_devolver=None):
     if df is None or df.empty:
-        return None  # Si no hay base de datos cargada o está vacía, devuelve None
-    
+        return None
+
     if tipo_busqueda == "formula":
-        # Buscar por fórmula (usando Formula)
         resultados = df[df['Formula'].str.lower() == valor_busqueda.lower()]
-        
-        # Filtrar las columnas de nomenclatura según la selección del usuario
         if nomenclatura_devolver == "sistematica":
-            resultados = resultados[['Formula2', 'Sistematica']]  # Mostrar Formula2
+            resultados = resultados[['Formula2', 'Sistematica']]
         elif nomenclatura_devolver == "stock":
             resultados = resultados[['Formula2', 'Stock']]
         elif nomenclatura_devolver == "tradicional":
@@ -46,44 +43,35 @@ def buscar_compuesto(tipo_busqueda, valor_busqueda, nomenclatura_devolver=None):
         elif nomenclatura_devolver == "todas":
             resultados = resultados[['Formula2', 'Sistematica', 'Stock', 'Tradicional']]
         else:
-            return None  # Opción no válida
-    
+            return None
+
     elif tipo_busqueda == "nomenclatura":
-        # Buscar por nomenclatura (en las tres columnas)
         resultados = df[
             (df['Sistematica'].str.lower() == valor_busqueda.lower()) |
             (df['Stock'].str.lower() == valor_busqueda.lower()) |
             (df['Tradicional'].str.lower() == valor_busqueda.lower())
         ]
-        # Devolver solo las columnas necesarias
         resultados = resultados[['Formula2', 'Sistematica', 'Stock', 'Tradicional']]
     else:
-        return None  # Tipo de búsqueda no válido
-    
-    # Verificar si el DataFrame está vacío usando .empty
+        return None
+
     return resultados if not resultados.empty else None
 
-# Ruta para la página principal
 @app.route('/')
 def index():
     return render_template('index.html', titulo=TITULO)
 
-# --- NUEVO CÓDIGO AÑADIDO ---
-# Ruta para la página de información
 @app.route('/informacion')
 def informacion():
-    # Renderiza el nuevo template que creaste
     return render_template('informacion.html', titulo="Guía de Nomenclatura")
-# -----------------------------
 
-# Ruta para la búsqueda
 @app.route('/buscar', methods=['POST'])
 def buscar():
     try:
-        tipo_busqueda = request.form.get('tipo_busqueda')  # Obtiene el tipo de búsqueda
-        formula = request.form.get('formula')  # Obtiene la fórmula (si se seleccionó)
-        nomenclatura = request.form.get('nomenclatura')  # Obtiene la nomenclatura (si se seleccionó)
-        nomenclatura_devolver = request.form.get('nomenclatura_devolver')  # Obtiene la nomenclatura a devolver
+        tipo_busqueda = request.form.get('tipo_busqueda')
+        formula = request.form.get('formula')
+        nomenclatura = request.form.get('nomenclatura')
+        nomenclatura_devolver = request.form.get('nomenclatura_devolver')
 
         if tipo_busqueda == "formula":
             if not formula:
@@ -96,22 +84,70 @@ def buscar():
         else:
             return render_template('resultados.html', titulo=TITULO, error="⚠️ Tipo de búsqueda no válido.")
 
-        # Realizar la búsqueda
         resultados = buscar_compuesto(tipo_busqueda, valor_busqueda, nomenclatura_devolver)
 
-        # Verificar si hay resultados
         if resultados is None or resultados.empty:
             return render_template('resultados.html', titulo=TITULO, error="No se encontraron resultados.")
 
-        # Pasar el DataFrame y la nomenclatura seleccionada a la plantilla
         return render_template('resultados.html', titulo=TITULO, tipo_busqueda=tipo_busqueda,
-                                     valor_busqueda=valor_busqueda,
-                                     resultados=resultados,
-                                     nomenclatura_devolver=nomenclatura_devolver,  # Pasar la nomenclatura seleccionada
-                                     error=None)
+                               valor_busqueda=valor_busqueda,
+                               resultados=resultados,
+                               nomenclatura_devolver=nomenclatura_devolver,
+                               error=None)
     except Exception as e:
         return render_template('resultados.html', titulo=TITULO, error=f"❌ Error interno: {str(e)}"), 500
 
-# Ejecutar en local
+# Ruta del test interactivo
+@app.route("/test")
+def test():
+    preguntas = cargar_preguntas()
+    return render_template("test.html", titulo="Test de Formulación Química", preguntas=preguntas)
+
+@app.route("/evaluar_test", methods=["POST"])
+def evaluar_test():
+    resultados = []
+    puntaje = 0
+    total = 0
+
+    for i in range(10):
+        respuesta_usuario = request.form.get(f"respuesta_{i}")
+        respuesta_correcta = request.form.get(f"correcta_{i}")
+        if respuesta_usuario is None or respuesta_correcta is None:
+            continue
+        total += 1
+        correcta = respuesta_usuario.strip().lower() == respuesta_correcta.strip().lower()
+        resultados.append({
+            "pregunta": i + 1,
+            "respuesta_usuario": respuesta_usuario,
+            "respuesta_correcta": respuesta_correcta,
+            "correcta": correcta
+        })
+        if correcta:
+            puntaje += 1
+
+    return render_template("resultados.html", titulo="Resultados del Test", resultados=resultados, puntaje=puntaje, total=total)
+
+def cargar_preguntas():
+    preguntas = []
+    if df is None or df.empty:
+        return preguntas
+
+    seleccionadas = df.sample(n=min(10, len(df)))
+    for _, fila in seleccionadas.iterrows():
+        tipo = random.choice(["formula_a_nombre", "nombre_a_formula"])
+        if tipo == "formula_a_nombre":
+            preguntas.append({
+                "enunciado": f"¿Cuál es el nombre del compuesto {fila['Formula2']}?",
+                "respuesta": fila.get("Tradicional") or fila.get("Stock") or fila.get("Sistematica") or "",
+            })
+        else:
+            nombre = fila.get("Tradicional") or fila.get("Stock") or fila.get("Sistematica")
+            if nombre:
+                preguntas.append({
+                    "enunciado": f"¿Cuál es la fórmula del compuesto {nombre}?",
+                    "respuesta": fila['Formula2']
+                })
+    return preguntas
+
 if __name__ == '__main__':
     app.run(debug=True)
