@@ -482,3 +482,92 @@ button:hover {
     font-size: 0.9em;
     box-shadow: 0 -2px 10px var(--shadow-medium);
 }
+
+/* --- Menú de Navegación Superior --- */
+.navbar {
+    background-color: var(--secondary-color); /* Color oscuro para la barra */
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    width: 100%; /* Ocupa todo el ancho */
+    position: sticky; /* Se mantiene en la parte superior al hacer scroll */
+    top: 0;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+.navbar-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center; /* Centra los elementos del menú */
+    align-items: center;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    padding: 0 20px;
+}
+
+.navbar-item {
+    margin: 0 25px; /* Espacio entre los elementos del menú */
+}
+
+.navbar-item a {
+    color: #fff; /* Color del texto del enlace */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.15em; /* Tamaño de fuente ligeramente más grande */
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    white-space: nowrap; /* Evita que los enlaces se rompan en varias líneas */
+}
+
+.navbar-item a:hover,
+.navbar-item a.active { /* 'active' para el enlace de la página actual */
+    background-color: var(--primary-color); /* Resalta al pasar el mouse o si es la página activa */
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+    .navbar-item {
+        margin: 10px 0; /* Más espacio vertical entre elementos en columna */
+        width: 100%;
+        text-align: center;
+    }
+    .navbar-item a {
+        display: block; /* Para que los enlaces ocupen todo el ancho */
+        padding: 12px 15px; /* Más padding para facilitar el clic */
+    }
+    h1 {
+        font-size: 2em; /* Ajuste para títulos en móviles */
+    }
+    .container-main {
+        padding: 15px;
+        margin: 15px auto;
+    }
+    .card, form, .resultados, .info-section, .test-container {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8em;
+        margin-top: 15px;
+        margin-bottom: 25px;
+    }
+    .navbar-item a {
+        font-size: 1em;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+    input[type="text"], select {
+        padding: 10px;
+        font-size: 1em;
+    }
+}
