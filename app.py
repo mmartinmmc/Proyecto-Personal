@@ -81,6 +81,11 @@ if df_compuestos is not None:
     else:
         # Añadir columna normalizada para fórmulas (para comparación más robusta en el test)
         df_compuestos['Formula2_Normalizada'] = df_compuestos['Formula2'].astype(str).apply(lambda x: normalizar_formula(x) if pd.notna(x) else "")
+        # Normalizar columnas de nomenclatura para una comparación precisa
+        df_compuestos['Sistematica_Normalizada'] = df_compuestos['Sistematica'].astype(str).str.strip().str.lower()
+        df_compuestos['Stock_Normalizada'] = df_compuestos['Stock'].astype(str).str.strip().str.lower()
+        df_compuestos['Tradicional_Normalizada'] = df_compuestos['Tradicional'].astype(str).str.strip().str.lower()
+
 else:
     print("El DataFrame de compuestos no se pudo cargar. La funcionalidad de búsqueda y test podría estar limitada.")
 
@@ -94,10 +99,13 @@ def buscar_compuesto(tipo_busqueda, valor_busqueda, nomenclatura_devolver=None):
         resultados = df_compuestos[df_compuestos['Formula2_Normalizada'] == formula_normalizada_buscada].copy()
         return resultados if not resultados.empty else None
     elif tipo_busqueda == "nomenclatura":
-        valor_busqueda_lower = valor_busqueda.strip().lower()
-        mask = df_compuestos['Sistematica'].astype(str).str.lower().str.contains(valor_busqueda_lower, na=False) | \
-               df_compuestos['Stock'].astype(str).str.lower().str.contains(valor_busqueda_lower, na=False) | \
-               df_compuestos['Tradicional'].astype(str).str.lower().str.contains(valor_busqueda_lower, na=False)
+        valor_busqueda_lower_stripped = valor_busqueda.strip().lower() # Normalizar la entrada del usuario
+
+        # Realizar la búsqueda por coincidencia exacta en las columnas normalizadas
+        mask = (df_compuestos['Sistematica_Normalizada'] == valor_busqueda_lower_stripped) | \
+               (df_compuestos['Stock_Normalizada'] == valor_busqueda_lower_stripped) | \
+               (df_compuestos['Tradicional_Normalizada'] == valor_busqueda_lower_stripped)
+        
         resultados = df_compuestos[mask].copy()
         return resultados if not resultados.empty else None
     return None
