@@ -35,16 +35,17 @@
 <body>
     <nav class="navbar">
         <div class="navbar-container">
-            <div class="navbar-item"><a href="/" class="active">Herramienta Principal</a></div>
+            <div class="navbar-item"><a href="/">Herramienta Principal</a></div>
             <div class="navbar-item"><a href="/informacion">Información Clave</a></div>
             <div class="navbar-item"><a href="/test">Test de Conocimientos</a></div>
+            <div class="navbar-item"><a href="{{ url_for('static', filename='docs/informe-proyecto.pdf') }}" target="_blank">Informe del Proyecto</a></div>
         </div>
     </nav>
 
     <div class="container-main">
         <h1>{{ titulo }}</h1>
 
-        <form action="/buscar" method="POST" class="card">
+        <form action="/buscar" method="POST">
             <label for="tipo_busqueda">Buscar por:</label>
             <select id="tipo_busqueda" name="tipo_busqueda" onchange="mostrarCampoBusqueda()" required>
                 <option value="formula">Fórmula</option>
