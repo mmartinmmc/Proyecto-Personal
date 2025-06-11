@@ -79,18 +79,18 @@ label {
     color: var(--secondary-color);
 }
 
-input[type="text"], select {
+input[type="text"], select, textarea { /* Añadido textarea aquí */
     padding: 12px; /* Más padding */
     width: 100%;
     border: 1px solid var(--border-color);
     border-radius: 8px; /* Bordes más redondeados */
     margin-bottom: 18px; /* Más espacio */
     font-size: 1.1em; /* Fuente ligeramente más grande */
-    box-sizing: border-box;
+    box-sizing: border-box; /* Asegura que el padding y borde se incluyan en el ancho/alto */
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-input[type="text"]:focus, select:focus {
+input[type="text"]:focus, select:focus, textarea:focus { /* Añadido textarea aquí */
     border-color: var(--primary-color);
     box-shadow: 0 0 8px rgba(52, 152, 219, 0.3); /* Sombra al enfocar */
     outline: none;
@@ -115,30 +115,62 @@ button:hover {
     transform: translateY(-2px); /* Efecto sutil al pasar el mouse */
 }
 
-/* --- Mensajes de Error y Éxito --- */
-.error {
-    color: var(--error-text);
-    font-weight: bold;
-    text-align: center;
-    margin-top: 15px;
-    padding: 12px;
-    background-color: var(--error-background);
-    border: 1px solid #f5c6cb;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px var(--shadow-light);
+/* Specific Fieldset/Div styles for form */
+#campo_formula, #campo_nomenclatura {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.success-message {
-    color: var(--success-text);
-    font-weight: bold;
-    text-align: center;
-    margin-top: 15px;
-    padding: 12px;
-    background-color: var(--success-background);
-    border: 1px solid #c3e6cb;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px var(--shadow-light);
+/* Desplegable Grid for Home Page */
+.desplegable-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Columnas responsivas */
+    gap: 25px; /* Espacio entre tarjetas */
+    margin-top: 30px;
 }
+
+.desplegable {
+    background: var(--background-semi-transparent);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px var(--shadow-medium);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Para que el contenido se distribuya si hay enlaces */
+}
+
+.desplegable:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.desplegable h3 {
+    color: var(--secondary-color);
+    font-size: 1.6em; /* Más grande */
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--primary-color); /* Línea decorativa */
+    padding-bottom: 8px;
+}
+
+.desplegable h3 a {
+    text-decoration: none;
+    color: inherit; /* Hereda el color del h3 */
+}
+
+.desplegable h3 a:hover {
+    text-decoration: underline;
+}
+
+.desplegable p {
+    color: var(--text-color);
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 15px; /* Espacio entre párrafo y botón/enlace */
+    flex-grow: 1; /* Permite que el párrafo ocupe el espacio */
+}
+
 
 /* --- Resultados de Búsqueda y Tablas --- */
 .resultados {
@@ -210,158 +242,61 @@ button:hover {
     transform: translateY(-2px);
 }
 
-/* --- Estilos para los Desplegables (Cards) en index.html --- */
-.desplegable-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Columnas responsivas */
-    gap: 25px; /* Espacio entre tarjetas */
-    margin-top: 30px;
-}
-
-.desplegable {
-    background: var(--background-semi-transparent);
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px var(--shadow-medium);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Para que el contenido se distribuya si hay enlaces */
-}
-
-.desplegable:hover {
-    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-}
-
-.desplegable h3 {
-    color: var(--secondary-color);
-    font-size: 1.6em; /* Más grande */
-    margin-bottom: 12px;
-    border-bottom: 2px solid var(--primary-color); /* Línea decorativa */
-    padding-bottom: 8px;
-}
-
-.desplegable h3 a {
-    text-decoration: none;
-    color: inherit; /* Hereda el color del h3 */
-}
-
-.desplegable h3 a:hover {
-    text-decoration: underline;
-}
-
-.desplegable p {
-    color: var(--text-color);
-    font-size: 1em;
-    line-height: 1.6;
-    margin-bottom: 15px; /* Espacio entre párrafo y botón/enlace */
-    flex-grow: 1; /* Permite que el párrafo ocupe el espacio */
-}
-
-
-/* --- Estilos específicos de informacion.html --- */
-.info-section {
-    background: var(--background-semi-transparent);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px var(--shadow-medium);
-    margin-bottom: 30px;
-}
-
-.info-section h2 {
-    font-size: 2em;
-    color: var(--primary-color);
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-
-.info-section h3 {
-    font-size: 1.6em;
-    color: var(--secondary-color);
-    margin-top: 25px;
-    margin-bottom: 15px;
-}
-
-.info-section p {
-    margin-bottom: 12px;
-    line-height: 1.7;
-}
-
-.info-section ul, .info-section ol {
-    margin-left: 25px;
-    margin-bottom: 15px;
-    line-height: 1.6;
-}
-
-.info-section li {
-    margin-bottom: 8px;
-}
-
-.importante {
-    background-color: rgba(230, 247, 255, 0.8); /* Más opaco */
-    border-left: 6px solid var(--primary-color);
-    padding: 20px;
-    margin: 25px 0;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px var(--shadow-light);
-}
-
-.importante h4 {
-    color: var(--primary-dark-color);
-    margin-top: 0;
-    font-size: 1.3em;
-    margin-bottom: 10px;
-}
-
-.ejemplo {
-    background-color: rgba(240, 240, 240, 0.8); /* Más opaco */
-    padding: 15px;
-    margin: 15px 0;
-    border-left: 4px solid var(--border-color);
-    font-family: 'Consolas', 'Monaco', monospace; /* Fuente monoespaciada */
-    white-space: pre-wrap;
-    border-radius: 6px;
-    font-size: 0.95em;
-    color: #555;
-}
-
-.back-link {
-    display: block;
-    margin-top: 40px;
+/* --- Footer general --- */
+.footer {
+    background-color: rgba(44, 62, 80, 0.8); /* Azul oscuro semitransparente */
+    color: #fff;
+    padding: 20px 0;
     text-align: center;
-    font-size: 1.2em;
-}
-.back-link a {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-.back-link a:hover {
-    text-decoration: underline;
-    color: var(--primary-dark-color);
+    margin-top: auto; /* Empuja el footer hacia abajo */
+    font-size: 0.9em;
+    box-shadow: 0 -2px 10px var(--shadow-medium);
 }
 
-/* Estilos para videos responsive */
-.video-responsive {
-    position: relative;
-    padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
-    height: 0;
-    overflow: hidden;
-    margin-bottom: 25px;
-    background-color: #000;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px var(--shadow-medium);
-}
-.video-responsive iframe {
-    position: absolute;
+/* --- Menú de Navegación Superior --- */
+.navbar {
+    background-color: var(--secondary-color); /* Color oscuro para la barra */
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    width: 100%; /* Ocupa todo el ancho */
+    position: sticky; /* Se mantiene en la parte superior al hacer scroll */
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+.navbar-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center; /* Centra los elementos del menú */
+    align-items: center;
+    flex-wrap: nowrap; /* CRÍTICO: Evita que los elementos se envuelvan a la siguiente línea */
+    overflow-x: auto; /* Permite desplazamiento horizontal si el contenido es demasiado ancho */
+    -webkit-overflow-scrolling: touch; /* Para un desplazamiento más suave en iOS */
+    padding: 0 20px; /* Padding a los lados */
+}
+
+.navbar-item {
+    margin: 0 25px; /* Espacio entre los elementos del menú */
+    flex-shrink: 0; /* CRÍTICO: Evita que los elementos se encojan */
+}
+
+.navbar-item a {
+    color: #fff; /* Color del texto del enlace */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.15em; /* Tamaño de fuente ligeramente más grande */
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    white-space: nowrap; /* CRÍTICO: Evita que el texto del enlace se rompa en varias líneas */
+}
+
+.navbar-item a:hover,
+.navbar-item a.active { /* 'active' para el enlace de la página actual */
+    background-color: var(--primary-color); /* Resalta al pasar el mouse o si es la página activa */
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* --- Estilos específicos de test.html, pregunta.html y resultados_test.html --- */
@@ -489,74 +424,127 @@ button:hover {
 }
 
 
-/* --- Footer general --- */
-.footer {
-    background-color: rgba(44, 62, 80, 0.8); /* Azul oscuro semitransparente */
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-    margin-top: auto; /* Empuja el footer hacia abajo */
-    font-size: 0.9em;
-    box-shadow: 0 -2px 10px var(--shadow-medium);
+/* Estilos para videos responsive */
+.video-responsive {
+    position: relative;
+    padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 25px;
+    background-color: #000;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px var(--shadow-medium);
 }
-
-/* --- Menú de Navegación Superior --- */
-.navbar {
-    background-color: var(--secondary-color); /* Color oscuro para la barra */
-    padding: 15px 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    width: 100%; /* Ocupa todo el ancho */
-    position: sticky; /* Se mantiene en la parte superior al hacer scroll */
+.video-responsive iframe {
+    position: absolute;
     top: 0;
-    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 
-.navbar-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center; /* Centra los elementos del menú */
-    align-items: center;
-    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
-    padding: 0 20px;
+/* Info Section Specific */
+.info-section {
+    background: var(--background-semi-transparent);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px var(--shadow-medium);
+    margin-bottom: 30px;
 }
 
-.navbar-item {
-    margin: 0 25px; /* Espacio entre los elementos del menú */
+.info-section h2 {
+    font-size: 2em;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-.navbar-item a {
-    color: #fff; /* Color del texto del enlace */
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.15em; /* Tamaño de fuente ligeramente más grande */
-    padding: 8px 15px;
+.info-section h3 {
+    font-size: 1.6em;
+    color: var(--secondary-color);
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.info-section p {
+    margin-bottom: 12px;
+    line-height: 1.7;
+}
+
+.info-section ul, .info-section ol {
+    margin-left: 25px;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.info-section li {
+    margin-bottom: 8px;
+}
+
+.importante {
+    background-color: rgba(230, 247, 255, 0.8); /* Más opaco */
+    border-left: 6px solid var(--primary-color);
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px var(--shadow-light);
+}
+
+.importante h4 {
+    color: var(--primary-dark-color);
+    margin-top: 0;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.ejemplo {
+    background-color: rgba(240, 240, 240, 0.8); /* Más opaco */
+    padding: 15px;
+    margin: 15px 0;
+    border-left: 4px solid var(--border-color);
+    font-family: 'Consolas', 'Monaco', monospace; /* Fuente monoespaciada */
+    white-space: pre-wrap;
     border-radius: 6px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    white-space: nowrap; /* Evita que los enlaces se rompan en varias líneas */
+    font-size: 0.95em;
+    color: #555;
 }
 
-.navbar-item a:hover,
-.navbar-item a.active { /* 'active' para el enlace de la página actual */
-    background-color: var(--primary-color); /* Resalta al pasar el mouse o si es la página activa */
-    color: #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+.back-link {
+    display: block;
+    margin-top: 40px;
+    text-align: center;
+    font-size: 1.2em;
 }
+.back-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+.back-link a:hover {
+    text-decoration: underline;
+    color: var(--primary-dark-color);
+}
+
 
 /* Ajustes para pantallas pequeñas */
 @media (max-width: 768px) {
     .navbar-container {
-        flex-direction: column;
-        padding: 10px;
+        /* Eliminamos flex-direction: column; para que siga en fila */
+        justify-content: flex-start; /* Alinea los elementos al inicio */
+        padding: 0 10px;
     }
     .navbar-item {
-        margin: 10px 0; /* Más espacio vertical entre elementos en columna */
-        width: 100%;
-        text-align: center;
+        margin: 0 8px; /* Reduce el margen en pantallas pequeñas */
+        padding: 6px 10px;
+        /* Asegura que los elementos no se rompan por espacio limitado */
+        flex-shrink: 0;
+        white-space: nowrap;
     }
     .navbar-item a {
-        display: block; /* Para que los enlaces ocupen todo el ancho */
-        padding: 12px 15px; /* Más padding para facilitar el clic */
+        font-size: 1em; /* Fuente más pequeña para pantallas pequeñas */
     }
     h1 {
         font-size: 2em; /* Ajuste para títulos en móviles */
@@ -583,8 +571,11 @@ button:hover {
         padding: 10px 20px;
         font-size: 1em;
     }
-    input[type="text"], select {
+    input[type="text"], select, textarea { /* Añadido textarea aquí */
         padding: 10px;
         font-size: 1em;
+    }
+    .desplegable-grid {
+        grid-template-columns: 1fr; /* Apila las columnas en pantallas muy pequeñas */
     }
 }
