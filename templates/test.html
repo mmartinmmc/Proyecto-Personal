@@ -56,6 +56,8 @@
                 {% endif %}
             </div>
 
+            {# ESTE ES EL BLOQUE QUE DEBE MOSTRAR LA SELECCIÓN DE DIFICULTAD #}
+            {% if show_difficulty_options %}
             <div class="difficulty-selection">
                 <p>Selecciona la dificultad del test:</p>
                 <form action="/test" method="GET" style="display:inline-block; margin-right:10px;">
@@ -67,6 +69,8 @@
                     <button type="submit" class="button-hard">Iniciar Test (Difícil)</button>
                 </form>
             </div>
+            {% endif %}
+            {# FIN DEL BLOQUE DE SELECCIÓN DE DIFICULTAD #}
             
         </div>
     </div>
