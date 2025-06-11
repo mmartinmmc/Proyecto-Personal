@@ -73,10 +73,11 @@ else:
 
 # Verificar y preparar el DataFrame
 if df_compuestos is not None:
-    columnas_requeridas = {'Formula', 'Formula2', 'Sistematica', 'Stock', 'Tradicional'}
+    # Añadir 'Caracteristicas' y 'Usos' a las columnas requeridas
+    columnas_requeridas = {'Formula', 'Formula2', 'Sistematica', 'Stock', 'Tradicional', 'Caracteristicas', 'Usos'}
     if not columnas_requeridas.issubset(df_compuestos.columns):
         df_compuestos = None
-        print(f"⚠️ Error: El archivo de datos no tiene las columnas requeridas: {columnas_requeridas}.")
+        print(f"⚠️ Error: El archivo de datos no tiene todas las columnas requeridas: {columnas_requeridas}.")
     else:
         # Añadir columna normalizada para fórmulas (para comparación más robusta en el test)
         df_compuestos['Formula2_Normalizada'] = df_compuestos['Formula2'].astype(str).apply(lambda x: normalizar_formula(x) if pd.notna(x) else "")
@@ -114,6 +115,7 @@ def informacion():
 @app.route('/informe_proyecto')
 def informe_proyecto():
     return render_template('informe_proyecto.html', titulo=TITULO)
+
 
 @app.route('/buscar', methods=['POST'])
 def buscar_post():
