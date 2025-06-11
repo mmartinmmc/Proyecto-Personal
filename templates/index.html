@@ -22,58 +22,59 @@
     </script>
 </head>
 <body>
-    <h1>{{ titulo }}</h1>
+    <div class="container-main">
+        <h1>{{ titulo }}</h1>
 
-    <form action="/buscar" method="POST">
-        <label for="tipo_busqueda">Buscar por:</label>
-        <select id="tipo_busqueda" name="tipo_busqueda" onchange="mostrarCampoBusqueda()" required>
-            <option value="formula">Fórmula</option>
-            <option value="nomenclatura">Nomenclatura</option>
-        </select>
-
-        <div id="campo_formula">
-            <input type="text" name="formula" placeholder="Ingresa una fórmula (ej. H2O)">
-            <label for="nomenclatura_devolver">Mostrar nomenclatura:</label>
-            <select name="nomenclatura_devolver">
-                <option value="todas">Todas</option>
-                <option value="sistematica">Sistemática</option>
-                <option value="stock">Stock</option>
-                <option value="tradicional">Tradicional</option>
+        <form action="/buscar" method="POST" class="card"> <label for="tipo_busqueda">Buscar por:</label>
+            <select id="tipo_busqueda" name="tipo_busqueda" onchange="mostrarCampoBusqueda()" required>
+                <option value="formula">Fórmula</option>
+                <option value="nomenclatura">Nomenclatura</option>
             </select>
+
+            <div id="campo_formula">
+                <input type="text" name="formula" placeholder="Ingresa una fórmula (ej. H2O)">
+                <label for="nomenclatura_devolver">Mostrar nomenclatura:</label>
+                <select name="nomenclatura_devolver">
+                    <option value="todas">Todas</option>
+                    <option value="sistematica">Sistemática</option>
+                    <option value="stock">Stock</option>
+                    <option value="tradicional">Tradicional</option>
+                </select>
+            </div>
+
+            <div id="campo_nomenclatura" style="display: none;">
+                <input type="text" name="nomenclatura" placeholder="Ingresa una nomenclatura (ej. Agua)">
+            </div>
+
+            <button type="submit">Buscar</button>
+        </form>
+
+        <div class="desplegable-grid"> <div class="desplegable">
+                <h3>Teoría sobre la formulación</h3>
+                <p>Aquí puedes encontrar información teórica sobre la formulación química.</p>
+                </div>
+
+            <div class="desplegable">
+                <h3>Ejercicios de práctica</h3>
+                <p>Practica tus habilidades con ejercicios de formulación química.</p>
+                </div>
+
+            <div class="desplegable">
+                <h3>Proceso de creación</h3>
+                <p>Descubre cómo se crean y nombran los compuestos químicos.</p>
+                </div>
+
+            <div class="desplegable">
+                <h3><a href="/informacion">Información Clave sobre Formulación</a></h3>
+                <p>Haz clic aquí para acceder a un apartado con información esencial sobre este tema.</p>
+            </div>
+
+            <div class="desplegable">
+                <h3><a href="/test">Pon a prueba tus conocimientos</a></h3>
+                <p>Haz clic aquí para hacer un test de formulación química y comprobar cuánto sabes.</p>
+            </div>
         </div>
-
-        <div id="campo_nomenclatura" style="display: none;">
-            <input type="text" name="nomenclatura" placeholder="Ingresa una nomenclatura (ej. Agua)">
-        </div>
-
-        <button type="submit">Buscar</button>
-    </form>
-
-    <div class="desplegable">
-        <h3>Teoría sobre la formulación</h3>
-        <p>Aquí puedes encontrar información teórica sobre la formulación química.</p>
     </div>
-
-    <div class="desplegable">
-        <h3>Ejercicios de práctica</h3>
-        <p>Practica tus habilidades con ejercicios de formulación química.</p>
-    </div>
-
-    <div class="desplegable">
-        <h3>Proceso de creación</h3>
-        <p>Descubre cómo se crean y nombran los compuestos químicos.</p>
-    </div>
-
-    <div class="desplegable">
-        <h3><a href="/informacion">Información Clave sobre Formulación</a></h3>
-        <p>Haz clic aquí para acceder a un apartado con información esencial sobre este tema.</p>
-    </div>
-
-    <div class="desplegable">
-        <h3><a href="/test">Pon a prueba tus conocimientos</a></h3>
-        <p>Haz clic aquí para hacer un test de formulación química y comprobar cuánto sabes.</p>
-    </div>
-
     <div class="footer">
         <p>© 2025 Proyecto Personal - Mateo Martín</p>
     </div>
