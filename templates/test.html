@@ -1,1 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Test de Formulación Química</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Test de Formulación Química</h1>
+        <p>Responde a las siguientes preguntas para evaluar tus conocimientos sobre la formulación de compuestos químicos.</p>
 
+        <form action="/evaluar_test" method="POST">
+            {% for i, pregunta in enumerate(preguntas) %}
+                <div class="pregunta">
+                    <p><strong>Pregunta {{ i + 1 }}:</strong> {{ pregunta["enunciado"] }}</p>
+                    <input type="text" name="respuesta_{{ i }}" placeholder="Escribe tu respuesta" required>
+                    <input type="hidden" name="correcta_{{ i }}" value="{{ pregunta['respuesta'] }}">
+                </div>
+            {% endfor %}
+            <button type="submit">Enviar respuestas</button>
+        </form>
+
+        <div class="instrucciones">
+            <h3>Consejos para completar el test:</h3>
+            <ul>
+                <li>Escribe fórmulas con mayúsculas correctamente (Ej: <code>NaCl</code>, <code>H2SO4</code>).</li>
+                <li>Los nombres deben incluir el tipo correcto de nomenclatura (Ej: “Ácido sulfúrico”).</li>
+                <li>No dejes respuestas en blanco.</li>
+            </ul>
+        </div>
+
+        <a href="/" class="boton-volver">← Volver al inicio</a>
+    </div>
+</body>
+</html>
