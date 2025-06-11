@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ titulo }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script>
         // Script para resaltar el enlace activo del menú
         document.addEventListener('DOMContentLoaded', function() {
@@ -30,61 +30,60 @@
         <div class="navbar-container">
             <div class="navbar-item"><a href="/">Herramienta Principal</a></div>
             <div class="navbar-item"><a href="/informacion">Información Clave</a></div>
-            <div class="navbar-item"><a href="/test" class="active">Test de Conocimientos</a></div>
+            <div class="navbar-item"><a href="/test">Test de Conocimientos</a></div>
             <div class="navbar-item"><a href="/informe_proyecto">Informe del Proyecto</a></div>
         </div>
     </nav>
 
     <div class="container-main">
-        <div class="test-container">
-            <h1>{{ titulo }}</h1>
-            <div class="puntaje">
-                Has obtenido <strong>{{ puntaje }} de {{ total }}</strong> respuestas correctas.
-            </div>
+        <h1>{{ titulo }}</h1>
 
-            <table class="tabla-resultados test-table" aria-label="Resultados del test de formulación química">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Pregunta</th>
-                        <th>Tu respuesta</th>
-                        <th>Respuesta correcta</th>
-                        <th>Estado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for r in resultados %}
-                        <tr class="{{ 'correcta' if r.correcta else 'incorrecta' }}">
-                            <td>{{ loop.index }}</td>
-                            <td>{{ r.enunciado | safe }}</td> {# Usar 'safe' para el enunciado si contiene HTML (ej. <strong>) #}
-                            <td>{{ r.respuesta_usuario }}</td>
-                            <td>{{ r.respuesta_correcta }}</td>
-                            <td>
-                                {% if r.correcta %}
-                                    ✅ Correcta
-                                {% else %}
-                                    ❌ Incorrecta
+        {% if error %}
+            <p class="error">{{ error }}</p>
+            <a href="/" class="boton-volver">Volver a buscar</a>
+        {% else %}
+            <div class="resultados card">
+                <h2>Búsqueda por: {{ tipo_busqueda }}</h2>
+                <h3>Valor buscado: {{ valor_busqueda }}</h3>
+                {% if resultados is not none %}
+                    <table class="tabla-resultados">
+                        <thead>
+                            <tr>
+                                <th>Fórmula</th>
+                                {% if nomenclatura_devolver == "sistematica" or nomenclatura_devolver == "todas" %}
+                                    <th>Sistemática</th>
                                 {% endif %}
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-
-            <div class="mensaje-final">
-                {% if puntaje == total %}
-                    ¡Felicidades! Has acertado todas las preguntas, eres un experto en formulación química.
-                {% elif puntaje >= total * 0.7 %}
-                    Muy bien, tienes un buen dominio de la materia. Sigue practicando para mejorar aún más.
-                {% elif puntaje >= total * 0.4 %}
-                    Buen intento, pero te recomiendo repasar algunos conceptos para mejorar tu puntuación.
+                                {% if nomenclatura_devolver == "stock" or nomenclatura_devolver == "todas" %}
+                                    <th>Stock</th>
+                                {% endif %}
+                                {% if nomenclatura_devolver == "tradicional" or nomenclatura_devolver == "todas" %}
+                                    <th>Tradicional</th>
+                                {% endif %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for _, fila in resultados.iterrows() %}
+                                <tr>
+                                    <td>{{ fila['Formula2'] }}</td>
+                                    {% if nomenclatura_devolver == "sistematica" or nomenclatura_devolver == "todas" %}
+                                        <td>{{ fila['Sistematica'] }}</td>
+                                    {% endif %}
+                                    {% if nomenclatura_devolver == "stock" or nomenclatura_devolver == "todas" %}
+                                        <td>{{ fila['Stock'] }}</td>
+                                    {% endif %}
+                                    {% if nomenclatura_devolver == "tradicional" or nomenclatura_devolver == "todas" %}
+                                        <td>{{ fila['Tradicional'] }}</td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 {% else %}
-                    No te desanimes, la química puede ser difícil. Repasa y vuelve a intentarlo pronto.
+                    <p class="error">No se encontraron resultados.</p>
                 {% endif %}
             </div>
-
-            <a href="/test" class="btn-reintentar" role="button" aria-label="Reintentar el test de formulación química">Reintentar Test</a>
-        </div>
+            <a href="/" class="boton-volver">Volver a buscar</a>
+        {% endif %}
     </div>
     <div class="footer">
         <p>© 2025 Mi Propia IA - Mateo Martín Castro</p>
