@@ -35,7 +35,7 @@
             <div class="navbar-item"><a href="/informacion">Información Clave</a></div>
             <div class="navbar-item"><a href="/test" class="active">Test de Conocimientos</a></div>
             <div class="navbar-item"><a href="/informe_proyecto">Informe del Proyecto</a></div>
-            <div class="navbar-item"><a href="/comentarios">Comentarios</a></div>{# ORDENADO: a la derecha de Informe del Proyecto #}
+            <div class="navbar-item"><a href="/comentarios">Comentarios</a></div>
         </div>
     </nav>
 
@@ -56,9 +56,18 @@
                 {% endif %}
             </div>
 
-            <form action="/test" method="GET">
-                <button type="submit">Iniciar Test</button>
-            </form>
+            <div class="difficulty-selection">
+                <p>Selecciona la dificultad del test:</p>
+                <form action="/test" method="GET" style="display:inline-block; margin-right:10px;">
+                    <input type="hidden" name="dificultad" value="facil">
+                    <button type="submit" class="button-easy">Iniciar Test (Fácil)</button>
+                </form>
+                <form action="/test" method="GET" style="display:inline-block;">
+                    <input type="hidden" name="dificultad" value="dificil">
+                    <button type="submit" class="button-hard">Iniciar Test (Difícil)</button>
+                </form>
+            </div>
+            
         </div>
     </div>
     <div class="footer">
