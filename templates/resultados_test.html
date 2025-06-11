@@ -35,7 +35,7 @@
             <div class="navbar-item"><a href="/informacion">Información Clave</a></div>
             <div class="navbar-item"><a href="/test" class="active">Test de Conocimientos</a></div>
             <div class="navbar-item"><a href="/informe_proyecto">Informe del Proyecto</a></div>
-            <div class="navbar-item"><a href="/comentarios">Comentarios</a></div>{# Nuevo enlace #}
+            <div class="navbar-item"><a href="/comentarios">Comentarios</a></div>{# Reordenado #}
         </div>
     </nav>
 
@@ -77,11 +77,14 @@
 
             <div class="mensaje-final">
                 {% if puntaje == total %}
-                    ¡Felicidades! Has acertado todas las preguntas, eres un experto en formulación química.
+                    ¡Felicidades! Has acertado todas las preguntas, eres un experto en formulación química.<br>
+                    Puedes explorar más información <a href="/informacion">aquí</a>.
                 {% elif puntaje >= total * 0.7 %}
-                    Muy bien, tienes un buen dominio de la materia. Sigue practicando para mejorar aún más.
+                    Muy bien, tienes un buen dominio de la materia. Sigue practicando para mejorar aún más.<br>
+                    Puedes repasar la información clave <a href="/informacion">aquí</a>.
                 {% elif puntaje >= total * 0.4 %}
-                    Buen intento, pero te recomiendo repasar algunos conceptos para mejorar tu puntuación.
+                    Buen intento, pero te recomiendo repasar algunos conceptos para mejorar tu puntuación.<br>
+                    Puedes repasar la información clave <a href="/informacion">aquí</a>.
                 {% else %}
                     No te desanimes, la química puede ser difícil. Repasa y vuelve a intentarlo pronto.<br>
                     Puedes repasar la información clave <a href="/informacion">aquí</a> o reintentar el test.
