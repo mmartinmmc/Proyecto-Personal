@@ -2,13 +2,14 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>{{ titulo }}</title>
+    <title>Mi Propia IA - Mateo Martín Castro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    </head>
+</head>
 <body>
     <div class="container-main">
-        <div class="test-container"> <h1>{{ titulo }}</h1>
+        <div class="test-container">
+            <h1>Mi Propia IA - Mateo Martín Castro</h1>
 
             <div class="instrucciones">
                 <p>Este test contiene 10 preguntas seleccionadas aleatoriamente de nuestra base de datos de compuestos químicos.</p>
@@ -26,14 +27,15 @@
                         <label for="respuesta_{{ loop.index0 }}">{{ loop.index }}. {{ pregunta.enunciado }}</label>
                         <input type="text" name="respuesta_{{ loop.index0 }}" id="respuesta_{{ loop.index0 }}" required>
                         <input type="hidden" name="correcta_{{ loop.index0 }}" value="{{ pregunta.respuesta }}">
-                        <input type="hidden" name="enunciado_{{ loop.index0 }}" value="{{ pregunta.enunciado }}"> </div>
+                        <input type="hidden" name="enunciado_{{ loop.index0 }}" value="{{ pregunta.enunciado }}">
+                    </div>
                 {% endfor %}
                 <button type="submit">Enviar respuestas</button>
             </form>
         </div>
     </div>
     <div class="footer">
-        <p>© 2025 Proyecto Personal - Mateo Martín</p>
+        <p>© 2025 Mi Propia IA - Mateo Martín Castro</p>
     </div>
 </body>
 </html>
