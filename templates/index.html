@@ -23,6 +23,7 @@
 </head>
 <body>
     <h1>{{ titulo }}</h1>
+
     <form action="/buscar" method="POST">
         <label for="tipo_busqueda">Buscar por:</label>
         <select id="tipo_busqueda" name="tipo_busqueda" onchange="mostrarCampoBusqueda()" required>
@@ -68,17 +69,13 @@
         <p>Haz clic aquí para acceder a un apartado con información esencial sobre este tema.</p>
     </div>
 
+    <div class="desplegable">
+        <h3><a href="/test">Pon a prueba tus conocimientos</a></h3>
+        <p>Haz clic aquí para hacer un test de formulación química y comprobar cuánto sabes.</p>
+    </div>
+
     <div class="footer">
-        <p>© 2023 Proyecto Personal - Mateo Martín</p>
+        <p>© 2025 Proyecto Personal - Mateo Martín</p>
     </div>
 </body>
 </html>
-
-<div class="desplegable">
-    <h3><a href="/test">Pon a prueba tus conocimientos</a></h3>
-    <p>Haz clic aquí para hacer un test de formulación química y comprobar cuánto sabes.</p>
-</div>
-
-<div class="footer">
-    <p>© 2025 Proyecto Personal - Mateo Martín</p>
-</div>
