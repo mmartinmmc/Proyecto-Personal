@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }} - Informe del Proyecto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Estilos específicos para el contenedor del PDF */
+        .pdf-container {
+            width: 100%;
+            height: 80vh; /* Ajusta la altura según sea necesario */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .pdf-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .back-link a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .back-link a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        // Script para resaltar el enlace activo del menú
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('.navbar-item a');
+            navLinks.forEach(link => {
+                // Resaltar "Informe del Proyecto" si la ruta es /informe_proyecto
+                if (currentPath === '/informe_proyecto' && link.getAttribute('href') === '/informe_proyecto') {
+                    link.classList.add('active');
+                } else if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-item"><a href="/">Herramienta Principal</a></div>
+            <div class="navbar-item"><a href="/informacion">Información Clave</a></div>
+            <div class="navbar-item"><a href="/test">Test de Conocimientos</a></div>
+            <div class="navbar-item"><a href="/informe_proyecto" class="active">Informe del Proyecto</a></div>
+        </div>
+    </nav>
+
+    <div class="container-main">
+        <h1>Informe del Proyecto</h1>
+        <p>Aquí puedes ver el informe completo del proyecto de la aplicación de formulación química.</p>
+
+        <div class="pdf-container">
+            <!-- El iframe carga el PDF. Asegúrate de que la ruta sea correcta. -->
+            <iframe src="{{ url_for('static', filename='docs/informe-proyecto.pdf') }}" title="Informe del Proyecto de Química">
+                Este navegador no soporta PDFs incrustados. Puedes descargar el <a href="{{ url_for('static', filename='docs/informe-proyecto.pdf') }}" target="_blank">informe del proyecto aquí</a>.
+            </iframe>
+        </div>
+
+        <div class="back-link">
+            <p><a href="/">Volver a la herramienta principal</a></p>
+        </div>
+    </div>
+    <div class="footer">
+        <p>© 2025 Mi Propia IA - Mateo Martín Castro</p>
+    </div>
+</body>
+</html>
