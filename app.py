@@ -12,7 +12,7 @@ app.config['DEBUG'] = True
 # Título personalizado
 TITULO = "Mi Propia IA - Mateo Martín Castro" # Se actualiza el título aquí también
 
-# --- Funciones Auxiliares (MOVIDAS AQUÍ PARA SER DEFINIDAS ANTES DE USARSE) ---
+# --- Funciones Auxiliares ---
 def normalizar_formula(formula):
     """
     Normaliza una fórmula química para comparación (elimina espacios, unifica subíndices, etc.).
@@ -29,25 +29,68 @@ def normalizar_formula(formula):
     for old, new in subindices_map.items():
         formula = formula.replace(old, new)
 
-    # Capitalizar el primer carácter de cada posible elemento (ej. co -> Co, cl -> Cl)
-    # Esto es una simplificación. Un parser real de fórmulas sería más complejo.
-    # Esta regex busca una letra mayúscula seguida opcionalmente de una minúscula,
-    # o una letra minúscula que podría ser el inicio de un nuevo elemento (ej. Fe2O3, no fe2o3)
     def _capitalize_element_symbol(match):
         s = match.group(0)
         if len(s) == 1:
-            return s.upper() # Elemento de una letra siempre mayúscula
-        return s[0].upper() + s[1:].lower() # Elemento de dos letras: primera mayúscula, segunda minúscula
+            return s.upper()
+        return s[0].upper() + s[1:].lower()
 
-    # Usar una expresión regular para encontrar posibles símbolos de elementos (A o Aa)
-    # y aplicar la capitalización. Esto es heurístico.
     normalized = re.sub(r'([A-Z][a-z]?|[a-z])', _capitalize_element_symbol, formula)
-
-    # Eliminar espacios y números sueltos si no están seguidos de un símbolo de elemento.
-    # Esto es una simplificación y puede no ser robusto para todas las fórmulas.
-    normalized = re.sub(r'\s+', '', normalized) # Eliminar cualquier espacio remanente
-
+    normalized = re.sub(r'\s+', '', normalized)
     return normalized
+
+def asignar_dificultad(row):
+    """
+    Asigna una dificultad 'facil' o 'dificil' basada en la complejidad de la fórmula y los nombres.
+    Esta es una heurística y puede requerir ajuste fino.
+    """
+    formula = str(row['Formula2_Normalizada'])
+    sistematica = str(row['Sistematica_Normalizada']) if pd.notna(row['Sistematica_Normalizada']) else ""
+    stock = str(row['Stock_Normalizada']) if pd.notna(row['Stock_Normalizada']) else ""
+    tradicional = str(row['Tradicional_Normalizada']) if pd.notna(row['Tradicional_Normalizada']) else ""
+
+    # Criterio 1: Número de elementos distintos en la fórmula
+    # Contar letras mayúsculas (inicio de elemento)
+    num_elementos = len(re.findall(r'[A-Z]', formula))
+
+    # Criterio 2: Complejidad de los nombres
+    # Palabras clave que sugieren facilidad (ej. óxido, cloruro, agua, sal)
+    palabras_faciles = ['óxido', 'cloruro', 'agua', 'sal', 'ácido', 'hidróxido', 'sodio', 'potasio', 'calcio', 'hierro', 'cobre', 'plata']
+    
+    # Palabras clave que sugieren dificultad (ej. tetraoxo, dihidrógeno, dicromato, permanganato, perclorato)
+    palabras_dificiles = ['tetra', 'penta', 'hexa', 'hepta', 'permanganato', 'dicromato', 'perclorato', 'sulfato', 'nitrato', 'fosfato', 'carbonato']
+
+    # Puntuación de dificultad
+    dificultad_score = 0
+
+    if num_elementos > 3: # Más de 3 elementos distintos (e.g., oxisales complejas)
+        dificultad_score += 3
+    elif num_elementos == 3: # Compuestos ternarios (ej. oxoácidos, hidróxidos)
+        dificultad_score += 1
+    # Dos elementos es el score base 0
+
+    # Analizar nombres para palabras difíciles/fáciles
+    nomenclaturas = [sistematica, stock, tradicional]
+    for nom in nomenclaturas:
+        nom_lower = nom.lower()
+        for p_dificil in palabras_dificiles:
+            if p_dificil in nom_lower:
+                dificultad_score += 2 # Añadir más peso por palabras difíciles
+        for p_facil in palabras_faciles:
+            if p_facil in nom_lower:
+                dificultad_score -= 1 # Restar peso por palabras fáciles
+
+    # Longitud de la fórmula (sin subíndices numéricos)
+    formula_letras = re.sub(r'\d', '', formula)
+    if len(formula_letras) > 5:
+        dificultad_score += 1
+
+    # Clasificación final
+    if dificultad_score >= 2: # Umbral de dificultad
+        return 'dificil'
+    else:
+        return 'facil'
+
 
 # Definir la ruta correcta para `compuestos_quimicos.xlsx` (ajustado para tu base de datos)
 db_path_excel = os.path.join(os.path.dirname(__file__), 'compuestos_quimicos.xlsx')
@@ -85,6 +128,11 @@ if df_compuestos is not None:
         df_compuestos['Sistematica_Normalizada'] = df_compuestos['Sistematica'].astype(str).str.strip().str.lower()
         df_compuestos['Stock_Normalizada'] = df_compuestos['Stock'].astype(str).str.strip().str.lower()
         df_compuestos['Tradicional_Normalizada'] = df_compuestos['Tradicional'].astype(str).str.strip().str.lower()
+        
+        # Asignar dificultad
+        df_compuestos['Dificultad'] = df_compuestos.apply(asignar_dificultad, axis=1)
+
+        print(f"Distribución de dificultad de compuestos:\n{df_compuestos['Dificultad'].value_counts()}")
 
 else:
     print("El DataFrame de compuestos no se pudo cargar. La funcionalidad de búsqueda y test podría estar limitada.")
@@ -168,16 +216,24 @@ def test():
     session.pop('test_respuestas_usuario', None)
     session.pop('test_indice_actual', None)
 
+    # Obtener la dificultad de la URL o establecer un valor predeterminado
+    dificultad = request.args.get('dificultad', 'facil') # 'facil' por defecto
+
     if df_compuestos is None or df_compuestos.empty:
         return render_template('test.html', titulo=TITULO, error="No se pueden generar preguntas: No hay datos de compuestos cargados.")
 
-    # Generar 10 preguntas aleatorias
-    # Asegurarse de tener al menos 10 filas para samplear, o tomar todas si hay menos.
-    num_preguntas_a_generar = min(10, len(df_compuestos))
-    if num_preguntas_a_generar == 0:
-        return render_template('test.html', titulo=TITULO, error="No hay compuestos en la base de datos para generar preguntas.")
+    # Filtrar compuestos por dificultad
+    compuestos_filtrados = df_compuestos[df_compuestos['Dificultad'] == dificultad].copy()
 
-    preguntas_df_sample = df_compuestos.sample(n=num_preguntas_a_generar).reset_index(drop=True)
+    if compuestos_filtrados.empty:
+        return render_template('test.html', titulo=TITULO, error=f"No hay compuestos disponibles para la dificultad '{dificultad}'.")
+
+    # Generar 10 preguntas aleatorias de los compuestos filtrados
+    num_preguntas_a_generar = min(10, len(compuestos_filtrados))
+    if num_preguntas_a_generar == 0:
+        return render_template('test.html', titulo=TITULO, error="No hay suficientes compuestos en la base de datos para generar preguntas.")
+
+    preguntas_df_sample = compuestos_filtrados.sample(n=num_preguntas_a_generar).reset_index(drop=True)
     preguntas_para_test = []
 
     for index, row in preguntas_df_sample.iterrows():
@@ -204,7 +260,6 @@ def test():
                     'tipo_nomenclatura_pedida': tipo_nom_elegida
                 })
             else:
-                # Si no hay nomenclaturas disponibles, saltar esta fila o generar otro tipo de pregunta
                 continue # Saltar esta iteración
         else: # Dar nombre, pedir fórmula
             opciones_nomenclatura_para_pregunta = []
@@ -225,16 +280,16 @@ def test():
                     'nomenclatura_original': nomenclatura_elegida
                 })
             else:
-                # Si no hay nomenclaturas disponibles, saltar esta fila o generar otro tipo de pregunta
                 continue # Saltar esta iteración
 
     # Asegurarse de que tenemos un número razonable de preguntas
     if not preguntas_para_test:
-        return render_template('test.html', titulo=TITULO, error="No se pudieron generar preguntas válidas. Verifica el contenido de tu archivo de datos.")
+        return render_template('test.html', titulo=TITULO, error=f"No se pudieron generar preguntas válidas para la dificultad '{dificultad}'. Verifica el contenido de tu archivo de datos.")
 
     session['test_preguntas'] = preguntas_para_test
     session['test_respuestas_usuario'] = [None] * len(preguntas_para_test)
     session['test_indice_actual'] = 0
+    session['test_dificultad'] = dificultad # Guardar la dificultad en la sesión
 
     # Redirigir a la primera pregunta
     return redirect(url_for('mostrar_pregunta', indice=0))
@@ -323,6 +378,7 @@ def evaluar_test():
     session.pop('test_preguntas', None)
     session.pop('test_respuestas_usuario', None)
     session.pop('test_indice_actual', None)
+    session.pop('test_dificultad', None) # Limpiar la dificultad también
 
     return render_template('resultados_test.html',
                            titulo=TITULO,
