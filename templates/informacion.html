@@ -5,8 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Propia IA - Mateo Martín Castro</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        // Script para resaltar el enlace activo del menú
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('.navbar-item a');
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-item"><a href="/">Herramienta Principal</a></div>
+            <div class="navbar-item"><a href="/informacion" class="active">Información Clave</a></div>
+            <div class="navbar-item"><a href="/test">Test de Conocimientos</a></div>
+        </div>
+    </nav>
+
     <div class="container-main">
         <div class="info-section">
             <h1>Información Clave sobre Formulación Química</h1>
@@ -140,7 +160,7 @@
                     <li><strong>Escribir los símbolos de los elementos:</strong> Generalmente, el elemento más electropositivo (metal o hidrógeno) primero, seguido del más electronegativo (no metal u oxígeno).</li>
                     <li><strong>Intercambiar las valencias/números de oxidación:</strong> El número de oxidación de un elemento se convierte en el subíndice del otro (en valor absoluto).</li>
                     <li><strong>Simplificar subíndices (si es posible):</strong> Si los subíndices son divisibles por un número común, se simplifican a su mínima expresión. (Excepción: en óxidos de elementos que tienen valencias pares, no se simplifica si no se indica lo contrario en la nomenclatura de stock).</li>
-                    <li><strong>Verificar la carga neta:</b> Asegúrate de que la suma de las cargas de los átomos sea cero (en compuestos neutros).</li>
+                    <li><strong>Verificar la carga neta:</strong> Asegúrate de que la suma de las cargas de los átomos sea cero (en compuestos neutros).</li>
                 </ol>
                 <div class="ejemplo">
                     Ejemplo: Óxido de Aluminio(III)<br>
