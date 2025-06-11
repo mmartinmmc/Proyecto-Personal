@@ -14,9 +14,22 @@
         let db;
         let auth;
         let userId = 'anonimo'; // Valor por defecto
+        let isFirebaseReady = false; // Bandera para controlar el estado de Firebase
+
+        // Función para mostrar mensajes al usuario
+        function showMessage(text, type) {
+            const messageBox = document.getElementById('message-box');
+            messageBox.textContent = text;
+            messageBox.className = `message-box ${type}`;
+            messageBox.style.display = 'block'; // Mostrar el mensaje
+        }
 
         // Función para inicializar Firebase y autenticar al usuario
         async function initFirebase() {
+            // Mostrar estado inicial de conexión
+            document.getElementById('user-id-display').textContent = "Conectando a la base de datos...";
+            document.getElementById('submit-button').disabled = true; // Deshabilitar botón al inicio
+
             try {
                 // Obtener las variables globales de Canvas
                 const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
@@ -25,6 +38,7 @@
 
                 if (!firebaseConfig) {
                     console.error("Error: firebaseConfig no está definido. No se puede inicializar Firebase.");
+                    showMessage("Error al inicializar la aplicación. La configuración de Firebase no está disponible.", 'error');
                     return;
                 }
 
@@ -37,7 +51,10 @@
                         userId = user.uid;
                         document.getElementById('user-id-display').textContent = `Tu ID de usuario: ${userId}`;
                         console.log("Usuario autenticado:", userId);
+                        isFirebaseReady = true; // Marcar Firebase como listo
+                        document.getElementById('submit-button').disabled = false; // Habilitar botón
                         loadComments(); // Cargar comentarios una vez que el usuario esté autenticado
+                        showMessage("", "hidden"); // Limpiar cualquier mensaje de error de conexión
                     } else {
                         // Si no hay token de autenticación inicial, iniciar sesión de forma anónima
                         if (!initialAuthToken) {
@@ -46,11 +63,14 @@
                                 userId = anonUser.user.uid;
                                 document.getElementById('user-id-display').textContent = `Tu ID de usuario: ${userId}`;
                                 console.log("Sesión anónima iniciada:", userId);
+                                isFirebaseReady = true; // Marcar Firebase como listo
+                                document.getElementById('submit-button').disabled = false; // Habilitar botón
                                 loadComments();
+                                showMessage("", "hidden");
                             } catch (error) {
                                 console.error("Error al iniciar sesión anónima:", error);
-                                document.getElementById('message-box').textContent = "Error de autenticación. No se pueden cargar los comentarios.";
-                                document.getElementById('message-box').className = 'message-box error';
+                                showMessage("Error de autenticación. No se pueden enviar ni cargar los comentarios. " + error.message, 'error');
+                                document.getElementById('user-id-display').textContent = "Error de autenticación";
                             }
                         }
                     }
@@ -61,6 +81,7 @@
                     try {
                         await signInWithCustomToken(auth, initialAuthToken);
                         console.log("Sesión con token personalizado iniciada.");
+                        // onAuthStateChanged manejará el resto (establecer userId, isFirebaseReady, loadComments)
                     } catch (error) {
                         console.error("Error al iniciar sesión con token personalizado:", error);
                         // Fallback a anónimo si el token personalizado falla
@@ -69,16 +90,16 @@
                             console.log("Fallback: Sesión anónima iniciada.");
                         } catch (anonError) {
                             console.error("Error en fallback a sesión anónima:", anonError);
-                            document.getElementById('message-box').textContent = "Error de autenticación crítico. No se pueden cargar los comentarios.";
-                            document.getElementById('message-box').className = 'message-box error';
+                            showMessage("Error de autenticación crítico. No se pueden enviar ni cargar los comentarios.", 'error');
+                            document.getElementById('user-id-display').textContent = "Error de autenticación";
                         }
                     }
                 }
 
             } catch (error) {
                 console.error("Error al inicializar Firebase:", error);
-                document.getElementById('message-box').textContent = "Error al inicializar la aplicación. Verifica la configuración de Firebase.";
-                document.getElementById('message-box').className = 'message-box error';
+                showMessage("Error al inicializar la aplicación. Verifica la configuración de Firebase.", 'error');
+                document.getElementById('user-id-display').textContent = "Error de inicialización";
             }
         }
 
@@ -86,20 +107,17 @@
         async function saveComment() {
             const commentInput = document.getElementById('comment-text');
             const commentText = commentInput.value.trim();
-            const messageBox = document.getElementById('message-box');
-            messageBox.className = 'message-box'; // Limpiar clases anteriores
-            messageBox.textContent = ''; // Limpiar mensaje anterior
+            
+            showMessage("", "hidden"); // Limpiar mensaje anterior
 
             if (!commentText) {
-                messageBox.textContent = 'Por favor, escribe tu comentario antes de enviarlo.';
-                messageBox.className = 'message-box error';
+                showMessage('Por favor, escribe tu comentario antes de enviarlo.', 'error');
                 return;
             }
 
-            if (!db) {
-                messageBox.textContent = 'La base de datos no está lista. Inténtalo de nuevo en un momento.';
-                messageBox.className = 'message-box error';
-                console.error("Firestore DB no está inicializado.");
+            if (!isFirebaseReady) { // Usar la bandera de listo
+                showMessage('La base de datos no está lista. Por favor, espera o recarga la página.', 'error');
+                console.error("Firestore DB no está inicializado o autenticado.");
                 return;
             }
 
@@ -118,18 +136,16 @@
                 });
 
                 commentInput.value = ''; // Limpiar el input
-                messageBox.textContent = '¡Comentario enviado con éxito!';
-                messageBox.className = 'message-box success';
+                showMessage('¡Comentario enviado con éxito!', 'success');
                 console.log("Comentario guardado con éxito.");
 
             } catch (e) {
-                messageBox.textContent = `Error al enviar el comentario: ${e.message}`;
-                messageBox.className = 'message-box error';
+                showMessage(`Error al enviar el comentario: ${e.message}`, 'error');
                 console.error("Error al añadir documento: ", e);
             } finally {
                 // Ocultar indicador de carga
                 document.getElementById('loading-indicator').style.display = 'none';
-                document.getElementById('submit-button').disabled = false;
+                document.getElementById('submit-button').disabled = false; // Habilitar botón de nuevo
             }
         }
 
@@ -137,10 +153,13 @@
         function loadComments() {
             if (!db) {
                 console.error("Firestore DB no está inicializado para cargar comentarios.");
+                // showMessage("Error al cargar comentarios: La base de datos no está lista.", 'error'); // No mostrar este aquí para evitar doble mensaje
                 return;
             }
 
             const commentsList = document.getElementById('comments-list');
+            commentsList.innerHTML = '<p class="text-center text-gray-500">Cargando comentarios...</p>'; // Mensaje de carga inicial
+
             const commentsCollectionRef = collection(db, `artifacts/${__app_id}/public/data/comments`);
             const q = query(commentsCollectionRef, orderBy('timestamp', 'desc')); // Ordenar por fecha, los más recientes primero
 
@@ -168,8 +187,7 @@
                 });
             }, (error) => {
                 console.error("Error al obtener comentarios en tiempo real:", error);
-                document.getElementById('message-box').textContent = `Error al cargar los comentarios: ${error.message}`;
-                document.getElementById('message-box').className = 'message-box error';
+                showMessage(`Error al cargar los comentarios: ${error.message}`, 'error');
             });
         }
 
@@ -214,6 +232,7 @@
             border-radius: 4px;
             resize: vertical; /* Permite redimensionar verticalmente */
             min-height: 100px;
+            box-sizing: border-box; /* ¡Soluciona el desbordamiento! */
         }
         .comment-form button {
             background-color: #007bff;
@@ -267,6 +286,9 @@
             border: 1px solid #f5c6cb;
             display: block;
         }
+        .message-box.hidden { /* Nueva clase para ocultar el mensaje completamente */
+            display: none;
+        }
         #loading-indicator {
             text-align: center;
             margin-top: 10px;
@@ -278,7 +300,7 @@
             font-size: 0.9em;
             color: #6c757d;
             text-align: center;
-            margin-bottom: 20px;
+            margin-top: 15px; /* Ajuste para un mejor espaciado */
         }
     </style>
 </head>
@@ -289,7 +311,7 @@
             <div class="navbar-item"><a href="/informacion">Información Clave</a></div>
             <div class="navbar-item"><a href="/test">Test de Conocimientos</a></div>
             <div class="navbar-item"><a href="/informe_proyecto">Informe del Proyecto</a></div>
-            <div class="navbar-item"><a href="/comentarios" class="active">Comentarios</a></div>{# Nuevo enlace #}
+            <div class="navbar-item"><a href="/comentarios" class="active">Comentarios</a></div>{# Reordenado: a la derecha de Informe del Proyecto #}
         </div>
     </nav>
 
@@ -300,9 +322,9 @@
         <div class="comment-form">
             <div id="message-box" class="message-box"></div>
             <textarea id="comment-text" placeholder="Escribe tu comentario aquí..." maxlength="500"></textarea>
-            <button id="submit-button">Enviar Comentario</button>
+            <button id="submit-button" disabled>Enviar Comentario</button> {# Deshabilitado por defecto #}
             <div id="loading-indicator">Enviando comentario...</div>
-            <p id="user-id-display" class="user-id-display">Conectando...</p>
+            <p id="user-id-display" class="user-id-display">Conectando a la base de datos...</p>
         </div>
 
         <div class="comments-list-section">
