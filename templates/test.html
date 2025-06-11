@@ -3,61 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ titulo }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <script>
-        function corregirRespuestas() {
-            let correctas = 0;
-
-            const respuestas = {
-                q1: "agua",
-                q2: "CO2",
-                q3: "óxido de sodio"
-            };
-
-            for (let clave in respuestas) {
-                const input = document.querySelector(`input[name="${clave}"]`);
-                const valor = input.value.trim().toLowerCase();
-                const resultado = document.getElementById(`resultado_${clave}`);
-                if (valor === respuestas[clave]) {
-                    resultado.textContent = "✅ Correcto";
-                    resultado.style.color = "green";
-                    correctas++;
-                } else {
-                    resultado.textContent = `❌ Incorrecto (Respuesta: ${respuestas[clave]})`;
-                    resultado.style.color = "red";
-                }
-            }
-
-            document.getElementById("resultado_final").innerHTML = `<strong>Obtuviste ${correctas} de 3 correctas.</strong>`;
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
         }
-    </script>
+
+        h1 {
+            color: #004080;
+        }
+
+        .instrucciones {
+            background-color: #e0f0ff;
+            padding: 15px;
+            border-left: 5px solid #0074D9;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+
+        form {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .pregunta {
+            margin-bottom: 20px;
+        }
+
+        .pregunta label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 8px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #0074D9;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005fa3;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #888;
+        }
+
+        @media (max-width: 600px) {
+            form {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
     <h1>{{ titulo }}</h1>
 
-    <form onsubmit="event.preventDefault(); corregirRespuestas();">
-        <div class="pregunta">
-            <label>1. ¿Cómo se llama el compuesto H₂O?</label><br>
-            <input type="text" name="q1">
-            <div id="resultado_q1"></div>
-        </div>
+    <div class="instrucciones">
+        <p>Este test contiene 10 preguntas seleccionadas aleatoriamente de nuestra base de datos de compuestos químicos.</p>
+        <ul>
+            <li>Algunas preguntas te pedirán escribir la <strong>fórmula química</strong> de un compuesto.</li>
+            <li>Otras te pedirán nombrar un compuesto dado su <strong>fórmula molecular</strong>.</li>
+            <li>Las respuestas deben escribirse con precisión: revisa tildes, subíndices (como <em>H₂O</em>), y mayúsculas si aplica.</li>
+        </ul>
+        <p>Escribe tus respuestas y presiona el botón <strong>"Enviar respuestas"</strong> al final para ver tu puntuación.</p>
+    </div>
 
-        <div class="pregunta">
-            <label>2. ¿Cuál es la fórmula del dióxido de carbono?</label><br>
-            <input type="text" name="q2">
-            <div id="resultado_q2"></div>
-        </div>
-
-        <div class="pregunta">
-            <label>3. ¿Cómo se llama el compuesto Na₂O?</label><br>
-            <input type="text" name="q3">
-            <div id="resultado_q3"></div>
-        </div>
-
-        <button type="submit">Corregir</button>
+    <form action="/evaluar_test" method="POST">
+        {% for i, pregunta in enumerate(preguntas) %}
+            <div class="pregunta">
+                <label for="respuesta_{{ i }}">{{ i + 1 }}. {{ pregunta.enunciado }}</label>
+                <input type="text" name="respuesta_{{ i }}" id="respuesta_{{ i }}" required>
+                <input type="hidden" name="correcta_{{ i }}" value="{{ pregunta.respuesta }}">
+            </div>
+        {% endfor %}
+        <button type="submit">Enviar respuestas</button>
     </form>
-
-    <div id="resultado_final" style="margin-top: 20px;"></div>
 
     <div class="footer">
         <p>© 2025 Proyecto Personal - Mateo Martín</p>
