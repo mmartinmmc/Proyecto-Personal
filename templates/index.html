@@ -32,7 +32,10 @@
                     }
                 } else if (currentPath === '/informe_proyecto' && link.getAttribute('href') === '/informe_proyecto') {
                     link.classList.add('active');
-                } else if (link.getAttribute('href') === currentPath) {
+                } else if (currentPath === '/comentarios' && link.getAttribute('href') === '/comentarios') {
+                    link.classList.add('active');
+                }
+                else if (link.getAttribute('href') === currentPath) {
                     link.classList.add('active');
                 }
             });
@@ -46,6 +49,7 @@
             <div class="navbar-item"><a href="/informacion">Información Clave</a></div>
             <div class="navbar-item"><a href="/test">Test de Conocimientos</a></div>
             <div class="navbar-item"><a href="/informe_proyecto">Informe del Proyecto</a></div>
+            <div class="navbar-item"><a href="/comentarios">Comentarios</a></div>{# Nuevo enlace #}
         </div>
     </nav>
 
