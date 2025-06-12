@@ -190,16 +190,18 @@ button:hover {
     border-collapse: separate; /* Permite border-radius en celdas */
     border-spacing: 0; /* Elimina espacio entre celdas */
     margin-top: 25px;
-    /* overflow: hidden; -- Eliminado, se maneja en el padre (.resultados) */
     border-radius: 10px; /* Bordes redondeados para la tabla */
+    table-layout: auto; /* Permite al navegador ajustar el ancho de las columnas según el contenido */
 }
 
 .tabla-resultados th, .tabla-resultados td {
     padding: 15px; /* Más padding */
     text-align: left;
     border-bottom: 1px solid var(--border-color);
-    /* CRÍTICO: Añadido para que las palabras largas se rompan y ajusten */
-    word-break: break-word; /* Permite que las palabras se rompan en cualquier punto */
+    /* CRÍTICO: Ajustado para mejorar el manejo de palabras largas */
+    word-break: normal; /* Permite saltos de línea naturales en espacios */
+    overflow-wrap: break-word; /* Rompe palabras que son demasiado largas sin espacios */
+    white-space: normal; /* Asegura que el texto se envuelva */
 }
 
 .tabla-resultados th {
@@ -616,7 +618,7 @@ button:hover {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra para los botones */
     width: auto; /* Ajusta el ancho al contenido */
-    max-width: none; /* Asegura que no se limite el ancho por reglas generales */
+    /* Eliminado max-width: none; aquí, ya está en el selector de form */
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
